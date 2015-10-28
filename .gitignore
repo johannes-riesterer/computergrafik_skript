@@ -1,0 +1,27 @@
+# pdfLaTeX
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+OtherImages
+
+# pdfLaTeX with Bibliography and Nomenclature
+*.bbl
+*.blg
+*.brf
+*.idx
+*.ilg
+*.ind
+*.lof
+*.lot
+*.nlg
+*.nlo
+*.nls
+
+# TeXStudio
+*.synctex.gz
+
+# build stuff
+build*
