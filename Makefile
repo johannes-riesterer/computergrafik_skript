@@ -3,7 +3,7 @@ all: pdf clean
 
 pdf: computergrafik.tex
 	pdflatex -src -interaction=nonstopmode computergrafik.tex
-	#makeindex -s nomencl.ist -t computergrafik.nlg -o computergrafik.nls computergrafik.nlo
+	-makeindex -s nomencl.ist -t computergrafik.nlg -o computergrafik.nls computergrafik.nlo
 	pdflatex -src -interaction=nonstopmode computergrafik.tex
 
 .PHONY: clean
