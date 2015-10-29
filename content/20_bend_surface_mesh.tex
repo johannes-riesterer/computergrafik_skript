@@ -91,14 +91,17 @@ Ist eine Fläche orientierbar und nummeriert man die Polygone so, dass benachbar
 \end{Bemerkung}
 
 \begin{figure}[H]
-\centering
-Ein geschlossenes, orientierbares Netz. Quelle:CGAL \\
-\includegraphics[scale=0.3]{images/clown_fish.jpg}
+    \centering
+    \includegraphics[width=0.4\textwidth]{images/clown_fish.jpg}
+    \label{fig:closed-orientable-mesh}
+    \caption{Ein geschlossenes, orientierbares Netz. Quelle:CGAL}
 \end{figure}
+
 \begin{figure}[H]
 \centering
-Das sogenannte Möbiusband ist hingegen nicht orientierbar. Es ist nicht geschlossen, sondern hat einen zusammenhängenden Rand Quelle:Wikipedia
-\includegraphics[scale=0.2]{images/Moebius_strip.png}
+    \includegraphics[width=0.4\textwidth]{images/Moebius_strip.png}
+    \label{fig:moebius-strip}
+    \caption[Möbiusband. Quelle:Wikipedia]{Das sogenannte Möbiusband ist hingegen nicht orientierbar. Es ist nicht geschlossen, sondern hat einen zusammenhängenden Rand. Quelle:Wikipedia}
 \end{figure}
 
 \begin{Definition}
@@ -117,9 +120,10 @@ mit $n_{P_i} = e_{j}^{P_i}e_{j+1}^{P_i} \times e_{j}^{P_i}e_{j-1}^{P_i}$ einen V
 
 
 \begin{figure}[H]
-\centering
-Das äußeres Normalenfeld\\
-\includegraphics[scale=0.2]{images/teapot-normals.png}
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/teapot-normals.png}
+    \label{fig:outer-normals}
+    \caption{Das äußere Normalenfeld}
 \end{figure}
 Eine wichtige Größe für ein Netz ist die sogenannte Eulercharakteristik, welche in direkter Beziehung zum sogenannten Geschlecht eines Netzes steht.
 
@@ -141,29 +145,33 @@ g(N):= \textbf{Anzahl der Löcher in } |N|
 Beispiele:
 
 \begin{figure}[H]
-\centering
-Geschlossenes Netz vom Geschlecht $0$. Quelle:Wikipedia \\
-\includegraphics[scale=0.2]{images/Sphere.png}
+    \centering
+    \includegraphics[scale=0.2]{images/Sphere.png}
+    \label{fig:closed-mesh-gender0}
+    \caption{Geschlossenes Netz vom Geschlecht $0$. Quelle:Wikipedia}
 \end{figure}
 
 
 \begin{figure}[H]
-\centering
-Geschlossenes Netz vom Geschlecht $1$. Quelle:Wikipedia \\
-\includegraphics[scale=0.8]{images/Torus.png}
+    \centering
+    \includegraphics[scale=0.8]{images/Torus.png}
+    \label{fig:closed-mesh-gender1}
+    \caption{Geschlossenes Netz vom Geschlecht $1$. Quelle:Wikipedia}
 \end{figure}
 
 
 \begin{figure}[H]
-\centering
-Geschlossenes Netz vom Geschlecht $2$. Quelle:Wikipedia \\
-\includegraphics[scale=1.0]{images/Double_torus.png}
+    \centering
+    \includegraphics[scale=1.0]{images/Double_torus.png}
+    \label{fig:closed-mesh-gender2}
+    \caption{Geschlossenes Netz vom Geschlecht $2$. Quelle:Wikipedia}
 \end{figure}
 
 \begin{figure}[H]
-\centering
-Geschlossenes Netz vom Geschlecht $3$. Quelle:Wikipedia \\
-\includegraphics[scale=1.0]{images/Triple_torus.png}
+    \centering
+    \includegraphics[scale=1.0]{images/Triple_torus.png}
+    \label{fig:closed-mesh-gender3}
+    \caption{Geschlossenes Netz vom Geschlecht $3$. Quelle:Wikipedia}
 \end{figure}
 
 Der Zusammenhang zwischen der Eulercharacteristik und dem Geschlecht wurde im allgemeinen Fall von dem Mathematiker  
@@ -213,9 +221,10 @@ c'(t) =  \begin{pmatrix} \cos'(t) \\  \sin'(t) \\  t'  \end{pmatrix} = \begin{pm
 \end{align*} 
 \end{Beispiel}
 \begin{figure}[H]
-\centering
-Eine Helix. Quelle:Wikipedia \\
-\includegraphics[scale=0.5]{images/Helix.png}
+    \centering
+    \includegraphics[scale=0.45]{images/Helix.png}
+    \label{fig:helix}
+    \caption{Eine Helix. Quelle:Wikipedia}
 \end{figure}
 
 \begin{Definition}
@@ -267,9 +276,10 @@ mit $i = 0, \hdots n$, $t \in [0,1]$ und dem Binomialkoeffizient
 \end{Definition}
 
 \begin{figure}[H]
-\centering
-Die Bernsteinpolynome $B^{4}_i$ und deren Summe Quelle:Wikipedia \\
-\includegraphics[scale=0.8]{images/Bernstein_Polynomials.png}
+    \centering
+    \includegraphics[scale=0.8]{images/Bernstein_Polynomials.png}
+    \label{fig:bernstein-polynomial}
+    \caption{Die Bernsteinpolynome $B^{4}_i$ und deren Summe. Quelle:Wikipedia}
 \end{figure}
 
 \begin{Bemerkung}
@@ -288,9 +298,11 @@ Folgt fast direkt aus der Rekursionsformel des Binomialkoeffizienten
 \begin{align*}
 \begin{pmatrix} n \\ i \end{pmatrix} = \begin{pmatrix} n-1 \\ i \end{pmatrix} + \begin{pmatrix} n-1 \\ i-1 \end{pmatrix} 
 \end{align*}
- \begin{figure}[H]
-\centering
-\includegraphics[scale=0.2]{images/pascal.png}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.2]{images/pascal.png}
+    \label{fig:pascals-triangle}
+    \caption{Pascalsches Dreieck}
 \end{figure}
 \end{proof}
 
@@ -351,9 +363,10 @@ Seien $B^n(t)$ und $B^m(t)$  Bezierkurven. Man spricht von eimen $C^0$-patching,
 
 
 \begin{figure}[H]
-\centering
-Ein Rendering der Utah Teekanne, eines der weit verbreitetsten 3D-Modelle in der Computergrafik. Sie wurde mit Bezierflächen modelliert\\
-\includegraphics[scale=0.1]{images/Utah_teapot.png}
+    \centering
+    \includegraphics[scale=0.1]{images/Utah_teapot.png}
+    \label{fig:rendering-utah-teapot}
+    \caption[Ein Rendering der Utah Teekanne]{Ein Rendering der Utah Teekanne, eines der weit verbreitetsten 3D-Modelle in der Computergrafik. Sie wurde mit Bezierflächen modelliert.}
 \end{figure}
 
 \subsubsection{Subdivision}

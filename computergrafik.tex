@@ -45,5 +45,12 @@
 \input{content/30_realtime_opengl}
 \input{content/40_raytracing}
 \input{content/50_animation_simulation}
-
+%back
+\newpage
+\listoftables{\addcontentsline{toc}{section}{\listtablename}}
+\newpage
+\listoffigures{\addcontentsline{toc}{section}{\listfigurename}}
+\newpage
+\IfDefined{printindex}{\printindex}
+\IfDefined{printnomenclature}{\printnomenclature[4.5cm]{}}
 \end{document}
