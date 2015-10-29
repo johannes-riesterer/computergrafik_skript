@@ -718,11 +718,22 @@ Die Zentralprojektion auf die $X-Y$-Ebene mit Augendistanz $d$ lässt sich nicht
 \end{Bemerkung}
 
 
+
+Definieren wir die Matrix 
 \begin{align*}
 K_{persp_{xy}} := \begin{pmatrix}  
 1   &  0 & 0 & 0  \\
 0   &  1 & 0 & 0  \\
 0   &  0 & 1 & 0  \\
-0   &  0 & \frac{1}{d} & 1  \\
+0   &  0 & \frac{1}{d} & 1  
 \end{pmatrix} 
 \end{align*}
+und 
+\begin{align*}
+K_{orth_{xy}} := \begin{pmatrix}  
+1   &  0 & 0 & 0  \\
+0   &  1 & 0 & 0  \\
+0   &  0 & 0 & 1  
+\end{pmatrix} 
+\end{align*}
+

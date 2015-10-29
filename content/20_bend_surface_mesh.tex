@@ -73,9 +73,15 @@ Sei $N:= \bigcup P_i$ die Vereinigung endlich vieler, einfacher, geschlossener, 
 $E_N := \bigcup E_{P_i}$ und $K_N := \bigcup E_{P_i}$ die Vereinigung der Ecken beziehungsweise der Kantenmengen.
 Analog zu der Definition eines Polygons definieren wir die geometrischen Realisierungen 
 $|K_N| := \bigcup |P_i|$ und $|N| := \bigcup |\overset{\circ}{P_i}| \bigcup |K_N|$
-Dann heißt $N$ \textbf{Netz}, falls Der Schnitt zweier Polygone entweder leer, ein Punkt in $E_N$ oder eine Kante in $K_N$ ist. Die Menge aller Kanten, die nur zu einem Polygon gehören, heißt Rand von $N$ und wird mit $\partial N$ bezeichnet.
-Ein Netz heißt \textbf{geschlossen}, falls es keinen Rand gibt, in Zeichen $\partial N = \emptyset$. 
+\begin{itemize}
+\item Dann heißt $N$ \textbf{Netz}, falls Der Schnitt zweier Polygone entweder leer, ein Punkt in $E_N$ oder eine Kante in $K_N$ ist. 
+
+\item Die Menge aller Kanten, die nur zu einem Polygon gehören, heißt Rand von $N$ und wird mit $\partial N$ bezeichnet.
+\item Ein Netz heißt \textbf{geschlossen}, falls es keinen Rand gibt, in Zeichen $\partial N = \emptyset$. 
+\item Die Polygone des Netzes werden auch als Facetten bezeichnet.
+\end{itemize}
 \end{Definition} 
+
 
 Durch die  Orientierung von Polygonen können wir nun den Begriff der Orientierung und der Orientierbarkeit eines Netzes einführen.
 
@@ -185,6 +191,37 @@ Nach dem Satz lässt sich das Geschlecht und somit die Anzahl der Löcher via $g
 \end{Bemerkung}
 
 \subsection{Datenstrukturen}
+\begin{Definition}
+Eine Liste ist eine Datenstruktur, in der man Objekte unter Beachtung der Reihenfolge  speichern kann. Jedes Element kennt seinen Vorgänger und seinen Nachfolger und man kann direkt auf das
+ $i$-te Element zugreifen. Wir verwenden dazu die folgende Notation:  $E = (O_1, \hdots ,O_n )$ bezeichnet eine Liste von Objekten $O_1, \hdots, O_n$.
+$E(i):= O_i$ bezeichnet dann das $i$-te Element und $next(E(i)) := O_{i+1}$ und $prev(E(i)):= O_{i-1}$ den Vorgänger beziehungsweise den Nachfolger, 
+wobei $O_{l} = NULL$ ist für $l >n$ oder $l < 0$.
+
+\end{Definition}
+
+\begin{Definition}[Eckenliste]
+In einer Liste $E = (e_1, e_2, \hdots, e_n)$ werden Referenzen auf die Ecken gespeichert. Die $i$-te Facette wird als Liste $F_i = \bigl( E(i_1), \hdots , E(i_l)  \bigr)$  von  Referenzen auf die Eckenliste 
+gespeichert. 
+\end{Definition}
+
+\begin{Definition}[Kantenliste]
+In einer Liste $E = (e_1, e_2, \hdots, e_n)$ werden Referenzen auf die Ecken gespeichert. In einer Liste $K=\bigl(   (e_{k_1},   \hdots,  e_{k_2} ) \bigr)$werden die Kanten als Tupel von Referenzen auf Ecken abgespeichert. Die $i$-te Facette wird als Liste $F_i = \bigl( K(i_1), \hdots , K(i_l)  \bigr)$  von  Referenzen auf die Kanten  gespeichert. In einer Liste
+$M=  \bigl(    (M(i_1), M(i_2) ), \hdots  ,(M(l_1), M(l_2) )   \bigr )$ werden die Referenzen auf Facetten in Tupeln abgespeichert, die die entsprechenden Kante ind der Kanten Liste als Kante haben.
+Also $M(i)$ sind zwei Facetten, die $K(i)$ als Kante haben, wobei der erste Eintrag die Facette links von der Kante und der zweite Eintrag die Facette rechts von der Kante ist. 
+Ist die Kante eine Randkante, so wird der andere Wert des Tupels auf  $-1$ gesetzt.
+ 
+\end{Definition}
+
+\begin{Definition}[Halfedge]
+In einer Liste $E = (e_1, e_2, \hdots, e_n)$ werden Referenzen auf die Ecken gespeichert.  Es wird eine Datenstruktur namens Halfedge eingeführt.
+Eine Halfedge besitzt eine Referenz auf den Anfangspunkt und auf den Endpunkt. Ebenso besitzt sie Referenzen auf die Gegenüberliegende Kante, bei der der Anfangs und Endpunkt vertauscht ist, sowie eine Referenz auf eine folgende Halfedge  und eine vorangehende Halfedge. Ebenso hält sie eine Referenz auf die Facette, die sie Berandet. Die unendliche Zelle oder äussere Zelle wird wieder  mit $-1$ bezeichnet. Eine Facette ist dann eine Liste mit Referenzen von Halfedges beziehungsweise reicht auch die  Referenz auf eine Halfedge.
+\end{Definition}
+
+\begin{figure}[H]
+\centering
+Halfedge. Quelle :Wikipedia \\
+\includegraphics[scale=0.5]{images/halfedge.png}
+\end{figure}
 
 \subsection{Modellierung}
 
