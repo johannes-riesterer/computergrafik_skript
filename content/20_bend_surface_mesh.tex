@@ -232,7 +232,7 @@ Referenzen auf die Eckenliste gespeichert.
 Die $k$-te Ecke der $i$-ten Facette kann so z.B. mit $E[F_i[k]]$ referenziert 
 werden. 
 \end{Definition}
-\begin{multicols}{2}[]
+\begin{multicols}{2}[Vor- und Nachteile:]
     \begin{itemize}
         \item[+] Einfach zu implementieren
         \item[+] Orientierung kann durch Konvention gespeichert werden
@@ -245,25 +245,51 @@ werden.
 \end{multicols}
 
 \begin{Definition}[Kantenliste]
-In einer Liste $E = (e_1, e_2, \hdots, e_n)$ werden Referenzen auf die Ecken gespeichert. In einer Liste $K=\bigl(   (e_{k_1},   \hdots,  e_{k_2} ) \bigr)$werden die Kanten als Tupel von Referenzen auf Ecken abgespeichert. Die $i$-te Facette wird als Liste $F_i = \bigl( K(i_1), \hdots , K(i_l)  \bigr)$  von  Referenzen auf die Kanten  gespeichert. In einer Liste
-$M=  \bigl(    (M(i_1), M(i_2) ), \hdots  ,(M(l_1), M(l_2) )   \bigr )$ werden die Referenzen auf Facetten in Tupeln abgespeichert, die die entsprechenden Kante ind der Kanten Liste als Kante haben.
-Also $M(i)$ sind zwei Facetten, die $K(i)$ als Kante haben, wobei der erste Eintrag die Facette links von der Kante und der zweite Eintrag die Facette rechts von der Kante ist. 
-Ist die Kante eine Randkante, so wird der andere Wert des Tupels auf  $-1$ gesetzt.
-%TODO:
-% + Nachbarschaftsbeziehungen
-% - Orientierung (schwierig zu speichern)
+In einer Liste $E = (e_1,~e_2,~\hdots,~e_n)$ werden Referenzen auf die Ecken 
+gespeichert. 
+
+In einer Liste 
+$K = \bigl( (i_{e_1},~\hdots,~i_{e_n}),~
+            \hdots,~
+            (i_{e_1},~\hdots,~i_{e_m}) \bigr)$ 
+werden die Kanten als Tupel von Referenzen auf die Eckenliste abgespeichert. 
+
+Die $k$-te Facette wird als Liste $F_k = \bigl( K[j_1],~\hdots,~K[j_l] \bigr)$ 
+von Referenzen auf die Kantenliste gespeichert. 
+
+In einer Liste 
+$M = \bigl( (M(i_1),~M(i_2)),~\hdots,~(M(l_1),~M(l_2)) \bigr )$ 
+werden die Referenzen auf Facetten in Tupeln abgespeichert, die die 
+entsprechende Kante in der Kantenliste als Kante haben. 
+
+$M[i] \in M$ sind also zwei Facetten, die $K[i] \in K$ als Kante haben. 
+Der erste Eintrag der Facette befindet sich links und der zweite rechts von der 
+Kante. 
+
+Ist die Kante eine Randkante, so wird der andere Wert des Tupels auf $-1$ 
+gesetzt. 
 \end{Definition}
+\begin{multicols}{2}[Vor- und Nachteile:]
+    \begin{itemize}
+        \item[+] Nachbarschaftsbeziehungen der Polygone werden gespeichert 
+        \item[-] Orientierung der Kanten geht verloren (schwierig zu speichern) 
+    \end{itemize}
+\end{multicols}
 
 \begin{Definition}[Halfedge]
 In einer Liste $E = (e_1, e_2, \hdots, e_n)$ werden Referenzen auf die Ecken gespeichert.  Es wird eine Datenstruktur namens Halfedge eingeführt.
 Eine Halfedge besitzt eine Referenz auf den Anfangspunkt und auf den Endpunkt. Ebenso besitzt sie Referenzen auf die Gegenüberliegende Kante, bei der der Anfangs und Endpunkt vertauscht ist, sowie eine Referenz auf eine folgende Halfedge  und eine vorangehende Halfedge. Ebenso hält sie eine Referenz auf die Facette, die sie Berandet. Die unendliche Zelle oder äussere Zelle wird wieder  mit $-1$ bezeichnet. Eine Facette ist dann eine Liste mit Referenzen von Halfedges beziehungsweise reicht auch die  Referenz auf eine Halfedge.
-%TODO:
-% + Alle kombinatorischen Daten effizient gespeichert (!)
-%    + Orientierung bleibt erhalten
-% - Komplexe Implementierung
-% - Overhead (große Datenmengen)
-% - Nur für orientierbare Netze!
 \end{Definition}
+\begin{multicols}{2}[Vor- und Nachteile:]
+    %TODO:
+    %\begin{itemize}
+        % + Alle kombinatorischen Daten effizient gespeichert (!)
+        %    + Orientierung bleibt erhalten
+        % - Komplexe Implementierung
+        % - Overhead (große Datenmengen)
+        % - Nur für orientierbare Netze!
+    %\end{itemize}
+\end{multicols}
 
 \begin{figure}[H]
     \centering 
