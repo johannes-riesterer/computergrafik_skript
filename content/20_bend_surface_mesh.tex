@@ -217,15 +217,30 @@ $i$ wird auch als Index des $i$-ten Listenelements bezeichnet.
 \end{Definition}
 
 \begin{Definition}[Eckenliste]
-In einer Liste $E = (e_1, e_2, \hdots, e_n)$ werden Referenzen auf die Ecken gespeichert. Die $i$-te Facette wird als Liste $F_i = \bigl( E(i_1), \hdots , E(i_l)  \bigr)$  von  Referenzen auf die Eckenliste 
+In einer Liste $E = (e_1, e_2, \hdots, e_n)$ werden Referenzen auf die Ecken 
 gespeichert. 
-%TODO:
-% + Einfach zu implementieren
-% + Orientierung kann durch Konvention gespeichert werden
-% - Nachbarschaftsbeziehungen nicht enthalten / schwierig zu berechnen
-% - Welhe Ecke gehört zu welcher Kante?
-% - Point in Mesh? (fast unmöglich zu berechnen)
+Eine Referenz im $\mathbb{R}^3$ könnte so aussehen: 
+\begin{equation*}
+    e_k = \begin{pmatrix}
+        x_k \\
+        y_k \\
+        z_k
+    \end{pmatrix}
+\end{equation*}
+Die $i$-te Facette wird als Liste $F_i = \bigl( i_1,~\hdots,~i_l  \bigr)$ von 
+Referenzen auf die Eckenliste gespeichert. 
+Die $k$-te Ecke der $i$-ten Facette kann so z.B. mit $E[F_i[k]]$ referenziert 
+werden. 
 \end{Definition}
+\begin{multicols}{2}[]
+    \begin{itemize}
+        \item[+] Einfach zu implementieren
+        \item[+] Orientierung kann durch Konvention gespeichert werden
+        \item[-] Nachbarschaftsbeziehungen nicht enthalten / schwierig zu berechnen
+        \item[-] Die Zugehörigkeit einer Ecke zu einer Kante muss immer berechnet werden
+        \item[-] Point-in-Mesh fast unmöglich zu berechnen
+    \end{itemize}
+\end{multicols}
 
 \begin{Definition}[Kantenliste]
 In einer Liste $E = (e_1, e_2, \hdots, e_n)$ werden Referenzen auf die Ecken gespeichert. In einer Liste $K=\bigl(   (e_{k_1},   \hdots,  e_{k_2} ) \bigr)$werden die Kanten als Tupel von Referenzen auf Ecken abgespeichert. Die $i$-te Facette wird als Liste $F_i = \bigl( K(i_1), \hdots , K(i_l)  \bigr)$  von  Referenzen auf die Kanten  gespeichert. In einer Liste
