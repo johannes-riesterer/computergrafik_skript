@@ -192,16 +192,39 @@ Nach dem Satz lässt sich das Geschlecht und somit die Anzahl der Löcher via $g
 
 \subsection{Datenstrukturen}
 \begin{Definition}
-Eine Liste ist eine Datenstruktur, in der man Objekte unter Beachtung der Reihenfolge  speichern kann. Jedes Element kennt seinen Vorgänger und seinen Nachfolger und man kann direkt auf das
- $i$-te Element zugreifen. Wir verwenden dazu die folgende Notation:  $E = (O_1, \hdots ,O_n )$ bezeichnet eine Liste von Objekten $O_1, \hdots, O_n$.
-$E(i):= O_i$ bezeichnet dann das $i$-te Element und $next(E(i)) := O_{i+1}$ und $prev(E(i)):= O_{i-1}$ den Vorgänger beziehungsweise den Nachfolger, 
-wobei $O_{l} = NULL$ ist für $l >n$ oder $l < 0$.
-
+Eine Liste ist eine Datenstruktur, in der man Objekte unter Beachtung der 
+Reihenfolge speichern kann. 
+Für eine Liste von Objekten $O_1,~\hdots,~O_n$ verwenden wir die Notation 
+\begin{equation*}
+    E = (O_1,~\hdots,~O_n )
+\end{equation*}
+Jedes Element kennt seinen Vorgänger und Nachfolger und man kann direkt 
+auf das $i$-te Element zugreifen:
+\begin{equation*}
+    %TODO: maybe nicer placement possible here?
+    \begin{matrix}
+        E[i] & := & O_i \\
+        \textrm{prev}(E[i]) & := & O_{i-1} \\
+        \textrm{next}(E[i]) & := & O_{i+1} \\
+    \end{matrix}
+\end{equation*}
+Dabei bezeichnet $\textrm{prev}(E[i])$ den Vorgänger und $\textrm{next}(E[i])$ 
+den Nachfolger, wobei 
+\begin{equation*}
+    \forall l \in \mathbb{R} : \{E[l] = \textrm{NULL}~|~(l>n) \vee (l<0)\}
+\end{equation*}
+$i$ wird auch als Index des $i$-ten Listenelements bezeichnet. 
 \end{Definition}
 
 \begin{Definition}[Eckenliste]
 In einer Liste $E = (e_1, e_2, \hdots, e_n)$ werden Referenzen auf die Ecken gespeichert. Die $i$-te Facette wird als Liste $F_i = \bigl( E(i_1), \hdots , E(i_l)  \bigr)$  von  Referenzen auf die Eckenliste 
 gespeichert. 
+%TODO:
+% + Einfach zu implementieren
+% + Orientierung kann durch Konvention gespeichert werden
+% - Nachbarschaftsbeziehungen nicht enthalten / schwierig zu berechnen
+% - Welhe Ecke gehört zu welcher Kante?
+% - Point in Mesh? (fast unmöglich zu berechnen)
 \end{Definition}
 
 \begin{Definition}[Kantenliste]
@@ -209,12 +232,20 @@ In einer Liste $E = (e_1, e_2, \hdots, e_n)$ werden Referenzen auf die Ecken ges
 $M=  \bigl(    (M(i_1), M(i_2) ), \hdots  ,(M(l_1), M(l_2) )   \bigr )$ werden die Referenzen auf Facetten in Tupeln abgespeichert, die die entsprechenden Kante ind der Kanten Liste als Kante haben.
 Also $M(i)$ sind zwei Facetten, die $K(i)$ als Kante haben, wobei der erste Eintrag die Facette links von der Kante und der zweite Eintrag die Facette rechts von der Kante ist. 
 Ist die Kante eine Randkante, so wird der andere Wert des Tupels auf  $-1$ gesetzt.
- 
+%TODO:
+% + Nachbarschaftsbeziehungen
+% - Orientierung (schwierig zu speichern)
 \end{Definition}
 
 \begin{Definition}[Halfedge]
 In einer Liste $E = (e_1, e_2, \hdots, e_n)$ werden Referenzen auf die Ecken gespeichert.  Es wird eine Datenstruktur namens Halfedge eingeführt.
 Eine Halfedge besitzt eine Referenz auf den Anfangspunkt und auf den Endpunkt. Ebenso besitzt sie Referenzen auf die Gegenüberliegende Kante, bei der der Anfangs und Endpunkt vertauscht ist, sowie eine Referenz auf eine folgende Halfedge  und eine vorangehende Halfedge. Ebenso hält sie eine Referenz auf die Facette, die sie Berandet. Die unendliche Zelle oder äussere Zelle wird wieder  mit $-1$ bezeichnet. Eine Facette ist dann eine Liste mit Referenzen von Halfedges beziehungsweise reicht auch die  Referenz auf eine Halfedge.
+%TODO:
+% + Alle kombinatorischen Daten effizient gespeichert (!)
+%    + Orientierung bleibt erhalten
+% - Komplexe Implementierung
+% - Overhead (große Datenmengen)
+% - Nur für orientierbare Netze!
 \end{Definition}
 
 \begin{figure}[H]
