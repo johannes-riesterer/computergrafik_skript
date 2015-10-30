@@ -32,7 +32,11 @@ Es heißt \textbf{planar}, falls alle Punkte $e \in V_P$ in einer Ebene liegen.
 \end{Definition}
 
 
-\input{polygon_closed.pdf_t} 
+\begin{figure}[H]
+    \input{images/xfig/polygon_closed.pdf_t}
+    \caption{Geschlossenes Polygon}
+    \label{fig:polygon-closed}
+\end{figure}
 
 \begin{Definition}
 Wir nennen  ein geschlossenes Polygon $P'$ eine \textbf{Nummerrierung} von $P$, falls 
@@ -63,8 +67,12 @@ Sei $P$ ein einfaches, geschlossenes, planares Polygon. Eine gerichtete Kante $(
 Ein einfaches, geschlossenes, planares Polygon $P$ heißt im Uhrzeigersinn orientiert, falls eine und damit alle gerichteten Kanten positive Durchlaufrichtung haben und entsprechend gegen den Uhrzeigersinn orientiert bei negativer Durchlaufrichtung.  
 \end{Definition} 
 
-\input{polygon_orientation.pdf_t}  \\
-\input{polygon_orientation_c.pdf_t} 
+\begin{figure}[H]
+    \input{images/xfig/polygon_orientation.pdf_t} \\
+    \input{images/xfig/polygon_orientation_c.pdf_t}
+    \caption{Gerichtete Polygone}
+    \label{fig:polygon-oriented}
+\end{figure}
 
 Netze bestehen nun im wesentlichen aus an den Kanten zusammengeklebten, einfachen, geschlossenen, planaren Polygonen.
 
@@ -90,7 +98,11 @@ Ein Netz $N$ heißt orientierbar, falls man alle seine Polygone so nummerieren k
 \end{Definition}
 
 
-\input{surface_orientable.pdf_t}  
+\begin{figure}[H]
+    \input{images/xfig/surface_orientable.pdf_t}
+    \caption{Orientierbare Fläche}
+    \label{fig:surface-orientable}
+  \end{figure}
 
 \begin{Bemerkung}
 Ist eine Fläche orientierbar und nummeriert man die Polygone so, dass benachbarte Kanten entsprechend der Definition immer entgegengesetzt gerichtet sind, so sind entweder alle seine Polygone im oder alle seine Polygone gegen den Uhrzeigersinn orientiert.
@@ -478,7 +490,11 @@ b_{n}   \ar@{}[r]|-{=}  &  b_{n}^0  \ar[r]^{\cdot t_0}  &    b_{n}^1   \ar[r]^{\
 Dann gilt $b_n^n = B^n(t_0)$.
 \end{Satz}
 
-\input{deCasteljau.pdf_t} 
+\begin{figure}[H]
+    \input{images/xfig/deCasteljau.pdf_t}
+    \caption{} %TODO
+    \label{fig:deCastel}
+\end{figure}
 
 
 
@@ -486,7 +502,11 @@ Dann gilt $b_n^n = B^n(t_0)$.
 Seien $B^n(t)$ und $B^m(t)$  Bezierkurven. Man spricht von eimen $C^0$-patching, falls
  \end{Definition}
 
-\input{bezier_patch.pdf_t} 
+\begin{figure}[H]
+    \input{images/xfig/bezier_patch.pdf_t}
+    \caption{Bezier Patch}
+    \label{fig:bezier-patch}
+\end{figure}
 
 
 \begin{figure}[H]
