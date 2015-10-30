@@ -23,5 +23,9 @@ OtherImages
 # TeXStudio
 *.synctex.gz
 
+# LaTeXian
+*LatexianTemp*
+
 # build stuff
 build*
+
