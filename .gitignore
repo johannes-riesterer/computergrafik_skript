@@ -25,6 +25,7 @@ OtherImages
 
 # LaTeXian
 *LatexianTemp*
+*.bak
 
 # build stuff
 build*
