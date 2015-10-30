@@ -277,25 +277,38 @@ gesetzt.
 \end{multicols}
 
 \begin{Definition}[Halfedge]
-In einer Liste $E = (e_1, e_2, \hdots, e_n)$ werden Referenzen auf die Ecken gespeichert.  Es wird eine Datenstruktur namens Halfedge eingeführt.
-Eine Halfedge besitzt eine Referenz auf den Anfangspunkt und auf den Endpunkt. Ebenso besitzt sie Referenzen auf die Gegenüberliegende Kante, bei der der Anfangs und Endpunkt vertauscht ist, sowie eine Referenz auf eine folgende Halfedge  und eine vorangehende Halfedge. Ebenso hält sie eine Referenz auf die Facette, die sie Berandet. Die unendliche Zelle oder äussere Zelle wird wieder  mit $-1$ bezeichnet. Eine Facette ist dann eine Liste mit Referenzen von Halfedges beziehungsweise reicht auch die  Referenz auf eine Halfedge.
+In einer Liste $E = (e_1,~e_2,~\hdots,~e_n)$ werden Referenzen auf die Ecken 
+gespeichert. 
+
+Es wird eine Datenstruktur namens Halfedge eingeführt. 
+Eine Halfedge $e$ besitzt\footnote{Siehe auch Abbildung \vref{fig:halfedge}}: 
+\begin{itemize}
+    \item Referenzen auf den Anfangs- und Endpunkt ($i_b$ und $i_e$)
+    \item Referenzen auf die gegenüberliegende Kante $\textrm{twin}(e)$\\
+          (Bei dieser sind die Anfangs- und Endpunkte vertauscht.)
+    \item Referenzen auf die vorangehende $\textrm{prev}(e)$ und die folgende $\textrm{next}(e)$ Halfedge
+    \item Referenz auf die Facette, die sie berandet
+\end{itemize}
+Die unendliche oder äußere Zelle wird wieder mit $-1$ bezeichnet. 
+Eine Facette ist dann eine Liste mit Referenzen von Halfedges, beziehungsweise 
+reicht auch die Referenz auf eine Halfedge.
 \end{Definition}
 \begin{multicols}{2}[Vor- und Nachteile:]
-    %TODO:
-    %\begin{itemize}
-        % + Alle kombinatorischen Daten effizient gespeichert (!)
-        %    + Orientierung bleibt erhalten
-        % - Komplexe Implementierung
-        % - Overhead (große Datenmengen)
-        % - Nur für orientierbare Netze!
-    %\end{itemize}
+    \begin{itemize}
+        \item[+] Alle kombinatorischen Daten werden effizient gespeichert
+        \item[+] Auch die Orientierung der Kanten bleibt erhalten
+        \vspace{10pt}
+        \item[-] Die Implementierung ist komplex
+        \item[-] Overhead durch große Datenmengen
+        \item[-] Nur für orientierbare Netze nutzbar
+    \end{itemize}
 \end{multicols}
 
 \begin{figure}[H]
     \centering 
     \includegraphics[scale=0.5]{images/halfedge.png}
-    \label{fig:halfedge}
     \caption{Halfedge. Quelle :Wikipedia}
+    \label{fig:halfedge}
 \end{figure}
 
 \subsection{Modellierung}
