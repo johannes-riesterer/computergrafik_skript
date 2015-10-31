@@ -212,7 +212,7 @@ Ist die Kante eine Randkante, so wird der andere Wert  auf  $-1$ gesetzt.
 \end{Definition}
 
 \begin{Definition}[Halfedge]
-Es wird eine Datenstruktur namens Halfedge eingeführt.
+In einer Liste $E = (e_1, e_2, \hdots, e_n)$ werden Referenzen auf die Ecken gespeichert.  Es wird eine Datenstruktur namens Halfedge eingeführt.
 Eine Halfedge besitzt eine Referenz auf den Anfangspunkt und auf den Endpunkt. Ebenso besitzt sie Referenzen auf die Gegenüberliegende Kante, bei der der Anfangs und Endpunkt vertauscht ist, sowie eine Referenz auf eine folgende Halfedge  und eine vorangehende Halfedge. Ebenso hält sie eine Referenz auf die Facette, die sie Berandet. Die unendliche Zelle oder äussere Zelle wird wieder  mit $-1$ bezeichnet. Eine Facette ist dann eine Liste mit Referenzen von Halfedges beziehungsweise reicht auch die  Referenz auf eine Halfedge.
 \end{Definition}
 
