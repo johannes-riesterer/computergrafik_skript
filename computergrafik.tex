@@ -6,6 +6,9 @@
 \usepackage[all]{xy}
 \usepackage{graphics,color} 
 \usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage[ngerman]{varioref}
 \usepackage{float}
 \usepackage{amsthm}
 \newtheorem{Definition}{Definition}
@@ -36,7 +39,7 @@
 \begin{document}
 %front
 \input{content/00_title_preamble}
-\tableofcontents
+\thispagestyle{empty}{\tableofcontents}
 \mbox{}\thispagestyle{empty}
 \newpage
 %main

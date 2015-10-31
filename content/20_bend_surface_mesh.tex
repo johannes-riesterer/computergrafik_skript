@@ -32,7 +32,12 @@ Es heißt \textbf{planar}, falls alle Punkte $e \in V_P$ in einer Ebene liegen.
 \end{Definition}
 
 
-\input{polygon_closed.pdf_t} 
+\begin{figure}[H]
+    \centering
+    \input{images/xfig/polygon_closed.pdf_t}
+    \caption{Geschlossenes Polygon}
+    \label{fig:polygon-closed}
+\end{figure}
 
 \begin{Definition}
 Wir nennen  ein geschlossenes Polygon $P'$ eine \textbf{Nummerrierung} von $P$, falls 
@@ -63,8 +68,13 @@ Sei $P$ ein einfaches, geschlossenes, planares Polygon. Eine gerichtete Kante $(
 Ein einfaches, geschlossenes, planares Polygon $P$ heißt im Uhrzeigersinn orientiert, falls eine und damit alle gerichteten Kanten positive Durchlaufrichtung haben und entsprechend gegen den Uhrzeigersinn orientiert bei negativer Durchlaufrichtung.  
 \end{Definition} 
 
-\input{polygon_orientation.pdf_t}  \\
-\input{polygon_orientation_c.pdf_t} 
+\begin{figure}[H]
+    \centering
+    \input{images/xfig/polygon_orientation.pdf_t} \\
+    \input{images/xfig/polygon_orientation_c.pdf_t}
+    \caption{Gerichtete Polygone}
+    \label{fig:polygon-oriented}
+\end{figure}
 
 Netze bestehen nun im wesentlichen aus an den Kanten zusammengeklebten, einfachen, geschlossenen, planaren Polygonen.
 
@@ -90,7 +100,12 @@ Ein Netz $N$ heißt orientierbar, falls man alle seine Polygone so nummerieren k
 \end{Definition}
 
 
-\input{surface_orientable.pdf_t}  
+\begin{figure}[H]
+    \centering
+    \input{images/xfig/surface_orientable.pdf_t}
+    \caption{Orientierbare Fläche}
+    \label{fig:surface-orientable}
+  \end{figure}
 
 \begin{Bemerkung}
 Ist eine Fläche orientierbar und nummeriert man die Polygone so, dass benachbarte Kanten entsprechend der Definition immer entgegengesetzt gerichtet sind, so sind entweder alle seine Polygone im oder alle seine Polygone gegen den Uhrzeigersinn orientiert.
@@ -99,15 +114,15 @@ Ist eine Fläche orientierbar und nummeriert man die Polygone so, dass benachbar
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.4\textwidth]{images/clown_fish.jpg}
-    \label{fig:closed-orientable-mesh}
     \caption{Ein geschlossenes, orientierbares Netz. Quelle:CGAL}
+    \label{fig:closed-orientable-mesh}
 \end{figure}
 
 \begin{figure}[H]
-\centering
+    \centering
     \includegraphics[width=0.4\textwidth]{images/Moebius_strip.png}
-    \label{fig:moebius-strip}
     \caption[Möbiusband. Quelle:Wikipedia]{Das sogenannte Möbiusband ist hingegen nicht orientierbar. Es ist nicht geschlossen, sondern hat einen zusammenhängenden Rand. Quelle:Wikipedia}
+    \label{fig:moebius-strip}
 \end{figure}
 
 \begin{Definition}
@@ -128,8 +143,8 @@ mit $n_{P_i} = e_{j}^{P_i}e_{j+1}^{P_i} \times e_{j}^{P_i}e_{j-1}^{P_i}$ einen V
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{images/teapot-normals.png}
-    \label{fig:outer-normals}
     \caption{Das äußere Normalenfeld}
+    \label{fig:outer-normals}
 \end{figure}
 Eine wichtige Größe für ein Netz ist die sogenannte Eulercharakteristik, welche in direkter Beziehung zum sogenannten Geschlecht eines Netzes steht.
 
@@ -153,31 +168,31 @@ Beispiele:
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.2]{images/Sphere.png}
-    \label{fig:closed-mesh-gender0}
     \caption{Geschlossenes Netz vom Geschlecht $0$. Quelle:Wikipedia}
+    \label{fig:closed-mesh-gender0}
 \end{figure}
 
 
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.8]{images/Torus.png}
-    \label{fig:closed-mesh-gender1}
     \caption{Geschlossenes Netz vom Geschlecht $1$. Quelle:Wikipedia}
+    \label{fig:closed-mesh-gender1}
 \end{figure}
 
 
 \begin{figure}[H]
     \centering
     \includegraphics[scale=1.0]{images/Double_torus.png}
-    \label{fig:closed-mesh-gender2}
     \caption{Geschlossenes Netz vom Geschlecht $2$. Quelle:Wikipedia}
+    \label{fig:closed-mesh-gender2}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[scale=1.0]{images/Triple_torus.png}
-    \label{fig:closed-mesh-gender3}
     \caption{Geschlossenes Netz vom Geschlecht $3$. Quelle:Wikipedia}
+    \label{fig:closed-mesh-gender3}
 \end{figure}
 
 Der Zusammenhang zwischen der Eulercharacteristik und dem Geschlecht wurde im allgemeinen Fall von dem Mathematiker  
@@ -192,34 +207,141 @@ Nach dem Satz lässt sich das Geschlecht und somit die Anzahl der Löcher via $g
 
 \subsection{Datenstrukturen}
 \begin{Definition}
-Eine Liste ist eine Datenstruktur, in der man Objekte unter Beachtung der Reihenfolge  speichern kann. Jedes Element kennt seinen Vorgänger und seinen Nachfolger und man kann direkt auf das
- $i$-te Element zugreifen. Wir verwenden dazu die folgende Notation:  $E = (O_1, \hdots ,O_n )$ bezeichnet eine Liste von Objekten $O_1, \hdots, O_n$.
-$E(i):= O_i$ bezeichnet dann das $i$-te Element und $next(E(i)) := O_{i+1}$ und $prev(E(i)):= O_{i-1}$ den Vorgänger beziehungsweise den Nachfolger, 
-wobei $O_{l} = NULL$ ist für $l >n$ oder $l < 0$.
-
+Eine Liste ist eine Datenstruktur, in der man Objekte unter Beachtung der 
+Reihenfolge speichern kann. 
+Für eine Liste von Objekten $O_1,~\hdots,~O_n$ verwenden wir die Notation 
+\begin{equation*}
+    E = (O_1,~\hdots,~O_n )
+\end{equation*}
+Jedes Element kennt seinen Vorgänger und Nachfolger und man kann direkt 
+auf das $i$-te Element zugreifen:
+\begin{equation*}
+    %TODO: maybe nicer placement possible here?
+    \begin{matrix}
+        E[i] & := & O_i \\
+        \textrm{prev}(E[i]) & := & O_{i-1} \\
+        \textrm{next}(E[i]) & := & O_{i+1} \\
+    \end{matrix}
+\end{equation*}
+Dabei bezeichnet $\textrm{prev}(E[i])$ den Vorgänger und $\textrm{next}(E[i])$ 
+den Nachfolger, wobei 
+\begin{equation*}
+    \forall l \in \mathbb{N} : \{E[l] = \textrm{NULL}~|~(l>n) \vee (l<0)\}
+\end{equation*}
+$i$ wird auch als Index des $i$-ten Listenelements bezeichnet. 
 \end{Definition}
 
 \begin{Definition}[Eckenliste]
+<<<<<<< HEAD
+In einer Liste $E = (e_1, e_2, \hdots, e_n)$ werden Referenzen auf die Ecken 
+gespeichert. 
+Eine Referenz im $\mathbb{R}^3$ könnte so aussehen: 
+\begin{equation*}
+    e_k = \begin{pmatrix}
+        x_k \\
+        y_k \\
+        z_k
+    \end{pmatrix}
+\end{equation*}
+Die $i$-te Facette wird als Liste $F_i = \bigl( i_1,~\hdots,~i_l  \bigr)$ von 
+Referenzen auf die Eckenliste gespeichert. 
+Die $k$-te Ecke der $i$-ten Facette kann so z.B. mit $E[F_i[k]]$ referenziert 
+werden. 
+=======
 In einer Liste $E = (e_1, e_2, \hdots, e_n)$ werden Referenzen auf die Ecken gespeichert. Die $i$-te Facette wird als Liste $F_i = \bigl(i_1, \hdots , i_l  \bigr)$  von Indizes der Eckenliste gespeichert. Man bekommt also mit $E(i_k)$eine konkrete Ecke des Polygons. 
+>>>>>>> master
 \end{Definition}
+\begin{multicols}{2}[Vor- und Nachteile:]
+    \begin{itemize}
+        \item[+] Einfach zu implementieren
+        \item[+] Orientierung kann durch Konvention gespeichert werden
+        \vspace{60pt}
+        \item[-] Nachbarschaftsbeziehungen nicht enthalten / schwierig zu 
+                 berechnen
+        \item[-] Die Zugehörigkeit einer Ecke zu einer Kante muss immer 
+                 berechnet werden
+        \item[-] Point-in-Mesh fast unmöglich zu berechnen
+    \end{itemize}
+\end{multicols}
 
 \begin{Definition}[Kantenliste]
+<<<<<<< HEAD
+In einer Liste $E = (e_1,~e_2,~\hdots,~e_n)$ werden Referenzen auf die Ecken 
+gespeichert. 
+In einer Liste $K$ werden die Kanten als Tupel von Referenzen auf die Eckenliste 
+abgespeichert: 
+\begin{equation*}
+    K = \bigl( (i_{e_1},~\hdots,~i_{e_n}),~\hdots,~
+               (i_{e_1},~\hdots,~i_{e_m}) \bigr)
+\end{equation*}
+Die $k$-te Facette wird als Liste von Referenzen auf die Kantenliste 
+gespeichert: 
+\begin{equation*}
+    F_k = \bigl( K[j_1],~\hdots,~K[j_l] \bigr)
+\end{equation*}
+In einer Liste $M$ werden die Referenzen auf Facetten in Tupeln abgespeichert, 
+die die entsprechende Kante in der Kantenliste als Kante haben: 
+\begin{equation*}
+    M = \bigl( (M(i_1),~M(i_2)),~\hdots,~(M(l_1),~M(l_2)) \bigr )
+\end{equation*}
+$M[i] \in M$ sind also zwei Facetten, die $K[i] \in K$ als Kante haben. 
+Der erste Eintrag der Facette befindet sich links und der zweite rechts von der 
+Kante. 
+Ist die Kante eine Randkante, so wird der andere Wert des Tupels auf $-1$ 
+gesetzt. 
+=======
 In einer Liste $E = (e_1, e_2, \hdots, e_n)$ werden Referenzen auf die Ecken gespeichert. In einer Liste $K=\bigl(   (k_{1_1}, k_{1_2}), \hdots,  (k_{m_1} , k_{m_2})    ) \bigr)$ werden die Kanten in zwei elementige Liste von Indizes auf Ecken abgespeichert. Die $i$-te Facette wird als Liste $F_i = \bigl( i_1, \hdots , i_l  \bigr)$  von Indizes auf die Kanten  gespeichert. In einer Liste
 $M=  \bigl(    (i_1, i_2), \hdots  ,(l_1, l_2 )   \bigr )$ werden die Indizes auf Facetten in zwei elementigen Listen abgespeichert, die die entsprechenden Kante in der Kantenliste als Kante haben,
  wobei der erste Eintrag die Facette links von der Kante und der zweite Eintrag die Facette rechts von der Kante ist. 
 Ist die Kante eine Randkante, so wird der andere Wert  auf  $-1$ gesetzt.
  
+>>>>>>> master
 \end{Definition}
+\begin{multicols}{2}[Vor- und Nachteile:]
+    \begin{itemize}
+        \item[+] Nachbarschaftsbeziehungen der Polygone werden gespeichert 
+        \item[-] Orientierung der Kanten geht verloren (schwierig zu speichern) 
+    \end{itemize}
+\end{multicols}
 
 \begin{Definition}[Halfedge]
+<<<<<<< HEAD
+In einer Liste $E = (e_1,~e_2,~\hdots,~e_n)$ werden Referenzen auf die Ecken 
+gespeichert. 
+Es wird eine Datenstruktur namens Halfedge eingeführt. 
+Eine Halfedge $e$ besitzt\footnote{Siehe auch Abbildung \vref{fig:halfedge}}: 
+\begin{itemize}
+    \item Referenzen auf den Anfangs- und Endpunkt ($i_b$ und $i_e$)
+    \item Referenzen auf die gegenüberliegende Kante $\textrm{twin}(e)$\\
+          (Bei dieser sind die Anfangs- und Endpunkte vertauscht.)
+    \item Referenzen auf die vorangehende $\textrm{prev}(e)$ und die folgende 
+          $\textrm{next}(e)$ Halfedge
+    \item Referenz auf die Facette, die sie berandet
+\end{itemize}
+Die unendliche oder äußere Zelle wird wieder mit $-1$ bezeichnet. 
+Eine Facette ist dann eine Liste mit Referenzen von Halfedges, beziehungsweise 
+reicht auch die Referenz auf eine Halfedge.
+=======
 Es wird eine Datenstruktur namens Halfedge eingeführt.
 Eine Halfedge besitzt eine Referenz auf den Anfangspunkt und auf den Endpunkt. Ebenso besitzt sie Referenzen auf die Gegenüberliegende Kante, bei der der Anfangs und Endpunkt vertauscht ist, sowie eine Referenz auf eine folgende Halfedge  und eine vorangehende Halfedge. Ebenso hält sie eine Referenz auf die Facette, die sie Berandet. Die unendliche Zelle oder äussere Zelle wird wieder  mit $-1$ bezeichnet. Eine Facette ist dann eine Liste mit Referenzen von Halfedges beziehungsweise reicht auch die  Referenz auf eine Halfedge.
+>>>>>>> master
 \end{Definition}
+\begin{multicols}{2}[Vor- und Nachteile:]
+    \begin{itemize}
+        \item[+] Alle kombinatorischen Daten werden effizient gespeichert
+        \item[+] Auch die Orientierung der Kanten bleibt erhalten
+        \vspace{10pt}
+        \item[-] Die Implementierung ist komplex
+        \item[-] Overhead durch große Datenmengen
+        \item[-] Nur für orientierbare Netze nutzbar
+    \end{itemize}
+\end{multicols}
 
 \begin{figure}[H]
-\centering
-Halfedge. Quelle :Wikipedia \\
-\includegraphics[scale=0.5]{images/halfedge.png}
+    \centering 
+    \includegraphics[scale=0.5]{images/halfedge.png}
+    \caption{Halfedge. Quelle:Wikipedia}
+    \label{fig:halfedge}
 \end{figure}
 
 \subsubsection{Subdivision}
@@ -248,7 +370,7 @@ Die Kurve
 $c : [0, 2\pi]  \to  \mathbb{R}^3$, $c(t) :=  \begin{pmatrix} r \cos(t) \\ r  \sin(t) \\  0 \end{pmatrix}$
 beschreibt einen Kreis mit Radius $r$, der in der XY-Ebene liegt. Die Ableitung ist
 \begin{align*}
-c'(t) =  \begin{pmatrix} (r \cos(t))' \\  (r\sin(t))' \\  0 \end{pmatrix} = \begin{pmatrix} r \sin(t) \\ r \cos(t) \\  0 \end{pmatrix} \;.
+c'(t) =  \begin{pmatrix} (r \cos(t))' \\  (r\sin(t))' \\  0 \end{pmatrix} = \begin{pmatrix} -r \sin(t) \\ r \cos(t) \\  0 \end{pmatrix} \;.
 \end{align*} 
 \end{Beispiel}
 
@@ -257,14 +379,14 @@ Die Kurve
 $c :  \mathbb{R}   \to  \mathbb{R}^3$, $c(t) :=  \begin{pmatrix} \cos(t) \\  \sin(t) \\  t \end{pmatrix}$
 beschreibt eine sogenannte Helix. Die Ableitung ist
 \begin{align*}
-c'(t) =  \begin{pmatrix} \cos'(t) \\  \sin'(t) \\  t'  \end{pmatrix} = \begin{pmatrix} \sin(t) \\  \cos(t) \\  1 \end{pmatrix} \;.
+c'(t) =  \begin{pmatrix} \cos'(t) \\  \sin'(t) \\  t'  \end{pmatrix} = \begin{pmatrix} -\sin(t) \\  \cos(t) \\  1 \end{pmatrix} \;.
 \end{align*} 
 \end{Beispiel}
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.45]{images/Helix.png}
-    \label{fig:helix}
     \caption{Eine Helix. Quelle:Wikipedia}
+    \label{fig:helix}
 \end{figure}
 
 \begin{Definition}
@@ -318,8 +440,8 @@ mit $i = 0, \hdots n$, $t \in [0,1]$ und dem Binomialkoeffizient
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.8]{images/Bernstein_Polynomials.png}
-    \label{fig:bernstein-polynomial}
     \caption{Die Bernsteinpolynome $B^{4}_i$ und deren Summe. Quelle:Wikipedia}
+    \label{fig:bernstein-polynomial}
 \end{figure}
 
 \begin{Bemerkung}
@@ -341,8 +463,8 @@ Folgt fast direkt aus der Rekursionsformel des Binomialkoeffizienten
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.2]{images/pascal.png}
-    \label{fig:pascals-triangle}
     \caption{Pascalsches Dreieck}
+    \label{fig:pascals-triangle}
 \end{figure}
 \end{proof}
 
@@ -391,7 +513,12 @@ b_{n}   \ar@{}[r]|-{=}  &  b_{n}^0  \ar[r]^{\cdot t_0}  &    b_{n}^1   \ar[r]^{\
 Dann gilt $b_n^n = B^n(t_0)$.
 \end{Satz}
 
-\input{deCasteljau.pdf_t} 
+\begin{figure}[H]
+    \centering
+    \input{images/xfig/deCasteljau.pdf_t}
+    \caption{} %TODO
+    \label{fig:deCastel}
+\end{figure}
 
 
 
@@ -401,6 +528,14 @@ Seien $B^n(t)$ und $(B^*)^m(t)$  Bezierkurven. Man spricht von einem $C^0$-Patch
 die höheren Ableitungen $(B^n)^{k}(1) = ((B^*)^m){k}(0) $ überein, so spricht man von einem $C^k$-Patching . 
  \end{Definition}
 
+<<<<<<< HEAD
+\begin{figure}[H]
+    \centering
+    \input{images/xfig/bezier_patch.pdf_t}
+    \caption{Bezier Patch}
+    \label{fig:bezier-patch}
+\end{figure}
+=======
 
 \begin{Bemerkung}
 Zwei Bezierkurven   $B^n(t) := \sum_{i = 0}^{n} B_i^n(t) \cdot  b_i$ und $(B^*)^m(t) := \sum_{i = 0}^{m} B_i^n(t) \cdot  b^*_i$ bilden genau dann einen $C^1$-Patch  (an der Stelle $B^n(1)$), wenn 
@@ -409,6 +544,7 @@ $B^n(1) = (B^*)^m(0)$ und $\Bigl(B^n(1) - b_{n-1} \Bigr)= - \frac{m}{n}  \Bigl((
 
 
 \input{bezier_patch.pdf_t} 
+>>>>>>> master
 
 
 \begin{Definition}
@@ -418,8 +554,8 @@ Ist  $B^n(t)$ eine Bezierkurve, so bilden die Bezierkurven $(B^{*})^n(t)  :=  \s
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.1]{images/Utah_teapot.png}
-    \label{fig:rendering-utah-teapot}
     \caption[Ein Rendering der Utah Teekanne]{Ein Rendering der Utah Teekanne, eines der weit verbreitetsten 3D-Modelle in der Computergrafik. Sie wurde mit Bezierflächen modelliert.}
+    \label{fig:rendering-utah-teapot}
 \end{figure}
 
 

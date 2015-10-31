@@ -1,5 +1,5 @@
 \begin{picture}(0,0)%
-\includegraphics{foo.pdf}%
+\includegraphics{images/xfig/foo.pdf}%
 \end{picture}%
 \setlength{\unitlength}{4144sp}%
 %
