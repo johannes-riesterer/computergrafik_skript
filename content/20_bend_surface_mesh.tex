@@ -232,7 +232,7 @@ $i$ wird auch als Index des $i$-ten Listenelements bezeichnet.
 \end{Definition}
 
 \begin{Definition}[Eckenliste]
-<<<<<<< HEAD
+
 In einer Liste $E = (e_1, e_2, \hdots, e_n)$ werden Referenzen auf die Ecken 
 gespeichert. 
 Eine Referenz im $\mathbb{R}^3$ könnte so aussehen: 
@@ -247,9 +247,6 @@ Die $i$-te Facette wird als Liste $F_i = \bigl( i_1,~\hdots,~i_l  \bigr)$ von
 Referenzen auf die Eckenliste gespeichert. 
 Die $k$-te Ecke der $i$-ten Facette kann so z.B. mit $E[F_i[k]]$ referenziert 
 werden. 
-=======
-In einer Liste $E = (e_1, e_2, \hdots, e_n)$ werden Referenzen auf die Ecken gespeichert. Die $i$-te Facette wird als Liste $F_i = \bigl(i_1, \hdots , i_l  \bigr)$  von Indizes der Eckenliste gespeichert. Man bekommt also mit $E(i_k)$eine konkrete Ecke des Polygons. 
->>>>>>> master
 \end{Definition}
 \begin{multicols}{2}[Vor- und Nachteile:]
     \begin{itemize}
@@ -265,7 +262,7 @@ In einer Liste $E = (e_1, e_2, \hdots, e_n)$ werden Referenzen auf die Ecken ges
 \end{multicols}
 
 \begin{Definition}[Kantenliste]
-<<<<<<< HEAD
+
 In einer Liste $E = (e_1,~e_2,~\hdots,~e_n)$ werden Referenzen auf die Ecken 
 gespeichert. 
 In einer Liste $K$ werden die Kanten als Tupel von Referenzen auf die Eckenliste 
@@ -289,13 +286,9 @@ Der erste Eintrag der Facette befindet sich links und der zweite rechts von der
 Kante. 
 Ist die Kante eine Randkante, so wird der andere Wert des Tupels auf $-1$ 
 gesetzt. 
-=======
-In einer Liste $E = (e_1, e_2, \hdots, e_n)$ werden Referenzen auf die Ecken gespeichert. In einer Liste $K=\bigl(   (k_{1_1}, k_{1_2}), \hdots,  (k_{m_1} , k_{m_2})    ) \bigr)$ werden die Kanten in zwei elementige Liste von Indizes auf Ecken abgespeichert. Die $i$-te Facette wird als Liste $F_i = \bigl( i_1, \hdots , i_l  \bigr)$  von Indizes auf die Kanten  gespeichert. In einer Liste
-$M=  \bigl(    (i_1, i_2), \hdots  ,(l_1, l_2 )   \bigr )$ werden die Indizes auf Facetten in zwei elementigen Listen abgespeichert, die die entsprechenden Kante in der Kantenliste als Kante haben,
- wobei der erste Eintrag die Facette links von der Kante und der zweite Eintrag die Facette rechts von der Kante ist. 
-Ist die Kante eine Randkante, so wird der andere Wert  auf  $-1$ gesetzt.
- 
->>>>>>> master
+
+
+
 \end{Definition}
 \begin{multicols}{2}[Vor- und Nachteile:]
     \begin{itemize}
@@ -305,7 +298,7 @@ Ist die Kante eine Randkante, so wird der andere Wert  auf  $-1$ gesetzt.
 \end{multicols}
 
 \begin{Definition}[Halfedge]
-<<<<<<< HEAD
+
 In einer Liste $E = (e_1,~e_2,~\hdots,~e_n)$ werden Referenzen auf die Ecken 
 gespeichert. 
 Es wird eine Datenstruktur namens Halfedge eingeführt. 
@@ -321,10 +314,7 @@ Eine Halfedge $e$ besitzt\footnote{Siehe auch Abbildung \vref{fig:halfedge}}:
 Die unendliche oder äußere Zelle wird wieder mit $-1$ bezeichnet. 
 Eine Facette ist dann eine Liste mit Referenzen von Halfedges, beziehungsweise 
 reicht auch die Referenz auf eine Halfedge.
-=======
-Es wird eine Datenstruktur namens Halfedge eingeführt.
-Eine Halfedge besitzt eine Referenz auf den Anfangspunkt und auf den Endpunkt. Ebenso besitzt sie Referenzen auf die Gegenüberliegende Kante, bei der der Anfangs und Endpunkt vertauscht ist, sowie eine Referenz auf eine folgende Halfedge  und eine vorangehende Halfedge. Ebenso hält sie eine Referenz auf die Facette, die sie Berandet. Die unendliche Zelle oder äussere Zelle wird wieder  mit $-1$ bezeichnet. Eine Facette ist dann eine Liste mit Referenzen von Halfedges beziehungsweise reicht auch die  Referenz auf eine Halfedge.
->>>>>>> master
+
 \end{Definition}
 \begin{multicols}{2}[Vor- und Nachteile:]
     \begin{itemize}
@@ -528,14 +518,13 @@ Seien $B^n(t)$ und $(B^*)^m(t)$  Bezierkurven. Man spricht von einem $C^0$-Patch
 die höheren Ableitungen $(B^n)^{k}(1) = ((B^*)^m){k}(0) $ überein, so spricht man von einem $C^k$-Patching . 
  \end{Definition}
 
-<<<<<<< HEAD
+
 \begin{figure}[H]
     \centering
     \input{images/xfig/bezier_patch.pdf_t}
     \caption{Bezier Patch}
     \label{fig:bezier-patch}
 \end{figure}
-=======
 
 \begin{Bemerkung}
 Zwei Bezierkurven   $B^n(t) := \sum_{i = 0}^{n} B_i^n(t) \cdot  b_i$ und $(B^*)^m(t) := \sum_{i = 0}^{m} B_i^n(t) \cdot  b^*_i$ bilden genau dann einen $C^1$-Patch  (an der Stelle $B^n(1)$), wenn 
