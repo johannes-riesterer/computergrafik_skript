@@ -223,6 +223,10 @@ Halfedge. Quelle :Wikipedia \\
 \includegraphics[scale=0.5]{images/halfedge.png}
 \end{figure}
 
+\subsubsection{Subdivision}
+
+
+
 \subsection{Modellierung}
 
 \subsubsection{Parameterdarstellungen}
@@ -273,34 +277,34 @@ ihre Länge.
 \end{Definition}
 
 
-%\begin{Definition}
-%Ein Fläche ist (im wesentlichen)  eine Abbildung
-%\begin{align*}
-%s: U \subset \mathbb{R}^2 \to \mathbb{R}^3 \\
-%s(u,v) := \begin{pmatrix} x(u,v) \\ y(u,v) \\ z(u,v) \end{pmatrix} 
-%\end{align*} 
-%bei der die Abbildungen $x, y, z : U \subset \mathbb{R}^2 \to \mathbb{R}^3$ stetig sind. Sie heißt differenzierbar, %falls die partiellen Ableitungen
-%\begin{align*}
-%\frac{\partial}{\partial u} s(u,v) = \begin{pmatrix}  \frac{\partial}{\partial u} x(u,v) \\  \frac{\partial}{\partial u} y(u,v) \\  \frac{\partial}{\partial u} z(u,v) \end{pmatrix}
-%\end{align*}
-%und 
-%\begin{align*}
-%\frac{\partial}{\partial v} s(u,v) =  \begin{pmatrix} \frac{\partial}{\partial v} x(u,v) \\ \frac{\partial}{\partial v} y(u,v) \\ \frac{\partial}{\partial v} z(u,v) \end{pmatrix}
-%\end{align*}
-%existieren. Die Ebene 
-%\begin{align*}
-%T_s(u,v) :=  \{ s(u,v) + \lambda \cdot \frac{\partial}{\partial u} s(u,v) + \mu \cdot \frac{\partial}{\partial v} \; | \; \lambda, \mu \in \mathbb{R} \}
-%\end{align*}
-%heißt Tangentialebene am Punkt $(u,v)$ und  der Vektor 
-%\begin{align*}
-%n (u,v):= \frac{\partial}{\partial u} s(u,v) \times \frac{\partial}{\partial v} s(u,v) \; ,
-%\end{align*}
-%welcher Senkrecht auf dieser Ebene steht,  die Normale.
-%\end{Definition}
+\begin{Definition}
+Ein Fläche ist   eine Abbildung
+\begin{align*}
+s: U \subset \mathbb{R}^2 \to \mathbb{R}^3 \\
+s(u,v) := \begin{pmatrix} x(u,v) \\ y(u,v) \\ z(u,v) \end{pmatrix} 
+\end{align*} 
+bei der die Abbildungen $x, y, z : U \subset \mathbb{R}^2 \to \mathbb{R}^3$ stetig sind. Sie heißt differenzierbar, falls die partiellen Ableitungen
+\begin{align*}
+\frac{\partial}{\partial u} s(u,v) = \begin{pmatrix}  \frac{\partial}{\partial u} x(u,v) \\  \frac{\partial}{\partial u} y(u,v) \\  \frac{\partial}{\partial u} z(u,v) \end{pmatrix}
+\end{align*}
+und 
+\begin{align*}
+\frac{\partial}{\partial v} s(u,v) =  \begin{pmatrix} \frac{\partial}{\partial v} x(u,v) \\ \frac{\partial}{\partial v} y(u,v) \\ \frac{\partial}{\partial v} z(u,v) \end{pmatrix}
+\end{align*}
+existieren. Die Ebene 
+\begin{align*}
+T_s(u,v) :=  \{ s(u,v) + \lambda \cdot \frac{\partial}{\partial u} s(u,v) + \mu \cdot \frac{\partial}{\partial v} \; | \; \lambda, \mu \in \mathbb{R} \}
+\end{align*}
+heißt Tangentialebene am Punkt $(u,v)$ und  der Vektor 
+\begin{align*}
+n (u,v):= \frac{\partial}{\partial u} s(u,v) \times \frac{\partial}{\partial v} s(u,v) \; ,
+\end{align*}
+welcher Senkrecht auf dieser Ebene steht,  die Normale.
+\end{Definition}
 
 
 
-\subsubsection{Bezier Kurven}
+\subsubsection{Bezier Kurven und Flächen}
 \begin{Definition}
 Die Bernsteinpolynome vom Grad $n$ sind definiert als
 \begin{align*}
@@ -393,11 +397,24 @@ Dann gilt $b_n^n = B^n(t_0)$.
 
 
 \begin{Definition}[Patching]
-Seien $B^n(t)$ und $B^m(t)$  Bezierkurven. Man spricht von eimen $C^0$-patching, falls
+Seien $B^n(t)$ und $(B^*)^m(t)$  Bezierkurven. Man spricht von einem $C^0$-Patching (an der Stelle $B^n(1)$), falls
+ $B^n(1) = (B^*)^m(0) $ gilt. Stimmen auch die Ableitungen überein, also  $(B^n)'(1) = ((B^*)^m)'(0) $, dann spricht man von einem $C^1$-Patching und stimmen noch für $k> 1$ auch
+die höheren Ableitungen $(B^n)^{k}(1) = ((B^*)^m){k}(0) $ überein, so spricht man von einem $C^k$-Patching . 
  \end{Definition}
+
+
+\begin{Bemerkung}
+Zwei Bezierkurven   $B^n(t) := \sum_{i = 0}^{n} B_i^n(t) \cdot  b_i$ und $(B^*)^m(t) := \sum_{i = 0}^{m} B_i^n(t) \cdot  b^*_i$ bilden genau dann einen $C^1$-Patch  (an der Stelle $B^n(1)$), wenn 
+$B^n(1) = (B^*)^m(0)$ und $\Bigl(B^n(1) - b_{n-1} \Bigr)= - \frac{m}{n}  \Bigl((B^*)^m(0) - (b^*)_1 \Bigr)$ gilt.
+\end{Bemerkung}
+
 
 \input{bezier_patch.pdf_t} 
 
+
+\begin{Definition}
+Ist  $B^n(t)$ eine Bezierkurve, so bilden die Bezierkurven $(B^{*})^n(t)  :=  \sum_{i = 0}^{n} B_i^n(t/2) \cdot  b_i^i$ und  $(B^{**})^n(t)  :=  \sum_{i = 0}^{n} B_i^n(t/2) \cdot  b_n^{n-i}$
+\end{Definition}
 
 \begin{figure}[H]
     \centering
@@ -406,7 +423,7 @@ Seien $B^n(t)$ und $B^m(t)$  Bezierkurven. Man spricht von eimen $C^0$-patching,
     \caption[Ein Rendering der Utah Teekanne]{Ein Rendering der Utah Teekanne, eines der weit verbreitetsten 3D-Modelle in der Computergrafik. Sie wurde mit Bezierflächen modelliert.}
 \end{figure}
 
-\subsubsection{Subdivision}
+
 
 
 \subsection{Labor}
