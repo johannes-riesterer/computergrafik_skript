@@ -268,26 +268,26 @@ werden.
 
 In einer Liste $E = (e_1,~e_2,~\hdots,~e_n)$ werden Referenzen auf die Ecken 
 gespeichert. 
-In einer Liste $K$ werden die Kanten als Tupel von Referenzen auf die Eckenliste 
+In einer Liste $K$ werden die Kanten  in einer zwei Elementen Liste von Indizes auf die Eckenliste 
 abgespeichert: 
 \begin{equation*}
-    K = \bigl( (i_{e_1},~\hdots,~i_{e_n}),~\hdots,~
-               (i_{e_1},~\hdots,~i_{e_m}) \bigr)
+    K = \bigl( (i_{e_1},i_{e_n}),~\hdots,~
+               (i_{e_1},i_{e_m}) \bigr)
 \end{equation*}
-Die $k$-te Facette wird als Liste von Referenzen auf die Kantenliste 
+Die $k$-te Facette wird als Liste von Indizes auf die Kantenliste 
 gespeichert: 
 \begin{equation*}
-    F_k = \bigl( K[j_1],~\hdots,~K[j_l] \bigr)
+    F_k = \bigl( j_1,\hdots,j_l \bigr)
 \end{equation*}
-In einer Liste $M$ werden die Referenzen auf Facetten in Tupeln abgespeichert, 
+In einer Liste $M$ werden die Indizes auf Facetten in einer zwei Elementen Liste abgespeichert, 
 die die entsprechende Kante in der Kantenliste als Kante haben: 
 \begin{equation*}
-    M = \bigl( (M(i_1),~M(i_2)),~\hdots,~(M(l_1),~M(l_2)) \bigr )
+    M = \bigl( (i_1,i_2),~\hdots,~(l_1,l_2) \bigr )
 \end{equation*}
 $M[i] \in M$ sind also zwei Facetten, die $K[i] \in K$ als Kante haben. 
 Der erste Eintrag der Facette befindet sich links und der zweite rechts von der 
 Kante. 
-Ist die Kante eine Randkante, so wird der andere Wert des Tupels auf $-1$ 
+Ist die Kante eine Randkante, so wird der andere Wert auf $-1$ 
 gesetzt. 
 
 
@@ -307,7 +307,7 @@ gespeichert.
 Es wird eine Datenstruktur namens Halfedge eingeführt. 
 Eine Halfedge $e$ besitzt\footnote{Siehe auch Abbildung \vref{fig:halfedge}}: 
 \begin{itemize}
-    \item Referenzen auf den Anfangs- und Endpunkt ($i_b$ und $i_e$)
+    \item Indizex auf den Anfangs- und Endpunkt ($i_b$ und $i_e$)
     \item Referenzen auf die gegenüberliegende Kante $\textrm{twin}(e)$\\
           (Bei dieser sind die Anfangs- und Endpunkte vertauscht.)
     \item Referenzen auf die vorangehende $\textrm{prev}(e)$ und die folgende 
