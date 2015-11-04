@@ -396,21 +396,8 @@ Zwei vom Nullvektor verschiedene Vektoren $u,v \in \mathbb{R}^n$ heißen orthogo
 Man sagt auch sie stehen senkrecht aufeinander und benutz auch die Bezeichnung $u \perp v$. 
 \end{Definition}
 
-\begin{Definition}
-Sind $u = $ und $v$ zwei $3$-dimensionale Vektoren, dann heißt der Vektor
-\begin{align*}
-u \times v := 
-\end{align*}
- das Kreuzprodukt von $u$ und $v$.
-\end{Definition}
 
-\begin{Bemerkung}
-Für $u , v \in \mathbb{R}^n$ gilt
-\begin{align*}
-<u \times v, u> = <u \times v, v> = 0 \; . 
-\end{align*}
-Das Kreuzprodukt steht also senkrecht auf $u$ und auf $v$.
-\end{Bemerkung}
+
 
 \begin{Definition}
 Ein Vektor $v \in \mathbb{R}$ heißt normal, falls $||v|| = 1$ ist.
@@ -473,7 +460,7 @@ Eine Matrix $O \in \mathbb{M}^{n \times n}$ ist genau dann  orthogonal, falls
 \det(O) \in  \{-1, 1 \} \; .
 \end{align*}
 Ist $\det(O) = 1$, so nennen wir $O$ eine Drehung und 
-$SO(n) := \{ \}$ die Drehgruppe (oder auch spezielle orthogonale Gruppe).
+$SO(n) := \{ O \in \mathbb{M}^{n \times n} | \det(O) = 1\}$ die Drehgruppe (oder auch spezielle orthogonale Gruppe).
 \end{Satz}
 
 \begin{Satz}

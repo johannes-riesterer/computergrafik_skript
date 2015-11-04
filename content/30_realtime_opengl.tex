@@ -1,6 +1,63 @@
 \section{Echtzeitvisualisierung und OpenGL}
 \subsection{Geschichte}
+OpenGL entstand ursprünglich aus dem von Silicon Graphics (SGI) entwickelten IRIS GL. Im sogenannten Fahrenheit-Projekt versuchten Microsoft und SGI ihre 3D-Standards zu vereinheitlichen, das Projekt wurde jedoch wegen finanzieller Schwierigkeiten auf Seiten von SGI abgebrochen.
+
+Der OpenGL-Standard wird vom OpenGL ARB (Architecture Review Board) festgelegt. Das ARB existiert seit 1992 und besteht aus einer Reihe von Firmen. Stimmberechtigte Mitglieder sind die Firmen 3DLabs, Apple, AMD/ATI, Dell, IBM, Intel, Nvidia, SGI und Sun (Stand Nov. 2004). Weiter mitwirkende Firmen sind Evans and Sutherland, Imagination Technologies, Matrox, Quantum3D, S3 Graphics, Spinor GmbH, Tungsten Graphics, und Xi Graphics. Microsoft, eines der Gründungsmitglieder, hat das ARB im März 2003 verlassen.
+
+Neue Funktionen in OpenGL werden meist zuerst als herstellerspezifische Erweiterungen eingeführt und gehen dann den Weg über herstellerübergreifende Erweiterungen und ARB-Erweiterungen zu Kernfunktionalität. Dies erlaubt es, neueste Möglichkeiten der Grafikhardware zu nutzen und dennoch OpenGL abstrakt genug zu halten.
+
+Quelle: https://de.wikipedia.org/wiki/OpenGL
 \subsection{GL-Pipeline}
+Eine Computergrafik-Pipeline besteht im Wesentlichen aus den folgenden Schritten:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/cgpipeline_grob.png}
+    \caption{Computergrafik-Pipeline}
+    \label{fig:gimbal+lock}
+\end{figure}
+
+Eine solche Pipline wird auch von OpenGL implementiert. Es besteht jedoch die Besonderheit, dass die Geometrie und die  Rasterung in Hardware realisiert ist und man durch kleine Programme, sogenannte Shader, auf diese Hardware zugreifen und Manipulationen vornehmen kann beziehungsweise seit OpenGL 2.0 sogar muss.
+
+\subsubsection{Rasterung}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/bresenham.png}
+    \caption{Bresenham Algorithmus}
+    \label{fig:gimbal+lock}
+\end{figure}
+Als Rasterung bezeichnet man das transformieren kontinuierlicher (geometrischer) Daten auf diskrete Pixel.
+Anhand der gegebenen Daten muss also entschieden werden, welche Farbe ein Pixel des Ausgabegerätes erhält.
+Eines der elementarsten Algorithmen in diesem Zusammenhang ist der Bresenham Algorithmus, der zur Rasterung von Linien verwendet wird. Alle häufig verwendeten Rasterverfahren für Dreiecke und andere primitiven sind im wesentlichen Abwandlungen und Weiterentwicklungen  des Bresenham Algorithmus.
+
+\subsubsection{Geometrie}
+Die Geometrieverarbeitung   besteht aus der Hintereinanderausführung der folgenden affinen/homogenen Abbildungen und Algorithmen:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/cgpipeline.png}
+    \caption{Geometrie-Pipeline}
+    \label{fig:gimbal+lock}
+\end{figure}
+
+\begin{Definition}[z-Buffer]
+\end{Definition}
+
+
+\begin{Algorithmus}[z-Buffer-Algorithmus]
+\end{Algorithmus}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/gl_projectionmatrix01.png}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/gl_projectionmatrix_zbuffer_1.png}
+\end{figure}
+
+
+
 \subsection{Lokale Beleuchtungsmodelle}
 \subsubsection{Ideale Reflexionen und Lichtbrechungen}
 \subsubsection{Lambert  Modell}
