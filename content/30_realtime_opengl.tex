@@ -38,6 +38,15 @@ Die Geometrieverarbeitung   besteht aus der Hintereinanderausführung der folgen
     \label{fig:gimbal+lock}
 \end{figure}
 
+Die Projektion wird durch eine Matrix  ähnlich der Projektionsmatrix $K_{persp_{xy}}$ aus Abschnitt 1.2.1 realisiert.
+Es werden jedoch noch ein Translation, eine Rotationen und eine Stauchung dazwischengeschaltet, die ebenfalls als $4 \times 4$ Matrizen realisiert werden können.  Man erreicht damit, dass der Kegelstumpf zwischen der forderen Projektionsebene, auch 'nearplane' genannt,  und der hinteren Ebene, auch 'farplane' genannt, in den $[-1,1] \times [-1,1] \times [-1,1] $ Würfel abgebildet wird.   
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/gl_projectionmatrix01.png}
+\end{figure}
+
+
+
 \begin{Definition}[z-Buffer]
 \end{Definition}
 
@@ -46,10 +55,6 @@ Die Geometrieverarbeitung   besteht aus der Hintereinanderausführung der folgen
 \end{Algorithmus}
 
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1.0\textwidth]{images/gl_projectionmatrix01.png}
-\end{figure}
 
 \begin{figure}[H]
     \centering
