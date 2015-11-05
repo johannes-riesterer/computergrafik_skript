@@ -537,11 +537,24 @@ $B^n(1) = (B^*)^m(0)$ und $\Bigl(B^n(1) - b_{n-1} \Bigr)= - \frac{m}{n}  \Bigl((
 
 \begin{Definition}
 Ist  $B^n(t)$ eine Bezierkurve, so bilden die Bezierkurven $(B^{*})^n(t)  :=  \sum_{i = 0}^{n} B_i^n(t/2) \cdot  b_i^i$ und  $(B^{**})^n(t)  :=  \sum_{i = 0}^{n} B_i^n(t/2) \cdot  b_n^{n-i}$
+einen $C^1$-Patch.
 \end{Definition}
 
 
 \begin{Definition}
-Tensorprodukt
+Ersetzt man in einer Bezierkurve 
+\begin{align*}
+B^m(v) := \sum_{j = 0}^{m} B_j^m(v) \cdot  b_j
+\end{align*}
+vom Grad $m$ die Kontrollpunkte $b_j$ durch $m+1$ Bezierkurven
+\begin{align*}
+b_j (u)= \sum_{i = 0}^{n} B_i^n(u) \cdot  b_{ij}
+\end{align*}
+ vom Grad $n$ mit jeweils $n+1$ Kontrollpunkten $ b_{ij}$ für $i = 0, \cdots , n$, so erhält man eine Fläche
+\begin{align*}
+F(u,v) =  \sum_{i = 0}^{n}  \sum_{j = 0}^{m} B_i^n(u) B_j^m(v) \cdot  b_{ij} \; ,
+\end{align*}
+welche auch Tenorprodukt-Fläche der Bezierkurven  oder einfach Bezierfläche genannt wird.
 \end{Definition}
 
 
@@ -555,8 +568,4 @@ Tensorprodukt
     \label{fig:rendering-utah-teapot}
 \end{figure}
 
-
-
-
-\subsection{Labor}
 

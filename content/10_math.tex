@@ -417,7 +417,7 @@ Seien  $v_1, \hdots v_n$ linear unabhängige Vektoren.  Dann lässt sich daraus 
 eine ONB generieren: 
 \begin {align*}
 b_i ' & := v_i - \sum_{j=1}^{i-1} <v_i, b_j> b_j \\
-b_i  & :=  \frac{1}{||b_i||} b_i'
+b_i  & :=  \frac{1}{||b'_i||} b_i'
 \end{align*}
 und Rekursionsanfang $b_1' = v_1$.
 \end{Algorithmus}
@@ -466,7 +466,7 @@ $SO(n) := \{ O \in \mathbb{M}^{n \times n} | \det(O) = 1\}$ die Drehgruppe (oder
 \begin{Satz}
 Sei $O \in \mathbb{M}^{n \times n}$ eine orthogonale Matrix, dann gilt für alles $v,w \in \mathbb{R}^n$
 \begin{align*}
-< O \cdot v \; , \;  O \cdot W > = <v \; , \; w>
+< O \cdot v \; , \;  O \cdot w > = <v \; , \; w>
 \end{align*}
 und somit insbesondere 
 \begin{align*}
