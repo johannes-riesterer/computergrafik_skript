@@ -34,7 +34,7 @@ Die Transformationen von Objektkoordinaten in das Kamerakoordinatensystem werden
 
 \subsubsection*{Projektion}
 Die Projektion  wird durch  Matrizen  ähnlich der Projektionsmatrix $K_{persp_{xy}}$ und   $K_{orth_{xy}}$ aus Abschnitt 1.2.1 realisiert.
-Es werden jedoch noch  Translationen, Rotationen Stauchungen dazwischengeschaltet, die ebenfalls als $4 \times 4$-Matrizen realisiert werden können und mit denen diese Marine multipliziert werden.  Man erreicht damit, dass der Kegelstumpf zwischen der forderen Projektionsebene, auch 'nearplane' genannt,  und der hinteren Ebene, auch 'farplane' genannt, in den $[-1,1] \times [-1,1] \times [-1,1] $ Würfel abgebildet wird.   
+Es werden jedoch noch  Translationen, Rotationen Stauchungen dazwischengeschaltet, die ebenfalls als $4 \times 4$-Matrizen realisiert werden können und mit denen diese Marine multipliziert werden.  Man erreicht damit, dass der Kegelstumpf zwischen der forderen Projektionsebene, auch 'nearplane' genannt,  und der hinteren Ebene, auch 'farplane' genannt, in den $[-1,1] \times [-1,1] \times [-1,1] $ Würfel abgebildet wird, welcher auch Sichtvolumen genannt wird.   
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{images/gl_projectionmatrix01.png}
@@ -56,10 +56,12 @@ Diese Transformation wird auch Windows-Viewport-Transformation genannt.
 Als Rasterung bezeichnet man das transformieren kontinuierlicher, zweidimensionaler Daten auf diskrete Pixel.
 Anhand der gegebenen Daten muss also entschieden werden, welche Farbe ein Pixel des Ausgabegerätes erhält.
 Wir haben also eine Funtkion $Frame-Buffer: \mathbb{N} \times \mathbb{N} \to Farbe$.
-Im Bereich Echtzeitvisualisierung  sind alle gängigen Rasterverfahren für Dreiecke und andere primitiven  im wesentlichen Abwandlungen und Weiterentwicklungen  von Algorithmen, die von  Bresenham eingeführt wurden. Wir wollen uns den Bresenham Algorithmus für Linien dazu exemplarisch anschauen.
+Im Bereich Echtzeitvisualisierung  sind alle gängigen Rasterverfahren für Dreiecke und andere primitiven  im wesentlichen Abwandlungen und Weiterentwicklungen  von Algorithmen, die von  Bresenham eingeführt wurden. Wir wollen uns den Bresenham Algorithmus für Linien/Strecken dazu exemplarisch anschauen.
 
+\begin{Algorithmus}[Bresenham für Strecken mit positiver Steigung]
+\end{Algorithmus}
 
-Das Rastern erzeugt oft harte, kantige und ausgefranzte Übergange. Diese Effekte bezeichnet man auch als Aliasing. Algorithmen, die diesen Aliasing-Effekten entgegenwirken nennt man auch 
+Das Rastern erzeugt oft harte, kantige und ausgefranste Übergange. Diese Effekte bezeichnet man auch als Aliasing. Algorithmen, die diesen Aliasing-Effekten entgegenwirken nennt man auch 
 Antialiasing. 
 \begin{figure}[H]
     \centering
@@ -69,21 +71,29 @@ Antialiasing.
 \end{figure}
 
 
-\subsubsection*{Sichtbarkeitsprobleme}
-\begin{Definition}[Clipping]
-\end{Definition}
+\subsection*{Sichtbarkeitsprobleme}
 
-\begin{Definition}[z-Buffer]
+\subsubsection*{Clipping}
+Beim 3D-Clipping werden alle Polygone verworfen, die nach der Transformation in Clipping-Koordinaten vollständig ausserhalb des Sichtvolumens
+$[-1,1] \times [-1,1] \times [-1,1] $ liegen. Das 2D-Clipping findet nach der Projektion der Polygone statt. Polygone, die über das Viewportfenster hinaus ragen, werden an den Fensterkanten abgeschnitten.
+Der wichtigste Schritt ist hierbei das Abschneiden von Strecken an diesen Kanten. Wir betrachten dazu exemplarisch den Cohen-Sutherland-Algorithmus:
+
+\begin{Algorithmus}[Cohen-Sutherland]
+\end{Algorithmus}
+
+\subsubsection*{Culling}
+Als Culling bezeichnet man das Entfernen von Polygonen anhand Ihrer Orientierung. Man definiert, welche Orientierung eine Rückseite darstellt und verwirft dann Polygone mit dieser Orientierung.
+
+\subsubsection* {z-Buffer}
 Der Z-Buffer enthält für jedes Pixel $(u,v)$ nach der Rasterung  einen Wert zwischen $-1$ und $1$. Dieser Wert  ist der Abstand zum nächsten Punkt eines Polygons  in Clipping-Koordinaten von diesem Pixel auf der Projektionsebene.  Wir haben somit eine Funktion
 \begin{align*}
 Z-Buffer : \mathbb{N} \times \mathbb{N} \to [-1,1]  \; .
 \end{align*}
-\end{Definition}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{images/gl_projectionmatrix_zbuffer_1.png}
-    \caption{Z-BUFFER-WAR}
+    \caption{Z-Buffer-War}
 \end{figure}
 
 
@@ -106,26 +116,22 @@ $Frame-Buffer(u,v) := Farbe(P,(u,v))$ \\
 end \\
 end \\
 end
-
 \end{Algorithmus}
 
 
-
-
-
 \subsection{Lokale Beleuchtungsmodelle}
-\subsubsection{Ideale Reflexionen und Lichtbrechungen}
+\subsubsection{Ideale und diffuse Reflexionen}
 \subsubsection{Lambert  Modell}
 \subsubsection{Phong Modell}
 
-\subsection{Texturen und UV-Mapping}
-\subsection{Shaderprogrammierung und standard Algorithmen}
-\subsubsection{Syntax und Funktionsumfang}
+\subsection{Shader und standard Algorithmen}
+\subsubsection{Programmierung}
 \subsubsection{Flat  shading}
 \subsubsection{Phong  shading}
+\subsubsection{Texturen und UV-Mapping}
 \subsubsection{Bumpmapping}
 \subsubsection{Displacementmapping}
 \subsubsection{Shadowmap}
 
 
-\subsection{WebGL}
+\subsection{GLSL via WebGL}

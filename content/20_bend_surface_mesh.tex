@@ -509,7 +509,7 @@ Dann gilt $b_n^n = B^n(t_0)$.
 \begin{figure}[H]
     \centering
     \input{images/xfig/deCasteljau.pdf_t}
-    \caption{} %TODO
+    \caption{Auswertung einer Beziekurve  zum Zeitpunkt $t_0$ durch itterative Streckenteilung nach de Casteljau} %TODO
     \label{fig:deCastel}
 \end{figure}
 
@@ -536,7 +536,7 @@ $B^n(1) = (B^*)^m(0)$ und $\Bigl(B^n(1) - b_{n-1} \Bigr)= - \frac{m}{n}  \Bigl((
 
 
 \begin{Definition}
-Ist  $B^n(t)$ eine Bezierkurve, so bilden die Bezierkurven $(B^{*})^n(t)  :=  \sum_{i = 0}^{n} B_i^n(t/2) \cdot  b_i^i$ und  $(B^{**})^n(t)  :=  \sum_{i = 0}^{n} B_i^n(t/2) \cdot  b_n^{n-i}$
+Ist  $B^n(t)$ eine Bezierkurve, so bilden die Bezierkurven $(B^{*})^n(t)  :=  \sum_{i = 0}^{n} B_i^n(t/2) \cdot  b_i^i$ und  $(B^{**})^n(t)  :=  \sum_{i = 0}^{n} B_i^n( \frac{t+1} {2}) \cdot  b_n^{n-i}$
 einen $C^1$-Patch.
 \end{Definition}
 
