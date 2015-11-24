@@ -13,7 +13,7 @@ Eine Computergrafik-Pipeline besteht im Wesentlichen aus den folgenden Schritten
     \centering
     \includegraphics[width=1.0\textwidth]{images/cgpipeline_grob.png}
     \caption{Computergrafik-Pipeline}
-    \label{fig:gimbal+lock}
+    \label{fig:cdpipeline-overview}
 \end{figure}
 
 Eine solche Pipeline wird auch von OpenGL implementiert. Es besteht jedoch die Besonderheit, dass die Geometrie und die  Rasterung in Hardware realisiert ist und man durch kleine Programme, sogenannte Shader, auf diese Hardware zugreifen und Manipulationen vornehmen kann beziehungsweise seit OpenGL 2.0 sogar muss.
@@ -26,7 +26,7 @@ Die Geometrieverarbeitung   besteht aus der Hintereinanderausführung der folgen
     \centering
     \includegraphics[width=1.0\textwidth]{images/cgpipeline.png}
     \caption{Geometrie-Pipeline}
-    \label{fig:gimbal+lock}
+    \label{fig:cgpipeline-geometry}
 \end{figure}
 
 \subsubsection*{Modell und Kameratransformationen}
@@ -236,7 +236,7 @@ Antialiasing.
     \centering
     \includegraphics[width=0.5\textwidth]{images/Antialiasing.png}
     \caption{Eine Schrift mit und ohne Antialiasing}
-    \label{fig:gimbal+lock}
+    \label{fig:screening-antialiasing-font}
 \end{figure}
 
 
@@ -263,6 +263,7 @@ Z-Buffer : \mathbb{N} \times \mathbb{N} \to [-1,1]  \; .
     \centering
     \includegraphics[width=1.0\textwidth]{images/gl_projectionmatrix_zbuffer_1.png}
     \caption{Z-Buffer-War}
+    \label{fig:zbuffer-war}
 \end{figure}
 
 
