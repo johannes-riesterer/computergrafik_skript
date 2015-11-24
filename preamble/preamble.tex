@@ -1,6 +1,7 @@
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % Packages to be loaded before others
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\input{preamble/preamble_commands}
 % Calculation with LaTeX
 \usepackage{calc}
 % Language setting
@@ -9,24 +10,6 @@
 \usepackage{xcolor}
 % Graphics
 \usepackage{graphicx}
-% Compound statements
-\usepackage{ifthen}
-\providecommand{\IfDefined}[2]{%
-    \ifcsname #1\endcsname
-    #2 %
-    \else
-    % do nothing
-    \fi
-}
-
-\providecommand{\IfElseDefined}[3]{%
-    \ifcsname #1\endcsname
-    #2 %
-    \else
-    #3 %
-    \fi
-}
-
 
 
 
@@ -80,6 +63,32 @@
 \usepackage[all]{xy}
 \usepackage{float}
 \usepackage{tikz}
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/subfig/subfig.pdf
+% Incompatible: loads package capt-of. Loading of 'capt-of' afterwards will fail therefor
+\usepackage{subfig}
+
+
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Captions & Style
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption.pdf
+\usepackage{caption}
+% Aussehen der Captions fuer subfigures (subfig-Paket)
+\IfPackageLoaded{subfig}{
+    \captionsetup[subfloat]{%
+        margin = 10pt,
+        font = {small,rm},
+        labelfont = {small,bf},
+        format = plain, % oder 'hang'
+        indention = 0em,  % Einruecken der Beschriftung
+        labelsep = space, %period, space, quad, newline
+        justification = RaggedRight, % justified, centering
+        singlelinecheck = true, % false (true=bei einer Zeile immer zentrieren)
+        position = bottom, %top
+        labelformat = parens % simple, empty % Wie die Bezeichnung gesetzt wird
+    }
+}
 
 
 
