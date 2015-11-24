@@ -168,34 +168,32 @@ g(N):= \textbf{Anzahl der Löcher in } |N|
 \end{Definition}
 Beispiele:
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.2]{images/Sphere.png}
-    \caption{Geschlossenes Netz vom Geschlecht $0$. Quelle:Wikipedia}
-    \label{fig:closed-mesh-gender0}
-\end{figure}
-
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.8]{images/Torus.png}
-    \caption{Geschlossenes Netz vom Geschlecht $1$. Quelle:Wikipedia}
-    \label{fig:closed-mesh-gender1}
-\end{figure}
-
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=1.0]{images/Double_torus.png}
-    \caption{Geschlossenes Netz vom Geschlecht $2$. Quelle:Wikipedia}
-    \label{fig:closed-mesh-gender2}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=1.0]{images/Triple_torus.png}
-    \caption{Geschlossenes Netz vom Geschlecht $3$. Quelle:Wikipedia}
-    \label{fig:closed-mesh-gender3}
+\begin{figure}[H]\centering
+    \subfloat[Geschlecht $0$]{
+        \hspace*{0.05\textwidth}
+        \includegraphics[width=0.3\textwidth]{images/Sphere.png}
+        \hspace*{0.05\textwidth}
+        \label{fig:closed-mesh-gender0}
+    }
+    \hspace*{0.1\textwidth}
+    \subfloat[Geschlecht $1$]{
+        \includegraphics[width=0.4\textwidth]{images/Torus.png}
+        \label{fig:closed-mesh-gender1}
+    }
+    \vspace*{1em}
+    \subfloat[Geschlecht $2$]{
+        \hspace*{0.05\textwidth}
+        \includegraphics[width=0.3\textwidth]{images/Double_torus.png}
+        \hspace*{0.05\textwidth}
+        \label{fig:closed-mesh-gender2}
+    }
+    \hspace*{0.1\textwidth}
+    \subfloat[Geschlecht $3$]{
+        \includegraphics[width=0.4\textwidth]{images/Triple_torus.png}
+        \label{fig:closed-mesh-gender3}
+    }
+    \caption{Geschlossene Netze der Geschlechter $0$ bis $3$. Quelle:Wikipedia}
+    \label{fig:closed-mesh-genders-0..3}
 \end{figure}
 
 Der Zusammenhang zwischen der Eulercharacteristik und dem Geschlecht wurde im allgemeinen Fall von dem Mathematiker  
