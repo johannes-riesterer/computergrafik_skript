@@ -26,6 +26,7 @@ OtherImages
 # LaTeXian
 *LatexianTemp*
 TSWLatexianTemp*
+*.synctex.gz*
 
 # xfig
 *.bak
