@@ -695,7 +695,7 @@ in homogenen Koordinate ausdrücken durch eine Matrizenmultiplikation
 Die Abbildung 
 \begin{align*}
 persp_{xy} : \mathbb{A}^3 \to \mathbb{A}^2 \\
-\begin{pmatrix}  X \\ Y \\ Z\end{pmatrix}  \mapsto \begin{pmatrix}  \frac{X}{\frac{Z}{d} +1 } \\   \frac{X}{\frac{Z}{d} +1 } \end{pmatrix}
+\begin{pmatrix}  X \\ Y \\ Z\end{pmatrix}  \mapsto \begin{pmatrix}  \frac{X}{\frac{Z}{d} +1 } \\   \frac{Y}{\frac{Z}{d} +1 } \end{pmatrix}
 \end{align*}
 die Zentralprojektion auf die $X-Y$-Ebene mit Augendistanz $d$.
 \end{Definition} 
@@ -730,5 +730,5 @@ so können wir die Zentralprojektion auf die $X-Y$-Ebene mit Augendistanz $d$ du
 & persp_{xy} :\mathbb{R}^3   \to \mathbb{A}^3    \to  \mathbb{A}^3    \to \mathbb{A}^2    \to \mathbb{R}^2  \\
 &\begin{pmatrix} x \\ y \\ z \end{pmatrix} \mapsto \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix}   \mapsto K_{persp_{xy}} \cdot  \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix} =   \begin{pmatrix} x \\ y \\ z \\ \frac{z}{d} + 1 \end{pmatrix} \\
  & \mapsto K_{orth_{xy}} \cdot   \begin{pmatrix} x \\ y \\ z \\ \frac{z}{d} + 1 \end{pmatrix}=   \begin{pmatrix} x \\ y \\ \frac{z}{d} + 1 \end{pmatrix}   \mapsto 
- \begin{pmatrix}  \frac{x}{\frac{z}{d} +1 } \\   \frac{x}{\frac{z}{d} +1 } \end{pmatrix}
+ \begin{pmatrix}  \frac{x}{\frac{z}{d} +1 } \\   \frac{y}{\frac{z}{d} +1 } \end{pmatrix}
  \end{align*}
