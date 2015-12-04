@@ -25,7 +25,7 @@ varying float intensity;
 void main() {
    
    vec3 position = a_position;
-   position += vec3(0.0,-3.0, -10.0);
+   position += vec3(-4.0,-3.0, -10.0);
    
    gl_Position = projectionMatrix*vec4(position, 1.0);
    intensity = 1.0;
