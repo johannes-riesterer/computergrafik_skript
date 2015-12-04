@@ -17,19 +17,31 @@ and open the template in the editor.
 attribute vec2 a_position;
 uniform float t;
 varying float T;
+
+uniform float resX;
+varying float RESX;
+
+uniform float resY;
+varying float RESY;
+
 void main() {
         //  gl_Position = vec4(a_position, 0.0, t);
         T = t;
-   gl_Position = vec4(a_position, 0.0, 1.0);
+        RESX = resX;
+        RESY = resY;
+        gl_Position = vec4(a_position, 0.0, 1.0);
 }
 </script>
 
     <script id="2d-fragment-shader" type="x-shader/x-fragment">
 precision mediump float;
 varying float T;
+varying float RESX;
+varying float RESY;
+
 void main() {
-    gl_FragColor = vec4(0.0 ,1.0,0.0,1.0);
-}
+        gl_FragColor = vec4(0.0 ,1.0,0.0,1.0);
+    }
 </script>
 
     <script type="text/javascript">
@@ -110,6 +122,9 @@ void main() {
             gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
             var tLocation = gl.getUniformLocation(program, "t");
             gl.uniform1f(tLocation, someProgress);
+            
+             gl.uniform1f(gl.getUniformLocation(program, "resX"), gl.drawingBufferWidth);
+             gl.uniform1f(gl.getUniformLocation(program, "resY"), gl.drawingBufferHeight);
             someProgress += 0.01;
             
             gl.drawArrays(gl.TRIANGLES, 0, 6);
