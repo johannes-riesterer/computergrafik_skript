@@ -36,8 +36,8 @@ Die Transformationen von Objektkoordinaten in das Kamerakoordinatensystem werden
 Die Projektion wird durch Matrizen ähnlich der Projektionsmatrix 
 $K_{persp_{xy}}$ und $K_{orth_{xy}}$ aus Abschnitt 
 \ref{subsub:math:affine-space:homog-coords-projection} realisiert. 
-Es werden jedoch noch  Translationen, Rotationen Stauchungen 
-dazwischengeschaltet, die ebenfalls als $4 \times 4$-Matrizen realisiert werden 
+Es werden jedoch noch  Translationen, Rotationen und Stauchungen 
+dazwischen geschaltet, die ebenfalls als $4 \times 4$-Matrizen realisiert werden 
 können und mit denen diese Matrix multipliziert werden. 
 Man erreicht damit, dass der Kegelstumpf zwischen der vorderen 
 (\textit{nearplane}) und der hinteren (\textit{farplane}) Projektionsebene in 
@@ -310,6 +310,11 @@ end
 \subsection{Lokale Beleuchtungsmodelle}
 \subsubsection{Ideale und diffuse Reflexionen}
 \subsubsection{Lambert  Modell}
+Das Lambertsche Modell beschreibt, wie durch den perspektivischen Effekt die Strahlungsstärke mit flacher werdendem Abstrahlwinkel abnimmt. Sei nun $L$ der Punkt, an dem sich eine punktförmige Lichtquelle befindet und $P \in N$ ein Punkt eines Netzes $N$ mit Normale $n$ (also insbesondere gilt $||n|| = 1$).  Dann berechnet sich die Lichtintensität $I_d$ an diesem Punkt durch
+\begin{align*}
+I_d :=  I_l \cdot I_m \cdot \biggl< n, \frac{1}{||\overline{PN}||} \cdot \overline{PN} \biggr>
+\end{align*}
+wobei $I_l \in [0,1]$ die Lichtintensität der Lichtquelle und $I_m \in [0,1]$ eine Materialkonstante ist. 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{images/lambert.png}
