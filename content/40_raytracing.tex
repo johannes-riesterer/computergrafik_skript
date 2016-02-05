@@ -2,6 +2,16 @@
 
 \subsection{Farbwahrnehmung und Farbmodelle}
 \subsection{Globale Beleuchtungsmodelle und Rendergleichung}
+\subsubsection{BRDF}
+Die sogenannte bidirektionale Reflektanzverteilungsfunktion (engl. Bidirectional Reflectance Distribution Function, BRDF)
+ist eine Funktion $f_r (x, \omega_i, \omega_j)$, die das Reflexionsverhalten der Oberflächen eines Materials beschreibt.
+Sie liefert die Intensität des ausgehenden Lichtes (einer festen Wellenlänge) in Richtung $\omega_j$ am Punkt $x$ bei eingehender Lichtintensität aus Richtung $\omega_i$.
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/BRDF_Diagram.png}
+    \caption{BRDF Funktion}
+    \label{fig:raytracin_brdf}
+\end{figure}
 \subsection{Raycasting}
 \subsubsection{"Klassisches" Raytracing}
 \subsubsection{Monte Carlo Integration und Pathtracing}
