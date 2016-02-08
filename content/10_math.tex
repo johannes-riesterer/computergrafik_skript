@@ -519,10 +519,10 @@ Jede Drehung  $O \in SO(3)$  lässt sich zerlegen in ein Produkt
 \begin{align*}
 O = 
 \begin{pmatrix}
- \cos(\xi) &  \sin(\xi)  & 0\\ 
- - \sin(\xi) & \cos(\xi) & 0 \\
-0 & 0 & 1 
-\end{pmatrix} 
+1 & 0 & 0 \\
+0 & \cos(\varphi) & \pm \sin(\varphi) \\ 
+ 0 & \mp \sin(\varphi) & \cos(\varphi)
+\end{pmatrix}
 \cdot
 \begin{pmatrix}
  \cos(\psi) & 0 &   \sin(\psi) \\ 
@@ -653,7 +653,7 @@ d(P,Q) := || \overline{PQ} || \; .
 \begin{Definition}
 Der projektive  Raum ist definiert als
 \begin{align*}
-\mathbb{P}^n := \mathbb{R}^{n+1} / \sim \\
+\mathbb{P}^n := \mathbb{R}^{n+1} - \{ 0\} / \sim \\
 v \sim w \Leftrightarrow v = \lambda w \text{ für ein } \lambda \neq 0 \in \mathbb{R} \; . 
 \end{align*}
 \end{Definition}
