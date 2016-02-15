@@ -2,13 +2,30 @@
 
 \subsection{Farbwahrnehmung und Farbmodelle}
 \subsection{Globale Beleuchtungsmodelle und Rendergleichung}
+\subsubsection{Radiometrie}
+Die Radiantenergie $Q$ ist die Lichtenergie. Sie wird durch einen Strom von Photonen erzeugt. Die Energie eines Photons ist 
+durch $E=h \cdot f$ geben, wobei $h$ das konstante Planksche Wirkungsquantum und $f$ die Frequenz der (Licht) Welle ist.  
+Die Ableitung nach der Zeit
+\begin{align}
+\phi := \frac{\partial Q}{\partial t}
+\end{align}
+wird als Radiant Flux oder Strahlungsleistung bezeichnet. Diese  beschreibt den Energiefluss, beziehungsweise den Energie-Eintritt und Energie-Austritt.
+Der Radiant Flux in einem infinitesimal dünnen Strahl vom Punkt $x$ in Richtung $\omega$ wird als Radiance $L(x, \omega)$ bezeichnet was  Formal durch
+\begin{align}
+L(x, \omega) := \frac{d^2Q}{\cos(\theta) dA \cdot d\omega}
+\end{align}
+ausgedrückt wird. Die Radiance ist also der Radiant Flux pro infinitesimale Flächeneinheit $\cos(\theta) dA$ und pro  Raumwinkel $d \omega$.
 \subsubsection{BRDF und Reflectancegleichung }
 Die sogenannte bidirektionale Reflektanzverteilungsfunktion (engl. Bidirectional Reflectance Distribution Function, BRDF)
 ist eine Funktion $f_r (x, \omega_i, \omega_r)$, die das Reflexionsverhalten der Oberfläche eines Materials beschreibt. 
 Sie hat als Eingabe die ausgehende Richtung $\omega_r$ und die eingehende Richtung  $\omega_i$ am Punkt $x$. 
 Sie  liefert den Quotienten aus Strahlungsdichte und Bestrahlungsstärke für die ausgehende Richtung $\omega_r$ und die eingehende Richtung  $\omega_i$ am Punkt $x$.
-Sie lässt sich für Materialien experimentell mit Hilfe von Sensoren gewinnen. 
-
+Sie gibt somit die Abhängigkeit des reflektierten Lichts von der einfallenden Lichtstärke an: 
+\begin{align}
+dL_r = f_r(x, \omega_i, \omega_r) dE =   f_r(x, \omega_i, \omega_r) L_i(x,\omega_i) \cos(\theta_i) d \omega_i\\
+L_r(x, \omega_r) = \int_{H^2} dL_r =    \int_{H^2}f_r (x, \omega_i, \omega_r) \cdot L(x, \omega_i) \cos(\theta_i) d\omega_i
+\end{align}
+Letztere Gleichung wird auch Reflectance-Gleichung genannt.
  \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{images/brdf2.png}
@@ -16,11 +33,8 @@ Sie lässt sich für Materialien experimentell mit Hilfe von Sensoren gewinnen.
     \label{fig:raytracin_brdf}
 \end{figure}
 
-\begin{align*}
-L(x, \omega_r) = \int_{S^2}f_r (x, \omega_i, \omega_r) \cdot L(x, \omega_i) \cdot <\omega_i, n> d\omega_i
-\end{align*}
  
-\subsubsection{Die Rendergleichung}
+\subsubsection{Die Rendergleichung (Erste und zweite Form)}
 
 \subsection{Raycasting}
 \subsubsection{"Klassisches" Raytracing}
