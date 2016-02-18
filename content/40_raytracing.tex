@@ -2,17 +2,18 @@
 
 \subsection{Farbwahrnehmung und Farbmodelle}
 \subsection{Globale Beleuchtungsmodelle und Rendergleichung}
-\subsubsection{Radiometrie}
+\subsubsection{Photometrie}
 Die Radiantenergie $Q$ ist die Lichtenergie. Sie wird durch einen Strom von Photonen erzeugt. Die Energie eines Photons ist 
-durch $E=h \cdot f$ geben, wobei $h$ das konstante Planksche Wirkungsquantum und $f$ die Frequenz der (Licht) Welle ist.  
+durch $E=h \cdot f$ geben, wobei $h$ das konstante Planksche Wirkungsquantum und $f$ die Frequenz der Welle ist (Welle-Teilchen Dualismus).  
 Die Ableitung nach der Zeit
 \begin{align}
 \phi := \frac{\partial Q}{\partial t}
 \end{align}
 wird als Radiant Flux oder Strahlungsleistung bezeichnet. Diese  beschreibt den Energiefluss, beziehungsweise den Energie-Eintritt und Energie-Austritt.
+
 Der Radiant Flux in einem infinitesimal dünnen Strahl vom Punkt $x$ in Richtung $\omega$ wird als Radiance $L(x, \omega)$ bezeichnet was  Formal durch
 \begin{align}
-L(x, \omega) := \frac{d^2Q}{\cos(\theta) dA \cdot d\omega}
+L(x, \omega) := \frac{d^2 \phi}{\cos(\theta) dA \cdot d\omega}
 \end{align}
 ausgedrückt wird. Die Radiance ist also der Radiant Flux pro infinitesimale Flächeneinheit $\cos(\theta) dA$ und pro  Raumwinkel $d \omega$.
 \subsubsection{BRDF und Reflectancegleichung }
@@ -33,15 +34,20 @@ Letztere Gleichung wird auch Reflectance-Gleichung genannt.
     \label{fig:raytracin_brdf}
 \end{figure}
 
+\subsubsection{Das photometrische Grundgesetz}
  
 \subsubsection{Die Rendergleichung (Erste und zweite Form)}
 
 \subsection{Raycasting}
 \subsubsection{"Klassisches" Raytracing}
+\subsection{Radiocity Verfahren}
 \subsubsection{Monte Carlo Integration und Pathtracing}
+\subsubsection{Raymarching}
+\subsubsection{Klassifikation der Verfahren}
+
 \subsubsection{Datenstrukturen für Bereichsabfragen}
 
-\subsection{Raymarching}
+
 \subsection{Labor}
 \subsubsection{Blender}
 \subsubsection{Echtzeitfähiges Raymarching in WebGL}
