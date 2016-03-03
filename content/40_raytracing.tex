@@ -11,11 +11,12 @@ Die Ableitung nach der Zeit
 \end{align}
 wird als Radiant Flux oder Strahlungsleistung bezeichnet. Diese  beschreibt den Energiefluss, beziehungsweise den Energie-Eintritt und Energie-Austritt.
 
-Der Radiant Flux in einem infinitesimal dünnen Strahl vom Punkt $x$ in Richtung $\omega$ wird als Radiance $L(x, \omega)$ bezeichnet was  Formal durch
+Der Radiant Flux in einem infinitesimal dünnen Strahl vom Punkt $x$ in Richtung $\omega$ wird als Radiance $L(x, \omega)$ bezeichnet.  Formal lässt sich dies durch 
 \begin{align}
 L(x, \omega) := \frac{d^2 \phi}{\cos(\theta) dA \cdot d\omega}
 \end{align}
-ausgedrückt wird. Die Radiance ist also der Radiant Flux pro infinitesimale Flächeneinheit $\cos(\theta) dA$ und pro  Raumwinkel $d \omega$.
+ausdrücken. Die Radiance ist also der Radiant Flux pro infinitesimale Flächeneinheit $\cos(\theta) dA$ und pro  Raumwinkel $d \omega$.
+
 \subsubsection{BRDF und Reflectancegleichung }
 Die sogenannte bidirektionale Reflektanzverteilungsfunktion (engl. Bidirectional Reflectance Distribution Function, BRDF)
 ist eine Funktion $f_r (x, \omega_i, \omega_r)$, die das Reflexionsverhalten der Oberfläche eines Materials beschreibt. 
@@ -24,7 +25,7 @@ Sie  liefert den Quotienten aus Strahlungsdichte und Bestrahlungsstärke für di
 Sie gibt somit die Abhängigkeit des reflektierten Lichts von der einfallenden Lichtstärke an: 
 \begin{align}
 dL_r = f_r(x, \omega_i, \omega_r) dE =   f_r(x, \omega_i, \omega_r) L_i(x,\omega_i) \cos(\theta_i) d \omega_i\\
-L_r(x, \omega_r) = \int_{H^2} dL_r =    \int_{H^2}f_r (x, \omega_i, \omega_r) \cdot L(x, \omega_i) \cos(\theta_i) d\omega_i
+L_r(x, \omega_r) = \int_{S^2} dL_r =    \int_{S^2}f_r (x, \omega_i, \omega_r) \cdot L_i(x, \omega_i) \cos(\theta_i) d\omega_i
 \end{align}
 Letztere Gleichung wird auch Reflectance-Gleichung genannt.
  \begin{figure}[H]
@@ -37,6 +38,12 @@ Letztere Gleichung wird auch Reflectance-Gleichung genannt.
 \subsubsection{Das photometrische Grundgesetz}
  
 \subsubsection{Die Rendergleichung (Erste und zweite Form)}
+
+\begin{align}
+L_o(x, \omega_o) = L_e(x, \omega_o)  + \displaystyle \int_{S^2}f_r (x, \omega_i, \omega_0) \cdot L_i(x, \omega_i) \cos(\theta_i) d\omega_i
+\end{align}
+
+Durch die Beziehung $d_omega_i = $
 
 \subsection{Raycasting}
 \subsubsection{"Klassisches" Raytracing}
