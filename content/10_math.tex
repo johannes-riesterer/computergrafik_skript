@@ -600,7 +600,7 @@ Der Punkt $\begin{pmatrix}  \lambda_1 \\  \vdots \\  \lambda_n \end{pmatrix}$ he
 \begin{Definition}
 Abbildungen der Form
 \begin{align*}
-\phi &: \mathbb{A} \to \mathbb{A} \\
+\phi &: \mathbb{A}^n \to \mathbb{A}^n \\
 \phi(P) & := A \cdot P + t
 \end{align*} 
 mit $A \in M^{n \times n}$ und $t \in (\mathbb{R}^n, + , \cdot )$ heißen affine Abbildungen.
@@ -613,9 +613,9 @@ Eine Affine Abbildung
 \phi &: \mathbb{A}^n \to \mathbb{A}^n \\
 \phi(P) & := A \cdot P + t
 \end{align*} 
-ist genau dann invertierter, falls $\det(A) \neq 0$ ist und die Inverse Abbildung ist dann
+ist genau dann invertierbar, falls $\det(A) \neq 0$ ist und die Inverse Abbildung ist dann
 \begin{align*}
-\phi^{-1} &: \mathbb{A} \to \mathbb{A} \\
+\phi^{-1} &: \mathbb{A}^n \to \mathbb{A}^n \\
 \phi^{-1}(P) & := A^{-1} \cdot P - A^{-1} \cdot t \; .
 \end{align*} 
 \end{Bemerkung}
@@ -642,7 +642,7 @@ mit $\theta_{(P,B)}^{(P',B')} (Q) :=   \theta_{(P',B')} \biggl ( \theta_{(P,B)}^
 \begin{Definition}
 Der Abstand von  $P,Q \in \mathbb{A}$  ist definiert durch
 \begin{align*}
-d : \mathbb{A} \times \mathbb{A} \to \mathbb{R} \\
+d : \mathbb{A}^n \times \mathbb{A}^n \to \mathbb{R}^n \\
 d(P,Q) := || \overline{PQ} || \; .
 \end{align*}
 \end{Definition}
