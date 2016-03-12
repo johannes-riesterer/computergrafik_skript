@@ -7,7 +7,7 @@ Ein weiterer wichtiger Aspekt ist das generieren und modellieren solcher Struktu
 
 \subsection{Polygone, Netze und Elemente der diskreten Geometrie}
 \begin{Definition}
-Ein geschlossenes Polygon ist ein Paar $P:=(V_P,E_P)$, wobei   
+Ein geschlossenes Polygon ist ein Paar $P:=(E_P,K_P)$, wobei   
 \begin{align*}
 E_P := \{e_0, \hdots, e_k \} \subset \mathbb{A}^3,
 \end{align*}
@@ -27,8 +27,8 @@ ihre geometrische Realisierung oder einfach Kante und mit
  die geometrische Realisierung des Polygons oder geometrisches Polygon.
 
 
-Ein (geschlossenes) Polygon heißt \textbf{einfach}, falls der Schnitt zweier geometrischer Kanten  entweder leer oder genau ein Punkt aus $V$ ist.
-Es heißt \textbf{planar}, falls alle Punkte $e \in V_P$ in einer Ebene liegen.
+Ein (geschlossenes) Polygon heißt \textbf{einfach}, falls der Schnitt zweier geometrischer Kanten  entweder leer oder genau ein Punkt aus $E$ ist.
+Es heißt \textbf{planar}, falls alle Punkte $e \in E_P$ in einer Ebene liegen.
 \end{Definition}
 
 
@@ -80,7 +80,7 @@ Netze bestehen nun im wesentlichen aus an den Kanten zusammengeklebten, einfache
 
 \begin{Definition}
 Sei $N:= \bigcup P_i$ die Vereinigung endlich vieler, einfacher, geschlossener, planarer Polygone, 
-$E_N := \bigcup E_{P_i}$ und $K_N := \bigcup E_{P_i}$ die Vereinigung der Ecken beziehungsweise der Kantenmengen.
+$E_N := \bigcup E_{P_i}$ und $K_N := \bigcup K_{P_i}$ die Vereinigung der Ecken beziehungsweise der Kantenmengen.
 Analog zu der Definition eines Polygons definieren wir die geometrischen Realisierungen 
 $|K_N| := \bigcup |P_i|$ und $|N| := \bigcup |\overset{\circ}{P_i}| \bigcup |K_N|$
 \begin{itemize}
@@ -152,7 +152,7 @@ mit $n_{P_i} = e_{j}^{P_i}e_{j+1}^{P_i} \times e_{j}^{P_i}e_{j-1}^{P_i}$ einen V
 Eine wichtige Größe für ein Netz ist die sogenannte Eulercharakteristik, welche in direkter Beziehung zum sogenannten Geschlecht eines Netzes steht.
 
 \begin{Definition}
-$N:= \bigcup P_i$ ein Netz. Dann ist die Eulercharacteristig definiert als
+$N:= \bigcup P_i$ ein Netz. Dann ist die Eulercharakteristik definiert als
 \begin{align*}
 \chi(N):= \#(E_N) - \#(|K_N|) + \#(N) 
 \end{align*}
@@ -197,7 +197,7 @@ Beispiele:
 \end{figure}
 
 Der Zusammenhang zwischen der Eulercharacteristik und dem Geschlecht wurde im allgemeinen Fall von dem Mathematiker  
-Henri Poincare und vorher in einem Spezialfall von Leonard Euler bewiesen. 
+Henri Poincare und vorher in einem Spezialfall von Leonhard Euler bewiesen. 
 \begin{Satz}
 Für ein geschlossenes Netz $N$ gilt $\chi(N) = 2 - 2g(N)$. 
 \end{Satz}
@@ -234,8 +234,7 @@ $i$ wird auch als Index des $i$-ten Listenelements bezeichnet.
 
 \begin{Definition}[Eckenliste]
 
-In einer Liste $E = (e_1, e_2, \hdots, e_n)$ werden Referenzen auf die Ecken 
-gespeichert. 
+In einer Liste $E = (e_1, e_2, \hdots, e_n)$ werden Referenzen auf die Ecken in Form von Indizes der Eckenliste gespeichert. 
 Eine Referenz im $\mathbb{R}^3$ könnte so aussehen: 
 \begin{equation*}
     e_k = \begin{pmatrix}
