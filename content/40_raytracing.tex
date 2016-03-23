@@ -24,8 +24,8 @@ Sie hat als Eingabe die ausgehende Richtung $\omega_r$ und die eingehende Richtu
 Sie  liefert den Quotienten aus Strahlungsdichte und Bestrahlungsstärke für die ausgehende Richtung $\omega_r$ und die eingehende Richtung  $\omega_i$ am Punkt $x$.
 Sie gibt somit die Abhängigkeit des reflektierten Lichts von der einfallenden Lichtstärke an: 
 \begin{align}
-dL_r = f_r(x, \omega_i, \omega_r) dE =   f_r(x, \omega_i, \omega_r) L_i(x,\omega_i) \cos(\theta_i) d \omega_i\\
-L_r(x, \omega_r) = \int_{S^2} dL_r =    \int_{S^2}f_r (x, \omega_i, \omega_r) \cdot L_i(x, \omega_i) \cos(\theta_i) d\omega_i
+dL_r = f_r(x, \omega_i, \omega_r) dE =   f_r(x, \omega_i, \omega_r)  \cdot  L_i(x,\omega_i) \cdot  \cos(\theta_i) d \omega_i\\
+L_r(x, \omega_r) = \int_{S^2} dL_r =    \int_{S^2}f_r (x, \omega_i, \omega_r) \cdot L_i(x, \omega_i) \cdot  \cos(\theta_i) d\omega_i
 \end{align}
 Letztere Gleichung wird auch Reflectance-Gleichung genannt.
  \begin{figure}[H]
@@ -40,7 +40,7 @@ Letztere Gleichung wird auch Reflectance-Gleichung genannt.
 \subsubsection{Die Rendergleichung (Erste und zweite Form)}
 
 \begin{align}
-L_o(x, \omega_o) = L_e(x, \omega_o)  + \displaystyle \int_{S^2}f_r (x, \omega_i, \omega_0) \cdot L_i(x, \omega_i) \cos(\theta_i) d\omega_i
+L_o(x, \omega_o) = L_e(x, \omega_o)  + \displaystyle \int_{S^2}f_r (x, \omega_i, \omega_0) \cdot L_i(x, \omega_i)  \cdot  \cos(\theta_i) d\omega_i
 \end{align}
 
 Durch die Beziehung $d_omega_i = $
