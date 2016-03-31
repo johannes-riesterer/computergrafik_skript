@@ -112,7 +112,7 @@ anschauen.
         }
         \hspace*{0.1\textwidth}
         \subfloat[Pixelraster]{
-    		\begin{tikzpicture}
+	\begin{tikzpicture}
                 \foreach \x / \y / \pxname in {-1/-1/P, 0/-1/E, 0/0/N_E} {
                     \draw [lightgray, very thin] (\x, \y) rectangle ++(1, 1);
                     \ifthenelse{\x < 0}{
@@ -124,20 +124,20 @@ anschauen.
                 \filldraw [black] (0.5, 0) circle (0.05cm);
                 \node (M_p) at (0.6, 0.2) {$M_p$};
                 \filldraw [black] (-0.5, -0.5) circle (0.05cm);
-								\draw[<-] [black, thin] (-0.55, -0.55) --(-1.6, -1.1);
+		\draw[<-] [black, thin] (-0.55, -0.55) --(-1.6, -1.1);
                 \node (x0_y0) at (-1.4, -1) [
                     anchor=north east, 
                     outer sep=0pt, 
                     xshift=0.4cm, 
                 ] {$\left( x_p,~ y_p \right)$};
                 \filldraw [black] (0.5, -0.5) circle (0.05cm);
-								\draw[<-] [black, thin] (0.5, -0.6) --(0.5, -1.1);
+		\draw[<-] [black, thin] (0.5, -0.6) --(0.5, -1.1);
                 \node (x1_y0) at (0, -1) [
                     anchor=north west, 
                     outer sep=0pt, 
                     xshift=-0.4cm, 
                 ] {$\left( x_p + 1,~ y_p \right)$};
-        \end{tikzpicture}
+       	\end{tikzpicture}
         \label{fig:screening-bresenham-pixels}
         }
         \caption{Schrittbetrachtung Bresenham Algorithmus}
