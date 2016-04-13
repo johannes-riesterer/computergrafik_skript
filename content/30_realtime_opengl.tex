@@ -492,16 +492,31 @@ Probleme bereitet der sogenannte z-Buffer War. Abhilfe schafft eine transformati
 Der Begriff Deferred Shading (zu dt. "verzögertes Schattieren") oder auch Deferred Lighting ("verzögerte Beleuchtung") beschreibt eine Technik, mit deren Hilfe die Geometrieverarbeitung von der Lichtberechnung getrennt werden kann. Dies erlaubt hunderte Lichtquellen in einer hoch-komplexen Szene.
 
 
-Um eine Szene mit einem traditionellen Forward-Renderer zu beleuchten, wird normalerweise jedes Objekt der Szene mit den entsprechenden Beleuchtungsparametern der Lichtquelle gezeichnet. Die verschiedenen Ergebnisse werden durch additives Blenden akkumuliert. Für jede Lichtquelle muss also jedes Objekt gezeichnet werden. Angenommen wir haben nL Lichtquellen und nO Objekte, dann liegt die Anzahl der Rendercalls bei $O(nO * nL)$. Natürlich ist es möglich mehrere Lichtquellen in einem Pass (z.B. 8 auf einmal) zu berechnen, aber wir gehen von hunderten Lichtquellen aus, es sind also mehrere Passes notwendig und die Geometrie müsste entsprechend mehrfach verarbeitet werden.
-Deferred Shading verfolgt einen anderen Ansatz: Anstatt jedes Objekt der Szene für jeden Licht-Pass neu zu renderen, werden zunächst für jeden Pixel alle beleuchtungsrelevanten Daten (z.B. 3D-Position, Normale, Textur-Farbe, etc.) in ein oder mehrere Rendertargets (oftmals auch G-Buffer genannt) geschrieben. Die eigentliche Lichtberechnung kann nun durchgeführt werden indem ein bildschirmfüllendes Quad bzw. die Lichtgeometrie (Kugel für ein Punktlicht, Kegel für ein Spotlight) gerendert wird. Für jeden Pixel werden die Daten aus dem G-Buffer ausgelesen und die Beleuchtung entsprechend dieser Daten berechnet. Die Zahl der Rendercalls liegt bei diesem Ansatz nur noch bei $O(nO + nL)$. Mit dieser Methode sind hunderte Lichter gleichzeitig in einer hoch-komplexen Szene möglich.
-Das Verfahren ist nur dann sinnvoll, wenn man es mit einer sehr komplexen Geometrie und sehr vielen Lichtquellen zu tun hat. 
+Um eine Szene mit einem traditionellen Forward-Renderer zu beleuchten, wird normalerweise jedes Objekt der Szene mit den entsprechenden Beleuchtungsparametern der Lichtquelle gezeichnet. 
+Die Lichtberechnungen werden für jedes Vertex aufgerufen.
+
+Deferred Shading verfolgt einen anderen Ansatz: Für jeden Pixel werden die Daten aus dem G-Buffer ausgelesen und die Beleuchtung entsprechend dieser Daten im Fragmentshader einer minimalen, bildschirmfüllenden Geometrie berechnet. 
+
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{images/deffered_shading.jpg}
     \caption{G-Buffer beim deferred shading} %TODO: fix caption&label
     \label{fig:defferedshading}
+\end{figure} 
+
+Mit dieser Methode sind hunderte Lichter gleichzeitig in einer hoch-komplexen Szene möglich.
+Der Vorteil ist, dass die Lichtberechnungen somit nur für wirklich sichtbaren Pixel des tatsächlichen Ausgebe-Bildes  berechnet werden.
+Das Verfahren ist nur dann sinnvoll, wenn man es mit einer sehr komplexen Geometrie und sehr vielen Lichtquellen zu tun hat. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/deferred_v2.png}
+    \caption{Pipeline beim deferred rendering} %TODO: fix caption&label
+    \label{fig:defferedshading}
 \end{figure}
+
+
 
 \begin{figure}[H]
     \centering
