@@ -445,6 +445,9 @@ Bumps werfen keine Schatten aufeinander.
 
 
 \subsubsection{Displacementmapping}
+Wie beim Bumpmapping  wird  eine Height-map als Textur mitgegeben.
+Im Gegensatz dazu werden die Punkte des Gitternetzes (Vertices)  entsprechend diesen Texturinformationen entlang ihrer Normalen, das heißt senkrecht zur Oberfläche, tatsächlich verschoben. So ist es beispielsweise möglich, ein Höhenrelief durch das Anwenden einer Displacement Map auf eine ebene (planare) Oberfläche zu übertragen und dieser damit eine raue Struktur zu verleihen. Zusätzlich zur Verschiebung kann in Abhängigkeit von der Dichte des Drahtgitters dessen Verfeinerung notwendig werden. Man spricht dann von Tesselation.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{images/Displacement.jpg}
@@ -455,28 +458,31 @@ Bumps werfen keine Schatten aufeinander.
 
 
 \subsubsection{Shadowmap}
+Das Rendern einer Szene mit Schatten unter Zuhilfenahme von einer Shadow Map geschieht im Wesentlichen in zwei Schritten. Als erstes wird die Szene aus der Sicht des Lichts gerendert und die Tiefeninformation (z-Buffer) in eine Textur gerendert. Anschließend wird die Szene normal gerendert, wobei für jedes Pixel  der Abstand des zugehörigen Vertex zur Lichtquelle (in Clipping Coordinaten) mit dem Wert der Shadow Map verglichen wird. Ist der Wert in der Shadow Map kleiner, wird  das Pixel schattiert gerendert.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/sm_zb.png}
+    \caption{Tiefeninformation von der Lichtquelle aus gerendert.} %TODO: fix caption&label
+    \label{fig:shadowmap3}
+\end{figure}
+
+
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{images/sm_ns.png}
-    \caption{shadowmap} %TODO: fix caption&label
+    \caption{Szene normal gerendert.} %TODO: fix caption&label
     \label{fig:shadowmap1}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{images/sm_ws.png}
-    \caption{shadowmap} %TODO: fix caption&label
+    \caption{Szene mit Schatten über das Shadow Map verfahren.} %TODO: fix caption&label
     \label{fig:shadowmap2}
 \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{images/sm_zb.png}
-    \caption{shadowmap} %TODO: fix caption&label
-    \label{fig:shadowmap3}
-\end{figure}
-
-
+Probleme bereitet der sogenannte z-Buffer War. Abhilfe schafft eine transformation der z-Buffer-Werte durch eine geeignete Funktion.
 
 
 
@@ -488,7 +494,7 @@ Der Begriff Deferred Shading (zu dt. "verzögertes Schattieren") oder auch Defer
 
 Um eine Szene mit einem traditionellen Forward-Renderer zu beleuchten, wird normalerweise jedes Objekt der Szene mit den entsprechenden Beleuchtungsparametern der Lichtquelle gezeichnet. Die verschiedenen Ergebnisse werden durch additives Blenden akkumuliert. Für jede Lichtquelle muss also jedes Objekt gezeichnet werden. Angenommen wir haben nL Lichtquellen und nO Objekte, dann liegt die Anzahl der Rendercalls bei $O(nO * nL)$. Natürlich ist es möglich mehrere Lichtquellen in einem Pass (z.B. 8 auf einmal) zu berechnen, aber wir gehen von hunderten Lichtquellen aus, es sind also mehrere Passes notwendig und die Geometrie müsste entsprechend mehrfach verarbeitet werden.
 Deferred Shading verfolgt einen anderen Ansatz: Anstatt jedes Objekt der Szene für jeden Licht-Pass neu zu renderen, werden zunächst für jeden Pixel alle beleuchtungsrelevanten Daten (z.B. 3D-Position, Normale, Textur-Farbe, etc.) in ein oder mehrere Rendertargets (oftmals auch G-Buffer genannt) geschrieben. Die eigentliche Lichtberechnung kann nun durchgeführt werden indem ein bildschirmfüllendes Quad bzw. die Lichtgeometrie (Kugel für ein Punktlicht, Kegel für ein Spotlight) gerendert wird. Für jeden Pixel werden die Daten aus dem G-Buffer ausgelesen und die Beleuchtung entsprechend dieser Daten berechnet. Die Zahl der Rendercalls liegt bei diesem Ansatz nur noch bei $O(nO + nL)$. Mit dieser Methode sind hunderte Lichter gleichzeitig in einer hoch-komplexen Szene möglich.
-Das Verfahren ist nur dann sinnvoll, wenn man es mit einer sehr komplexen Geometrie und sehr vielen Lichtquellen zu tun hat. Hat man zum Beispiel zwar viele Lichtquellen, aber eine einfache Geometrie, kann bereits ein einfacher Depth-Only-Pass zum initialisieren des Z-Buffers verhindern, dass für unsichtbare Pixel unnötige Lichtberechnungen durchgeführt werden.
+Das Verfahren ist nur dann sinnvoll, wenn man es mit einer sehr komplexen Geometrie und sehr vielen Lichtquellen zu tun hat. 
 
 \begin{figure}[H]
     \centering
