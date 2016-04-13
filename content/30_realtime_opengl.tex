@@ -425,6 +425,14 @@ Es gibt komplexere lokale Beleuchtungsmodelle, wie zum Beispiel das Cook-Torrent
 \end{figure}
 
 
+
+
+\subsubsection{Bumpmapping}
+Die relativen Höheninformationen liegen in einer Textur in Form von Graustufen vor – der sogenannten Heightmap. Jeder Grauwert steht für eine bestimmte Höhe. Normalerweise ist Schwarz (Wert 0) die „tiefste“ Stelle und Weiß (Wert: 255) die „höchste“.  Bei der Lichtberechnung, die wesentlich von der Normale abhängt, wird die gegebene Normale so abgeändert, als gäbe es eine Vertiefung bzw. eine Erhöhung entsprechend der Höheninformation.  Da Höhenunterschiede nur durch Veränderung der Helligkeit vorgegaukelt werden, die Flächen aber glatt bleiben, treten einige sichtbare Fehler auf:
+Bei flachem Betrachtungswinkel wirkt die Struktur stark verzerrt.
+Die Silhouette bleibt so eben wie beim ursprünglichen Objekt.
+Es wird ein glatter Schatten geworfen.
+Bumps werfen keine Schatten aufeinander.
 \subsubsection{Bumpmapping}
 \begin{figure}[H]
     \centering
@@ -433,13 +441,13 @@ Es gibt komplexere lokale Beleuchtungsmodelle, wie zum Beispiel das Cook-Torrent
     \label{fig:uv-mapping3}
 \end{figure}
 
+
+
+
 \subsubsection{Displacementmapping}
-
-
-
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.0\textwidth]{images/Displacement.jpg}
+    \includegraphics[width=0.5\textwidth]{images/Displacement.jpg}
     \caption{Displacementmapping} %TODO: fix caption&label
     \label{fig:displacement-mapping}
 \end{figure}
@@ -447,38 +455,64 @@ Es gibt komplexere lokale Beleuchtungsmodelle, wie zum Beispiel das Cook-Torrent
 
 
 \subsubsection{Shadowmap}
-
-\subsubsection{Bumpmapping}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.0\textwidth]{images/sm_ns.png}
+    \includegraphics[width=0.5\textwidth]{images/sm_ns.png}
     \caption{shadowmap} %TODO: fix caption&label
     \label{fig:shadowmap1}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.0\textwidth]{images/sm_ws.png}
+    \includegraphics[width=0.5\textwidth]{images/sm_ws.png}
     \caption{shadowmap} %TODO: fix caption&label
     \label{fig:shadowmap2}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.0\textwidth]{images/sm_zb.png}
+    \includegraphics[width=0.5\textwidth]{images/sm_zb.png}
     \caption{shadowmap} %TODO: fix caption&label
     \label{fig:shadowmap3}
 \end{figure}
 
 
 
+
+
 \subsubsection{ Forward shading, Blending und Transparenz}
 
-\subsubsection{Deffered shading}
+\subsubsection{Deferred shading}
+Der Begriff Deferred Shading (zu dt. "verzögertes Schattieren") oder auch Deferred Lighting ("verzögerte Beleuchtung") beschreibt eine Technik, mit deren Hilfe die Geometrieverarbeitung von der Lichtberechnung getrennt werden kann. Dies erlaubt hunderte Lichtquellen in einer hoch-komplexen Szene.
+
+
+Um eine Szene mit einem traditionellen Forward-Renderer zu beleuchten, wird normalerweise jedes Objekt der Szene mit den entsprechenden Beleuchtungsparametern der Lichtquelle gezeichnet. Die verschiedenen Ergebnisse werden durch additives Blenden akkumuliert. Für jede Lichtquelle muss also jedes Objekt gezeichnet werden. Angenommen wir haben nL Lichtquellen und nO Objekte, dann liegt die Anzahl der Rendercalls bei $O(nO * nL)$. Natürlich ist es möglich mehrere Lichtquellen in einem Pass (z.B. 8 auf einmal) zu berechnen, aber wir gehen von hunderten Lichtquellen aus, es sind also mehrere Passes notwendig und die Geometrie müsste entsprechend mehrfach verarbeitet werden.
+Deferred Shading verfolgt einen anderen Ansatz: Anstatt jedes Objekt der Szene für jeden Licht-Pass neu zu renderen, werden zunächst für jeden Pixel alle beleuchtungsrelevanten Daten (z.B. 3D-Position, Normale, Textur-Farbe, etc.) in ein oder mehrere Rendertargets (oftmals auch G-Buffer genannt) geschrieben. Die eigentliche Lichtberechnung kann nun durchgeführt werden indem ein bildschirmfüllendes Quad bzw. die Lichtgeometrie (Kugel für ein Punktlicht, Kegel für ein Spotlight) gerendert wird. Für jeden Pixel werden die Daten aus dem G-Buffer ausgelesen und die Beleuchtung entsprechend dieser Daten berechnet. Die Zahl der Rendercalls liegt bei diesem Ansatz nur noch bei $O(nO + nL)$. Mit dieser Methode sind hunderte Lichter gleichzeitig in einer hoch-komplexen Szene möglich.
+Das Verfahren ist nur dann sinnvoll, wenn man es mit einer sehr komplexen Geometrie und sehr vielen Lichtquellen zu tun hat. Hat man zum Beispiel zwar viele Lichtquellen, aber eine einfache Geometrie, kann bereits ein einfacher Depth-Only-Pass zum initialisieren des Z-Buffers verhindern, dass für unsichtbare Pixel unnötige Lichtberechnungen durchgeführt werden.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{images/deffered_shading.jpg}
-    \caption{deffered shading} %TODO: fix caption&label
+    \caption{G-Buffer beim deferred shading} %TODO: fix caption&label
     \label{fig:defferedshading}
 \end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/deferred_shading_off.jpg}
+    \caption{Szene grinder mit forward shading} %TODO: fix caption&label
+    \label{fig:defferedshading}
+\end{figure}
+
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/deferred_shading_on.jpg}
+    \caption{Szene grinder mit  differed shading} %TODO: fix caption&label
+    \label{fig:defferedshading}
+\end{figure}
+
+
+
 \subsection{GLSL via WebGL}
