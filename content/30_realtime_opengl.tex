@@ -317,36 +317,97 @@ Das Lambertsche Modell beschreibt, wie durch den perspektivischen Effekt die Str
 I_d :=  I_l \cdot I_m \cdot max\biggl ( 0, \biggl< n, \frac{1}{||\overline{PL}||} \cdot \overline{PL} \biggr> \biggr)
 \end{align*}
 wobei $I_l \in [0,1]$ die Lichtintensität der Lichtquelle, $I_m \in [0,1]$ eine Materialkonstante und $max(a,b)$ das maximum der Zahlen $a$ und $b$ ist. 
+Um die gesamte Lichtintensität zu berechnen wird noch ein konstanter, sogenannter ambienter Lichtanteil $I_a$ hinzuaddiert
+\begin{align}
+I := I_d + I_a \;.
+\end{align} 
+$I_a$ ist wie gesagt eine Konstante.
+ Der Eindruck von ambienten Licht, also Licht, das aus keiner erkennbaren Richtung kommt und alles gleichmässig erhellt, entsteht durch Lichtstrahlen, die sehr oft an Gegenständen reflektiert werden.
+Der Wert $I$ muss gegebenenfalls auf das Intervall $[0,1]$ beschränkt werden.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.0\textwidth]{images/lambert.png}
+    \includegraphics[width=0.8\textwidth]{images/lambert.png}
     \caption{Lambert Modell diffuser Reflektion}
     \label{fig:reflection-lambert-diffuse-model}
 \end{figure}
 
-
+   
 \subsubsection{Phong Modell}
+Das Phong-Modell erweitert das  Lambert-Modell um den Effekt von spiegelnden Reflektionen. Die Idee ist, dass die Helligkeit zusätzlich zunimmt, je mehr die Betrachtungsrichtung dem perfekt reflektiertem Lichtstrahl entspricht.  
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.0\textwidth]{images/phong.png}
+    \includegraphics[width=0.6\textwidth]{images/phong_directions.jpg}
+    \caption{Die einzelnen Komponenten des Phong-Modells}
+    \label{fig:phong-directions}
+\end{figure}
+
+Ist $v$ der normierte Vektor in Richtung Kamera und $l$ der normierte Vektor in Richtung Lichtquelle, dann definiert man die  reflektierende Lichtintensität durch
+\begin{align}
+I_s := I_l \cdot I_m \cdot s \cdot <r,v>^h \;.
+\end{align}
+$I_l$ ist hierbei wieder die Intensität der Lichtquelle und $I_m$ eine Materialkonstante. Beide liegen in einen Wertebereich von $[0,1]$ 
+$h$ ist eine ganze Zahl im Wertebereich $[0, \infty)$ und bestimmt die "härte" der Reflexion. $s$ ist eine Fließkommazahl im Wertebereich $(0,1]$ und beeinflusst den Glanz der Oberfläche.
+ Der Vektor $r$ lässt sich berechnen durch 
+\begin{align}
+r = -l + 2 \cdot <n, l> \cdot n
+\end{align}
+wobei $n$ die Normale an dem betrachteten Oberflächenpunkt ist.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/phong.png}
     \caption{Phong Modell spiegelnder Reflektion}
     \label{fig:reflection-phong-specular-model}
 \end{figure}
 
+Im Phong-Modell wird nun endgültige Lichtentität wie folgt zusammengesetzt:
+
+\begin{align}
+I := I_s + I_d + I_a
+\end{align}
+wobei $I_d$ die diffuse Lichtintensität aus dem Lambert-Modell und $I_a$ den konstanten, ambienten Anteil bedeutet.
+Gegebenenfalls muss $I$ wieder auf das Intervall $[0,1]$ beschränkt werden.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/Phong_Components.png}
+    \caption{Die einzelnen Komponenten des Phong-Modells}
+    \label{fig:phong-components}\end{figure}
+
+Die Möglichkeiten, ein bestimmtes Material zu beschreiben, sind  beim Phong-Modell beschränkt. 
+Es gibt komplexere lokale Beleuchtungsmodelle, wie zum Beispiel das Cook-Torrente-Modell, die eine detaillierte Materialbeschreibung zulassen.
 
 
 
 
 \subsection{Shader und standard Algorithmen}
-\subsubsection{Programmierung}
 
-\subsubsection{Shading}
+\subsubsection{Flat-Shading}
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{images/phong_flat_shading.jpg}
     \caption{Flat- und Phong-Shading-Modelle}
     \label{fig:shading-flat-phong-models}
 \end{figure}
+
+
+\subsubsection{Gouraud und Phong Shading}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/gouraud_normals.png}
+    \caption{Verschiedene Normalen von angrenzenden Flächen}
+    \label{fig:gouraud-shading-scanline}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/gouraud_scanline.png}
+    \caption{Scanline-Verfahren beim Gouraud-Shading}
+    \label{fig:gouraud-shading-scanline}
+\end{figure}
+
+
 
 \subsubsection{Texturen und UV-Mapping}
 \begin{figure}[H]

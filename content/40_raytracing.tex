@@ -39,20 +39,25 @@ Letztere Gleichung wird auch Reflectance-Gleichung genannt.
  
 \subsubsection{Die Rendergleichung (Erste und zweite Form)}
 
+Durch Hinzunahme des von dem Oberflächenpunkt emittierten Lichtes $L_e(x, \omega_o)$ zu dem   an diesem Punkt reflektiert Lichtes erhalten wir die sogenannte Renderingleichung 
 \begin{align}
-L_o(x, \omega_o) = L_e(x, \omega_o)  + \displaystyle \int_{S^2}f_r (x, \omega_i, \omega_0) \cdot L_i(x, \omega_i)  \cdot  \cos(\theta_i) d\omega_i
+L_o(x, \omega_o) = L_e(x, \omega_o)  + \displaystyle \int_{S^2}f_r (x, \omega_i, \omega_0) \cdot L_i(x, \omega_i)  \cdot  \cos(\theta_i) d\omega_i \; .
 \end{align}
+
+Dieses Integral kann durch eine Integraltransformation in eine handlichere Form gebracht werden. Insbesondere die Berechnung der Einfallenden Irradiance  $L_i(x, \omega_i)$  ist in keinster weise offensichtlich. 
+
+
 
 Durch die Beziehung $d_omega_i = $
 
 \subsection{Raycasting}
 \subsubsection{"Klassisches" Raytracing}
-\subsection{Radiocity Verfahren}
+\subsubsection{Radiocity Verfahren}
 \subsubsection{Monte Carlo Integration und Pathtracing}
 \subsubsection{Raymarching}
-\subsubsection{Klassifikation der Verfahren}
+\subsection{Klassifikation der Verfahren}
 
-\subsubsection{Datenstrukturen für Bereichsabfragen}
+\subsection{Datenstrukturen für Bereichsabfragen}
 
 
 \subsection{Labor}
