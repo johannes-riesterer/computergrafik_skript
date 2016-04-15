@@ -269,7 +269,7 @@ void main() {
             var tLocation = gl.getUniformLocation(program, "t");
             gl.uniform1f(tLocation, someProgress);
 
-             gl.uniform3f(gl.getUniformLocation(program, "lightSource"), 0, 1, 1);
+            gl.uniform3f(gl.getUniformLocation(program, "lightSource"), 0, 1, 1);
 
             someProgress += 0.01;
             

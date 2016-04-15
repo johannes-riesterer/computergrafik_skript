@@ -40,7 +40,7 @@ varying float RESX;
 varying float RESY;
 
 void main() {
-        gl_FragColor = vec4(0.0 ,1.0,0.0,1.0);
+        gl_FragColor = vec4( (gl_FragCoord.y/RESY) * vec3 (1.0,1.0,1.0),1.0);
     }
 </script>
 
