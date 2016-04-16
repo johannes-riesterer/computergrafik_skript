@@ -52,6 +52,26 @@ Sichtvolumen genannt wird.
 
 Die Multiplikation all diese Matrizen wird auch die MODEL-VIEW-PROJECTION-MATRIX genannt. 
 
+In Fall obiger Grafik ist 
+\begin{align*}
+MVP := \begin{pmatrix}  
+\frac{2n}{r-l}  &  0 &  \frac{r+l}{r-l}  & 0  \\
+0   &  \frac{2n}{t-b} & \frac{t+b}{t-b} & 0  \\
+0   &  0 & \frac{-f-n}{f-n} & \frac{-2\cdot f \cdot n}{f-n}  \\
+0   &  0 & -1 & 0  
+\end{pmatrix}  \; .
+\end{align*} 
+und insbesondere falls $r = -l$ und $t=-b$  ist
+
+\begin{align*}
+MVP := \begin{pmatrix}  
+\frac{n}{r}  &  0 & 0  & 0  \\
+0   &  \frac{n}{t} & \frac{t+b}{t-b} & 0  \\
+0   &  0 & \frac{-f-n}{f-n} & \frac{-2\cdot f \cdot n}{f-n}  \\
+0   &  0 & -1 & 0  
+\end{pmatrix}  \; .
+\end{align*} 
+
 \subsubsection*{Windows-Viewport-Transformation}
 Zuletzt müssen die zweidimensionalen Punkte noch mit Hilfe einer 
 zweidimensionalen affinen Transformation in das Koordinatensystems des 
@@ -270,8 +290,8 @@ Der wichtigste Schritt ist hierbei das Abschneiden von Strecken an diesen Kanten
 \begin{Algorithmus}[Cohen-Sutherland]
 \end{Algorithmus}
 
-\subsubsection*{Culling}
-Als Culling bezeichnet man das Entfernen von Polygonen anhand Ihrer Orientierung. Man definiert, welche Orientierung eine Rückseite darstellt und verwirft dann Polygone mit dieser Orientierung.
+\subsubsection*{Culling/Rückseitenentfernung}
+Als Culling bezeichnet man das Entfernen von Polygonen anhand Ihrer Orientierung, beziehungsweise Anhand der zugehörigen Normale. Man definiert, welche Orientierung eine Rückseite darstellt und verwirft dann Polygone, deren Normale positives beziehungsweise negatives Skalarprodukt mit der Blickrichtung aufweisen. So werden Beispielsweise Rückseiten, die nicht sichtbar sind, nicht weiter in der Pipeline verarbeitet.
 
 \subsubsection* {z-Buffer}
 Der Z-Buffer enthält für jedes Pixel $(u,v)$ nach der Rasterung  einen Wert zwischen $-1$ und $1$. Dieser Wert  ist der Abstand zum nächsten Punkt eines Polygons  in Clipping-Koordinaten von diesem Pixel auf der Projektionsebene.  Wir haben somit eine Funktion

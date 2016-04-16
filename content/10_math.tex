@@ -702,8 +702,13 @@ Die Abbildung
 persp_{xy} : \mathbb{A}^3 \to \mathbb{A}^2 \\
 \begin{pmatrix}  X \\ Y \\ Z\end{pmatrix}  \mapsto \begin{pmatrix}  \frac{X}{\frac{Z}{d} +1 } \\   \frac{Y}{\frac{Z}{d} +1 } \end{pmatrix}
 \end{align*}
-die Zentralprojektion auf die $X-Y$-Ebene mit Augendistanz $d$.
+die Zentralprojektion auf die $X-Y$-Ebene mit Augendistanz $d$ beziehungsweise ist
+\begin{align*}
+\overline{persp}_{xy} : \mathbb{A}^3 \to \mathbb{A}^2 \\
+\begin{pmatrix}  X \\ Y \\ Z\end{pmatrix}  \mapsto \begin{pmatrix}  \frac{X}{\frac{Z}{d}  } \\   \frac{Y}{\frac{Z}{d}  } \end{pmatrix}
+\end{align*}  die Zentralprojektion auf die Ebene parallel zur $X-Y$-Ebene mit Abstand $d$ und  Augenpunkt im Uhrsprung.
 \end{Definition} 
+Die Motivation folgt direkt aus dem Strahlensatz.
 
 \begin{Bemerkung}
 Die Zentralprojektion auf die $X-Y$-Ebene mit Augendistanz $d$ lässt sich nicht durch Multiplikation mit einer  $2 \times 3$-Matrix realisieren.
@@ -711,7 +716,7 @@ Die Zentralprojektion auf die $X-Y$-Ebene mit Augendistanz $d$ lässt sich nicht
 
 
 
-Definieren wir die Matrix 
+Definieren wir die Matrizen
 \begin{align*}
 K_{persp_{xy}} := \begin{pmatrix}  
 1   &  0 & 0 & 0  \\
@@ -720,6 +725,7 @@ K_{persp_{xy}} := \begin{pmatrix}
 0   &  0 & \frac{1}{d} & 1  
 \end{pmatrix} 
 \end{align*}
+
 und 
 \begin{align*}
 K_{orth_{xy}} := \begin{pmatrix}  
@@ -737,3 +743,13 @@ so können wir die Zentralprojektion auf die $X-Y$-Ebene mit Augendistanz $d$ du
  & \mapsto K_{orth_{xy}} \cdot   \begin{pmatrix} x \\ y \\ z \\ \frac{z}{d} + 1 \end{pmatrix}=   \begin{pmatrix} x \\ y \\ \frac{z}{d} + 1 \end{pmatrix}   \mapsto 
  \begin{pmatrix}  \frac{x}{\frac{z}{d} +1 } \\   \frac{y}{\frac{z}{d} +1 } \end{pmatrix}
  \end{align*}
+
+Analog für die andere Projektion mit der Matrix
+\begin{align*}
+K_{\overline{persp}_{xy}} := \begin{pmatrix}  
+1   &  0 & 0 & 0  \\
+0   &  1 & 0 & 0  \\
+0   &  0 & 1 & 0  \\
+0   &  0 & \frac{1}{d} & 0  
+\end{pmatrix}  \; .
+\end{align*}
