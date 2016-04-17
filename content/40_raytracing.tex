@@ -32,23 +32,53 @@
 \end{figure}
 
 \subsection{Farbwahrnehmung und Farbmodelle}
+
 \subsection{Globale Beleuchtungsmodelle und Rendergleichung}
 \subsubsection{Photometrie}
-Die Radiantenergie $Q$ ist die Lichtenergie. Sie wird durch einen Strom von Photonen erzeugt. Die Energie eines Photons ist 
+
+Die Radiantenergie $Q$ ist die Lichtenergie (Strahlungsleistung). Sie wird durch einen Strom von Photonen erzeugt. Die Energie eines Photons ist 
 durch $E=h \cdot f$ geben, wobei $h$ das konstante Planksche Wirkungsquantum und $f$ die Frequenz der Welle ist (Welle-Teilchen Dualismus).  
 Die Ableitung nach der Zeit
 \begin{align}
 \phi := \frac{\partial Q}{\partial t}
 \end{align}
-wird als Radiant Flux oder Strahlungsleistung bezeichnet. Diese  beschreibt den Energiefluss, beziehungsweise den Energie-Eintritt und Energie-Austritt.
+wird als Radiant Flux oder Strahlungsleistung bezeichnet. 
+Diese  beschreibt den Energiefluss, beziehungsweise den Energie-Eintritt und Energie-Austritt.
 
-Der Radiant Flux in einem infinitesimal dünnen Strahl vom Punkt $x$ in Richtung $\omega$ wird als Radiance $L(x, \omega)$ bezeichnet.  Formal lässt sich dies durch 
+ \begin{figure}[H]
+    \centering
+    \includegraphics[height=0.5\textwidth]{images/infrared_dog.jpg}
+    \caption{Strahlungsleistung an verschiedenen Punkten der Oberfläche}
+    \label{fig:cray}
+\end{figure}
+
+
+
+Das photometrische Grundgesetzt beschreibt die Strahlung, die von einem infintesimalen Flächenelement auf ein anderes infinitesimales Flächenelement 
+übertragen wird.  
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/Fotometrisches_Grundgesetz_Schema.png}
+    \caption{Fotometrisches Grundgesetz}
+    \label{fig:cray}
+\end{figure}
 \begin{align}
-L(x, \omega) := \frac{d^2 \phi}{\cos(\theta) dA \cdot d\omega}
+d^2 \phi = L\cdot \cos(\beta_1) \cdot dA_1 \cdot d \omega_2 = \frac{1}{r_{12}^2}  \cdot L \cdot \cos(\beta_1) \cdot \cos(\beta_2) \cdot dA_1 \cdot d \omega_2
 \end{align}
-ausdrücken. Die Radiance ist also der Radiant Flux pro infinitesimale Flächeneinheit $\cos(\theta) dA$ und pro  Raumwinkel $d \omega$.
+Die Radiance $L(x, \omega)$ ist  der Radiant Flux in einem infinitesimal dünnen Strahl vom Punkt $x$ in Richtung $\omega$ und ist 
+\begin{align}
+L(x, \omega) := \frac{d^2 \phi}{\cos(\theta) \cdot dA \cdot d\omega} 
+\end{align}
+wobei $\theta$ der Winkel zwischen der Flächennormale am Punkt $x$ und der Richtung $\omega$ ist.
+Die Radiance ist also der Radiant Flux pro infinitesimale Flächeneinheit $\cos(\theta) dA$ und pro  Raumwinkel $d \omega$.
+Die Einheit ist $\frac{W}{m^2\cdot sr}$ (Watt ($W$) pro Quadratmeter ($m^2$) und pro Steradiant ($sr$)). 
+Eine Objekt, dessen Stahldichte für alle Punkte und Richtungen konstant ist, also
+$L(x, \omega) = c$  für alle $x \in O$ und $\omega \in S^2$, bezeichnet man auch als Lambertschen Strahler. 
 
-\subsubsection{BRDF und Reflectancegleichung }
+Mit $L_i, L_o,Lr,L_e$ bezeichnet man entsprechend den eintreffende, ausgehende, reflektierte beziehungsweise emittierte Radiance.
+
+
+
 Die sogenannte bidirektionale Reflektanzverteilungsfunktion (engl. Bidirectional Reflectance Distribution Function, BRDF)
 ist eine Funktion $f_r (x, \omega_i, \omega_r)$, die das Reflexionsverhalten der Oberfläche eines Materials beschreibt. 
 Sie hat als Eingabe die ausgehende Richtung $\omega_r$ und die eingehende Richtung  $\omega_i$ am Punkt $x$. 
@@ -66,7 +96,7 @@ Letztere Gleichung wird auch Reflectance-Gleichung genannt.
     \label{fig:raytracin_brdf}
 \end{figure}
 
-\subsubsection{Das photometrische Grundgesetz}
+
  
 \subsubsection{Die Rendergleichung (Erste und zweite Form)}
 

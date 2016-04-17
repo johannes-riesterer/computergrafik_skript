@@ -52,7 +52,7 @@ Sichtvolumen genannt wird.
 
 Die Multiplikation all diese Matrizen wird auch die MODEL-VIEW-PROJECTION-MATRIX genannt. 
 
-In Fall obiger Grafik ist 
+Sie ist in diesem Fall geben durch 
 \begin{align*}
 MVP := \begin{pmatrix}  
 \frac{2n}{r-l}  &  0 &  \frac{r+l}{r-l}  & 0  \\
@@ -71,6 +71,13 @@ MVP := \begin{pmatrix}
 0   &  0 & -1 & 0  
 \end{pmatrix}  \; .
 \end{align*} 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/gl_projectionmatrix03.png}
+    \caption{Zentralprojektion}
+    \label{fig:projection-sight-vol}
+\end{figure}
 
 \subsubsection*{Windows-Viewport-Transformation}
 Zuletzt müssen die zweidimensionalen Punkte noch mit Hilfe einer 
