@@ -34,6 +34,16 @@
 \subsection{Farbwahrnehmung und Farbmodelle}
 
 \subsection{Globale Beleuchtungsmodelle und Rendergleichung}
+
+\subsubsection{Sphären, Raumwinkel und infinitessimale Flächenstücke}
+
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/solidangle.png}
+    \caption{Raumwinkel}
+    \label{fig:cray}
+\end{figure}
+
 \subsubsection{Photometrie}
 
 Die Radiantenergie $Q$ ist die Lichtenergie (Strahlungsleistung). Sie wird durch einen Strom von Photonen erzeugt. Die Energie eines Photons ist 
@@ -42,7 +52,7 @@ Die Ableitung nach der Zeit
 \begin{align}
 \phi := \frac{\partial Q}{\partial t}
 \end{align}
-wird als Radiant Flux oder Strahlungsleistung bezeichnet. 
+wird als Radiant Flux oder Strahlungsleistung bezeichnet. Die Einheit ist Watt (W).
 Diese  beschreibt den Energiefluss, beziehungsweise den Energie-Eintritt und Energie-Austritt.
 
  \begin{figure}[H]
@@ -62,6 +72,7 @@ Das photometrische Grundgesetzt beschreibt die Strahlung, die von einem infintes
     \caption{Fotometrisches Grundgesetz}
     \label{fig:cray}
 \end{figure}
+
 \begin{align}
 d^2 \phi = L\cdot \cos(\beta_1) \cdot dA_1 \cdot d \omega_2 = \frac{1}{r_{12}^2}  \cdot L \cdot \cos(\beta_1) \cdot \cos(\beta_2) \cdot dA_1 \cdot d \omega_2
 \end{align}
