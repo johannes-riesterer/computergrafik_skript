@@ -413,6 +413,18 @@ n (u,v):= \frac{\partial}{\partial u} s(u,v) \times \frac{\partial}{\partial v} 
 welcher Senkrecht auf dieser Ebene steht,  die Normale.
 \end{Definition}
 
+\begin{Definition}
+Ist 
+\begin{align*}
+s: U \subset \mathbb{R}^2 \to \mathbb{R}^3 \\
+s(u,v) := \begin{pmatrix} x(u,v) \\ y(u,v) \\ z(u,v) \end{pmatrix} 
+\end{align*} 
+eine Fläche und $S$ die von Ihr erzeugte Oberfläche, so definiert man das OberflächenIntegral
+\begin{align*}
+\int_S d \omega:= \int_U ||n(u,v)|| \cdot du dv \;.
+\end{align*} 
+Man nennt $d \omega$ beziehungsweise $ ||n(u,v)||$ das infinitesimale Flächenelement.
+\end{Definition}
 
 
 \subsubsection{Bezier Kurven und Flächen}

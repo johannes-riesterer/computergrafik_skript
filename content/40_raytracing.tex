@@ -64,7 +64,7 @@ Diese  beschreibt den Energiefluss, beziehungsweise den Energie-Eintritt und Ene
 
 
 
-Das photometrische Grundgesetzt beschreibt die Strahlung, die von einem infintesimalen Flächenelement auf ein anderes infinitesimales Flächenelement 
+Das sogenannte photometrische Grundgesetzt beschreibt die Strahlung, die von einem infintesimalen Flächenelement auf ein anderes infinitesimales Flächenelement 
 übertragen wird.  
  \begin{figure}[H]
     \centering
@@ -74,19 +74,19 @@ Das photometrische Grundgesetzt beschreibt die Strahlung, die von einem infintes
 \end{figure}
 
 \begin{align}
-d^2 \phi = L\cdot \cos(\beta_1) \cdot dA_1 \cdot d \omega_2 = \frac{1}{r_{12}^2}  \cdot L \cdot \cos(\beta_1) \cdot \cos(\beta_2) \cdot dA_1 \cdot d \omega_2
+d^2 \phi = L\cdot \cos(\beta_1) \cdot dA_1 \cdot d \omega_2 = \frac{1}{r_{12}^2}  \cdot L \cdot \cos(\beta_1) \cdot \cos(\beta_2) \cdot dA_1 \cdot d \omega_2 \; .
 \end{align}
-Die Radiance $L(x, \omega)$ ist  der Radiant Flux in einem infinitesimal dünnen Strahl vom Punkt $x$ in Richtung $\omega$ und ist 
+Hierbei ist $L$   die Radiance oder auch Stahldichte  welche durch  
 \begin{align}
 L(x, \omega) := \frac{d^2 \phi}{\cos(\theta) \cdot dA \cdot d\omega} 
 \end{align}
-wobei $\theta$ der Winkel zwischen der Flächennormale am Punkt $x$ und der Richtung $\omega$ ist.
-Die Radiance ist also der Radiant Flux pro infinitesimale Flächeneinheit $\cos(\theta) dA$ und pro  Raumwinkel $d \omega$.
+definiert werden kann, wobei $\theta$ der Winkel zwischen der Flächennormale am Punkt $x$ und der Richtung $\omega$ ist.
+Die Radiance ist also der Radiant Flux pro infinitesimale Flächeneinheit $dA$ und pro  Raumwinkel $d \omega$ unabhängig vom Strahlwinkel $\cos(\theta)$.
 Die Einheit ist $\frac{W}{m^2\cdot sr}$ (Watt ($W$) pro Quadratmeter ($m^2$) und pro Steradiant ($sr$)). 
+Mit $L_i, L_o,Lr,L_e$ bezeichnet man entsprechend den eintreffende, ausgehende, reflektierte beziehungsweise emittierte Radiance.
+
 Eine Objekt, dessen Stahldichte für alle Punkte und Richtungen konstant ist, also
 $L(x, \omega) = c$  für alle $x \in O$ und $\omega \in S^2$, bezeichnet man auch als Lambertschen Strahler. 
-
-Mit $L_i, L_o,Lr,L_e$ bezeichnet man entsprechend den eintreffende, ausgehende, reflektierte beziehungsweise emittierte Radiance.
 
 
 
@@ -116,7 +116,7 @@ Durch Hinzunahme des von dem Oberflächenpunkt emittierten Lichtes $L_e(x, \omeg
 L_o(x, \omega_o) = L_e(x, \omega_o)  + \displaystyle \int_{S^2}f_r (x, \omega_i, \omega_0) \cdot L_i(x, \omega_i)  \cdot  \cos(\theta_i) d\omega_i \; .
 \end{align}
 
-Dieses Integral kann durch eine Integraltransformation in eine handlichere Form gebracht werden. Insbesondere die Berechnung der Einfallenden Irradiance  $L_i(x, \omega_i)$  ist in keinster weise offensichtlich. 
+
 
 
 
