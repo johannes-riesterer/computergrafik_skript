@@ -64,7 +64,7 @@ Diese  beschreibt den Energiefluss, beziehungsweise den Energie-Eintritt und Ene
 
 
 
-Das sogenannte photometrische Grundgesetzt beschreibt die Strahlung, die von einem infintesimalen Flächenelement auf ein anderes infinitesimales Flächenelement 
+Das sogenannte photometrische Grundgesetzt beschreibt die Strahlung, die von einem  Flächenelement auf ein anderes  Flächenelement 
 übertragen wird.  
  \begin{figure}[H]
     \centering
@@ -74,13 +74,14 @@ Das sogenannte photometrische Grundgesetzt beschreibt die Strahlung, die von ein
 \end{figure}
 
 \begin{align}
-d^2 \phi = L\cdot \cos(\beta_1) \cdot dA_1 \cdot d \omega_2 = \frac{1}{r_{12}^2}  \cdot L \cdot \cos(\beta_1) \cdot \cos(\beta_2) \cdot dA_1 \cdot d \omega_2 \; .
+\phi &= \int_{A_1} \int_{S^2} L(x, \omega)\cdot \cos(\beta_1) \cdot dA_1 \cdot d \omega_2 \\
+&= \int_{A_1} \int_{A_2} \frac{1}{r_{12}^2}  \cdot L(x, \omega) \cdot \cos(\beta_1) \cdot \cos(\beta_2) \cdot dA_1 \cdot d A_2 \; .
 \end{align}
-Hierbei ist $L$   die Radiance oder auch Stahldichte  welche durch  
+Hierbei ist $L(x, \omega)$   die Radiance oder auch Stahldichte  der von $A_2$ abgestrahlte Strahlung  und ist (formal) durch  
 \begin{align}
-L(x, \omega) := \frac{d^2 \phi}{\cos(\theta) \cdot dA \cdot d\omega} 
+L(x, \omega) := \frac{d^2 \phi}{\cos(\omega) \cdot dA \cdot d\omega} \; ,
 \end{align}
-definiert werden kann, wobei $\theta$ der Winkel zwischen der Flächennormale am Punkt $x$ und der Richtung $\omega$ ist.
+wobei $\theta$ der Winkel zwischen der Flächennormale am Punkt $x$ und der Richtung $\omega$ ist.
 Die Radiance ist also der Radiant Flux pro infinitesimale Flächeneinheit $dA$ und pro  Raumwinkel $d \omega$ unabhängig vom Strahlwinkel $\cos(\theta)$.
 Die Einheit ist $\frac{W}{m^2\cdot sr}$ (Watt ($W$) pro Quadratmeter ($m^2$) und pro Steradiant ($sr$)). 
 Mit $L_i, L_o,Lr,L_e$ bezeichnet man entsprechend den eintreffende, ausgehende, reflektierte beziehungsweise emittierte Radiance.
