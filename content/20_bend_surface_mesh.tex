@@ -421,11 +421,17 @@ s(u,v) := \begin{pmatrix} x(u,v) \\ y(u,v) \\ z(u,v) \end{pmatrix}
 \end{align*} 
 eine Fläche und $S$ die von Ihr erzeugte Oberfläche, so definiert man das OberflächenIntegral
 \begin{align*}
-\int_S d \omega:= \int_U ||n(u,v)|| \cdot du dv \;.
+\int_S d \omega:= \int_U ||n(u,v)|| \cdot dU \;.
 \end{align*} 
 Man nennt $d \omega$ beziehungsweise $ ||n(u,v)||$ das infinitesimale Flächenelement.
 \end{Definition}
 
+\begin{Satz}
+Ist $U = U_1 \times U_2$ und $f: U \to \mathbb{R}$ eine integrierbare Funktion, so gilt
+\begin{align*}
+\int_U f dU = \int_{U_1} \int_{U_2} f  dU_2 dU_1 \;.
+\end{align*} 
+\end{Satz}
 
 \subsubsection{Bezier Kurven und Flächen}
 \begin{Definition}

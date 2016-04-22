@@ -52,9 +52,9 @@ Sichtvolumen genannt wird.
 
 Die Multiplikation all diese Matrizen wird auch die MODEL-VIEW-PROJECTION-MATRIX genannt. 
 
-Sie ist in diesem Fall geben durch 
+In obigen Fall ist die Projektionsmatrix gegeben  geben durch 
 \begin{align*}
-MVP := \begin{pmatrix}  
+P := \begin{pmatrix}  
 \frac{2n}{r-l}  &  0 &  \frac{r+l}{r-l}  & 0  \\
 0   &  \frac{2n}{t-b} & \frac{t+b}{t-b} & 0  \\
 0   &  0 & \frac{-f-n}{f-n} & \frac{-2\cdot f \cdot n}{f-n}  \\
@@ -64,7 +64,7 @@ MVP := \begin{pmatrix}
 und insbesondere falls $r = -l$ und $t=-b$  ist
 
 \begin{align*}
-MVP := \begin{pmatrix}  
+P := \begin{pmatrix}  
 \frac{n}{r}  &  0 & 0  & 0  \\
 0   &  \frac{n}{t} & 0 & 0  \\
 0   &  0 & \frac{-f-n}{f-n} & \frac{-2\cdot f \cdot n}{f-n}  \\
@@ -413,8 +413,8 @@ Es gibt komplexere lokale Beleuchtungsmodelle, wie zum Beispiel das Cook-Torrent
 \subsubsection{Flat-Shading}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.0\textwidth]{images/phong_flat_shading.jpg}
-    \caption{Flat- und Phong-Shading-Modelle}
+    \includegraphics[width=1.0\textwidth]{images/flat_gouraud_phong.jpg}
+    \caption{Flat, Gouraud und Phong-Shading}
     \label{fig:shading-flat-phong-models}
 \end{figure}
 
