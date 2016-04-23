@@ -46,14 +46,17 @@
 
 \subsubsection{Photometrie}
 
-Die Radiantenergie $Q$ ist die Lichtenergie (Strahlungsleistung). Sie wird durch einen Strom von Photonen erzeugt. Die Energie eines Photons ist 
+Die Radiantenergie $Q$ ist die Lichtenergie. Sie wird durch einen Strom von Photonen erzeugt. Die Energie eines Photons ist 
 durch $E=h \cdot f$ geben, wobei $h$ das konstante Planksche Wirkungsquantum und $f$ die Frequenz der Welle ist (Welle-Teilchen Dualismus).  
+
+\begin{Definition}
 Die Ableitung nach der Zeit
 \begin{align}
 \phi := \frac{\partial Q}{\partial t}
 \end{align}
 wird als Radiant Flux oder Strahlungsleistung bezeichnet. Die Einheit ist Watt (W).
 Diese  beschreibt den Energiefluss, beziehungsweise den Energie-Eintritt und Energie-Austritt.
+\end{Definition}
 
  \begin{figure}[H]
     \centering
@@ -63,6 +66,7 @@ Diese  beschreibt den Energiefluss, beziehungsweise den Energie-Eintritt und Ene
 \end{figure}
 
 
+\begin{Satz}
 
 Das sogenannte photometrische Grundgesetzt beschreibt die Strahlung, die von einem  Flächenelement auf ein anderes  Flächenelement 
 übertragen wird.  
@@ -85,22 +89,42 @@ wobei $\theta$ der Winkel zwischen der Flächennormale am Punkt $x$ und der Rich
 Die Radiance ist also der Radiant Flux pro infinitesimale Flächeneinheit $dA$ und pro  Raumwinkel $d \omega$ unabhängig vom Strahlwinkel $\cos(\theta)$.
 Die Einheit ist $\frac{W}{m^2\cdot sr}$ (Watt ($W$) pro Quadratmeter ($m^2$) und pro Steradiant ($sr$)). 
 Mit $L_i, L_o,Lr,L_e$ bezeichnet man entsprechend den eintreffende, ausgehende, reflektierte beziehungsweise emittierte Radiance.
+\end{Satz}
 
+\begin{Definition}
 Eine Objekt, dessen Stahldichte für alle Punkte und Richtungen konstant ist, also
 $L(x, \omega) = c$  für alle $x \in O$ und $\omega \in S^2$, bezeichnet man auch als Lambertschen Strahler. 
+\end{Definition}
+
+\begin{Definition}
+Die Irradiance $E$ ist definiert durch
+\begin{align}
+E(x) := \int_{S^2} L_i(x, \omega) \cos{\theta_i} d\omega_i \; ,
+\end{align}
+also die auftreffende Strahlungsleistung pro Flächeneinheit. 
+\end{Definition}
+
+\begin{Definition}
+Die Radiocity $B$ ist definiert durch
+\begin{align}
+B(x) := \int_{S^2} L_o(x, \omega) \cos{\theta_i} d\omega_i \; ,
+\end{align}
+also die ausghende Strahlungsleistung pro Flächeneinheit. 
+\end{Definition}
 
 
 
-Die sogenannte bidirektionale Reflektanzverteilungsfunktion (engl. Bidirectional Reflectance Distribution Function, BRDF)
+\begin{Definition}
+Die  bidirektionale Reflektanzverteilungsfunktion (engl. Bidirectional Reflectance Distribution Function, BRDF)
 ist eine Funktion $f_r (x, \omega_i, \omega_r)$, die das Reflexionsverhalten der Oberfläche eines Materials beschreibt. 
 Sie hat als Eingabe die ausgehende Richtung $\omega_r$ und die eingehende Richtung  $\omega_i$ am Punkt $x$. 
 Sie  liefert den Quotienten aus Strahlungsdichte und Bestrahlungsstärke für die ausgehende Richtung $\omega_r$ und die eingehende Richtung  $\omega_i$ am Punkt $x$.
 Sie gibt somit die Abhängigkeit des reflektierten Lichts von der einfallenden Lichtstärke an: 
 \begin{align}
-dL_r = f_r(x, \omega_i, \omega_r) dE =   f_r(x, \omega_i, \omega_r)  \cdot  L_i(x,\omega_i) \cdot  \cos(\theta_i) d \omega_i\\
-L_r(x, \omega_r) = \int_{S^2} dL_r =    \int_{S^2}f_r (x, \omega_i, \omega_r) \cdot L_i(x, \omega_i) \cdot  \cos(\theta_i) d\omega_i
+L_r(x, \omega_r) = \int_{S^2}f_r (x, \omega_i, \omega_r) \cdot L_i(x, \omega_i) \cdot  \cos(\theta_i) d\omega_i
 \end{align}
-Letztere Gleichung wird auch Reflectance-Gleichung genannt.
+Letztere Gleichung wird  Reflectance-Gleichung genannt.
+\end{Definition}
  \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{images/brdf2.png}
@@ -114,19 +138,44 @@ Letztere Gleichung wird auch Reflectance-Gleichung genannt.
 
 Durch Hinzunahme des von dem Oberflächenpunkt emittierten Lichtes $L_e(x, \omega_o)$ zu dem   an diesem Punkt reflektiert Lichtes erhalten wir die sogenannte Renderingleichung 
 \begin{align}
-L_o(x, \omega_o) = L_e(x, \omega_o)  + \displaystyle \int_{S^2}f_r (x, \omega_i, \omega_0) \cdot L_i(x, \omega_i)  \cdot  \cos(\theta_i) d\omega_i \; .
+L_o(x, \omega_o) = L_e(x, \omega_o)  + \displaystyle \int_{S^2}f_r (x, \omega_i, \omega_0) \cdot L_i(x, \omega_i)  \cdot  \cos(\theta_i) d\omega_i \; ,
+\end{align}
+wobei $L_e(x, \omega_o)$ die von der Oberfläche emittierte Strahlungsleistung ist. 
+
+Definiert man die Funktion 
+\begin{align}
+V(x,y) := 
+\end{align}
+\begin{align}
+L_o(x, \omega_o) = L_e(x, \omega_o)  + \displaystyle \int_{\Omega}  \frac{1}{||x -y||^2}f_r (x, \omega_i, \omega_o) \cdot V(x,y) \cdot  L_o(y, \omega_i)  \cdot  \cos(\theta_i) d\omega_i 
 \end{align}
 
-
-
-
-
-Durch die Beziehung $d_omega_i = $
 
 \subsection{Raycasting}
 \subsubsection{"Klassisches" Raytracing}
 \subsubsection{Radiocity Verfahren}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/diffus.png}
+    \caption{Rein diffuses beleuchtungsmodell}
+    \label{fig:diffus}
+\end{figure}
+
 \subsubsection{Monte Carlo Integration und Pathtracing}
+\begin{figure}[H]\centering
+    \subfloat[Pathtracing mit wenig Samples]{
+        \hspace*{0.05\textwidth}
+    \includegraphics[width=0.5\textwidth]{images/Path_Tracing_Low.png}
+        \hspace*{0.05\textwidth}
+        \label{fig:closed-mesh-gender0}
+    }
+    \hspace*{0.1\textwidth}
+    \subfloat[Pathtracing mit vielen Samples]{
+    \includegraphics[width=0.5\textwidth]{images/Path_Tracing_High.png}
+        \label{fig:closed-mesh-gender1}
+    }
+\end{figure}
+
 \subsubsection{Raymarching}
 \subsection{Klassifikation der Verfahren}
 

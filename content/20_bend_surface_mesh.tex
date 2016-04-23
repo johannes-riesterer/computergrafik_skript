@@ -111,21 +111,18 @@ Ein Netz $N$ heißt orientierbar, falls man alle seine Polygone so nummerieren k
 Ist eine Fläche orientierbar und nummeriert man die Polygone so, dass benachbarte Kanten entsprechend der Definition immer entgegengesetzt gerichtet sind, so sind entweder alle seine Polygone im oder alle seine Polygone gegen den Uhrzeigersinn orientiert.
 \end{Bemerkung}
 
-\begin{figure}[H]
-    \centering
+\begin{figure}[H]\centering
+    \subfloat[Orientierbarer Fisch namens Wanda]{
+        \hspace*{0.05\textwidth}
     \includegraphics[width=0.4\textwidth]{images/clown_fish.jpg}
-    \caption{Ein geschlossenes, orientierbares Netz. Quelle:CGAL}
-    \label{fig:closed-orientable-mesh}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
+        \hspace*{0.05\textwidth}
+        \label{fig:closed-mesh-gender0}
+    }
+    \hspace*{0.1\textwidth}
+    \subfloat[Nicht orientierbares Möbiusband]{
     \includegraphics[width=0.4\textwidth]{images/Moebius_strip.png}
-    \caption[Möbiusband. Quelle:Wikipedia]
-             {Das sogenannte Möbiusband ist hingegen nicht orientierbar. 
-             Es ist nicht geschlossen, sondern hat einen zusammenhängenden Rand. 
-             Quelle:Wikipedia}
-    \label{fig:moebius-strip}
+        \label{fig:closed-mesh-gender1}
+    }
 \end{figure}
 
 \begin{Definition}
