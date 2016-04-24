@@ -152,8 +152,8 @@ L_o(x, \omega_o) = L_e(x, \omega_o)  + \displaystyle \int_{\Omega}  \frac{1}{||x
 
 
 \subsection{Raycasting}
-\subsubsection{"Klassisches" Raytracing}
-\subsubsection{Radiocity Verfahren}
+\subsection{"Klassisches" Raytracing}
+\subsection{Radiocity Verfahren}
  \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{images/diffus.png}
@@ -161,7 +161,32 @@ L_o(x, \omega_o) = L_e(x, \omega_o)  + \displaystyle \int_{\Omega}  \frac{1}{||x
     \label{fig:diffus}
 \end{figure}
 
-\subsubsection{Monte Carlo Integration und Pathtracing}
+\subsection{Pathtracing}
+\subsubsection{Wahrscheinlichkeitstheorie und Monte Carlo Integration}  
+Ein Wahrscheinlichkeitsraum ist ein Tripel $(\Omega, \Sigma, \mathbb{P})$ bestehend aus
+\begin{itemize}
+\item Einer Menge $\Omega$
+\end{itemize}
+
+
+\begin{Definition}
+Ist $X$ eine kontinuierliche Zufallsvariable mit Wahrscheinlichkeitsdichte $\rho: \Omega \to [0,1]$, dann heißt
+\begin{align}
+\mathbb{E}[X] := \int_{\Omega} \omega \cdot \rho(\omega) d\omega \; ,
+\end{align}
+beziehungsweise für eine Funktion $f: \Omega \to \mathbb{R}$
+\begin{align}
+\mathbb{E}[f(X)] := \int_{\Omega} f(\omega) \cdot \rho(\omega) d\omega \; .
+\end{align}
+\end{Definition}
+
+
+\begin{Satz}[Gesetzt der großen Zahlen]
+Ist $X$ eine kontinuierliche Zufallsvariable mit Wahrscheinlichkeitsdichte $\rho: \Omega \to [0,1]$ und $f: \Omega \to \mathbb{R}$, so gilt:
+\begin{align}
+\frac{1}{N} \sum_{i= 0}^{N} f(\omega_i) \xrightarrow{ N \to \infty } \mathbb{E}[f(X)] \text{ (in Wahrscheinlichkeit)}
+\end{align}
+\end{Satz}
 \begin{figure}[H]\centering
     \subfloat[Pathtracing mit wenig Samples]{
         \hspace*{0.05\textwidth}
