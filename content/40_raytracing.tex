@@ -142,17 +142,30 @@ L_o(x, \omega_o) = L_e(x, \omega_o)  + \displaystyle \int_{S^2}f_r (x, \omega_i,
 \end{align}
 wobei $L_e(x, \omega_o)$ die von der Oberfläche emittierte Strahlungsleistung ist. 
 
-Definiert man die Funktion 
+Definiert man die Menge $\Omega$  als die Menge aller Flächen (Dreiecke) in der Szene und
 \begin{align}
-V(x,y) := 
+V(x,y) := \begin{cases}
+1 \text{ falls } \overline{xy} \cap \Omega = \emptyset \\
+0 \text{ sonst }
+\end{cases}
 \end{align}
+so gilt die Beziehung $L_i(x, \omega_i) = V(x,y) \cdot L_o(x, \omega_i)$.
+Zusammen mit der Beziehung $d\omega =  \frac{1}{||x -y||^2} \cdot  \cos(\theta_y)$ und der Definition 
 \begin{align}
-L_o(x, \omega_o) = L_e(x, \omega_o)  + \displaystyle \int_{\Omega}  \frac{1}{||x -y||^2}f_r (x, \omega_i, \omega_o) \cdot V(x,y) \cdot  L_o(y, \omega_i)  \cdot  \cos(\theta_i) d\omega_i 
+G(x,y) := V(x,y)  \frac{ \cos(\theta_y) \cdot  \cos(\theta_i)}{||x -y||^2} 
 \end{align}
+erhält man die Rendergleichung in zweiter Form 
+\begin{align}
+L_o(x, \omega_o) = L_e(x, \omega_o)  + \displaystyle \int_{\Omega} f_r (x, \omega_i, \omega_o) \cdot   L_o(y, \omega_i)  \cdot  G(x,y) \cdot   d\omega_i \; .
+\end{align} 
 
 
 \subsection{Raycasting}
 \subsection{"Klassisches" Raytracing}
+Das klassische Raytracing nach Whitted ist durch folgenden rekursiven Algorithmus gegeben:
+\begin{itemize}
+\item d
+\end{itemize}
 \subsection{Radiocity Verfahren}
  \begin{figure}[H]
     \centering
