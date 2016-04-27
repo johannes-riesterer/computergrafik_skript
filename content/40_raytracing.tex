@@ -99,17 +99,17 @@ $L(x, \omega) = c$  für alle $x \in O$ und $\omega \in S^2$, bezeichnet man auc
 \begin{Definition}
 Die Irradiance $E$ ist definiert durch
 \begin{align}
-E(x) := \int_{S^2} L_i(x, \omega) \cos{\theta_i} d\omega_i \; ,
+E(x) := \int_{H^2} L_i(x, \omega) \cos{\theta} d\omega \; ,
 \end{align}
 also die auftreffende Strahlungsleistung pro Flächeneinheit. 
 \end{Definition}
 
 \begin{Definition}
-Die Radiocity $B$ ist definiert durch
+Die Radiosity $B$ ist definiert durch
 \begin{align}
-B(x) := \int_{S^2} L_o(x, \omega) \cos{\theta_i} d\omega_i \; ,
+B(x) := \int_{H^2} L_o(x, \omega) \cos{\theta} d\omega \; ,
 \end{align}
-also die ausghende Strahlungsleistung pro Flächeneinheit. 
+also die ausgehende Strahlungsleistung pro Flächeneinheit. 
 \end{Definition}
 
 
@@ -121,7 +121,7 @@ Sie hat als Eingabe die ausgehende Richtung $\omega_r$ und die eingehende Richtu
 Sie  liefert den Quotienten aus Strahlungsdichte und Bestrahlungsstärke für die ausgehende Richtung $\omega_r$ und die eingehende Richtung  $\omega_i$ am Punkt $x$.
 Sie gibt somit die Abhängigkeit des reflektierten Lichts von der einfallenden Lichtstärke an: 
 \begin{align}
-L_r(x, \omega_r) = \int_{S^2}f_r (x, \omega_i, \omega_r) \cdot L_i(x, \omega_i) \cdot  \cos(\theta_i) d\omega_i
+L_r(x, \omega_r) = \int_{H^2}f_r (x, \omega, \omega_r) \cdot L_i(x, \omega) \cdot  \cos(\theta) d\omega
 \end{align}
 Letztere Gleichung wird  Reflectance-Gleichung genannt.
 \end{Definition}
@@ -138,26 +138,34 @@ Letztere Gleichung wird  Reflectance-Gleichung genannt.
 
 Durch Hinzunahme des von dem Oberflächenpunkt emittierten Lichtes $L_e(x, \omega_o)$ zu dem   an diesem Punkt reflektiert Lichtes erhalten wir die sogenannte Renderingleichung 
 \begin{align}
-L_o(x, \omega_o) = L_e(x, \omega_o)  + \displaystyle \int_{S^2}f_r (x, \omega_i, \omega_0) \cdot L_i(x, \omega_i)  \cdot  \cos(\theta_i) d\omega_i \; ,
+L_o(x, \omega_o) = L_e(x, \omega_o)  + \displaystyle \int_{H^2}f_r (x, \omega, \omega_0) \cdot L_i(x, \omega)  \cdot  \cos(\theta) d\omega \; ,
 \end{align}
 wobei $L_e(x, \omega_o)$ die von der Oberfläche emittierte Strahlungsleistung ist. 
 
-Definiert man die Menge $\Omega$  als die Menge aller Flächen (Dreiecke) in der Szene und
+\begin{Bemerkung}
+Für transparente Oberflächen muss über $S^2$ integriert werden.
+\end{Bemerkung}
+Definiert man die Menge $\Omega$  als die Menge aller Flächen  in der Szene und
 \begin{align}
 V(x,y) := \begin{cases}
-1 \text{ falls } \overline{xy} \cap \Omega = \emptyset \\
+1 \text{ falls } \overline{xy} \cap (\Omega -\{x,y\}) = \emptyset \\
 0 \text{ sonst }
 \end{cases}
 \end{align}
-so gilt die Beziehung $L_i(x, \omega_i) = V(x,y) \cdot L_o(x, \omega_i)$.
-Zusammen mit der Beziehung $d\omega =  \frac{1}{||x -y||^2} \cdot  \cos(\theta_y)$ und der Definition 
+so ist $L_i(x, \omega_y) = V(x,y) \cdot L_o(y, \omega_x)$ (Energieerhaltung).
+Zusammen mit der Beziehung 
 \begin{align}
-G(x,y) := V(x,y)  \frac{ \cos(\theta_y) \cdot  \cos(\theta_i)}{||x -y||^2} 
+d\omega =  \frac{1}{||x -y||^2} \cdot  \cos(\theta_y) dA_y
+\end{align}
+ und der Definition 
+\begin{align}
+G(x,y) := V(x,y)  \frac{ \cos(\theta_x) \cdot  \cos(\theta_y)}{||x -y||^2} 
 \end{align}
 erhält man die Rendergleichung in zweiter Form 
 \begin{align}
-L_o(x, \omega_o) = L_e(x, \omega_o)  + \displaystyle \int_{\Omega} f_r (x, \omega_i, \omega_o) \cdot   L_o(y, \omega_i)  \cdot  G(x,y) \cdot   d\omega_i \; .
+L_o(x, \omega_o) = L_e(x, \omega_o)  + \displaystyle \int_{\Omega} f_r (x, \omega_y, \omega_o) \cdot   L_o(y, \omega_x)  \cdot  G(x,y) \cdot   dA_y \; .
 \end{align} 
+
 
 
 \subsection{Raycasting}
@@ -166,11 +174,49 @@ Das klassische Raytracing nach Whitted ist durch folgenden rekursiven Algorithmu
 \begin{itemize}
 \item d
 \end{itemize}
-\subsection{Radiocity Verfahren}
+
+
+\subsection{Radiosity Verfahren}
+Das Radiosity Verfahren löst die Rendergleichung näherungsweise im Fall rein diffuser Oberflächen beziehungsweise rein Lambertscher Strahler. In diesem Fall sind  $L(x, \omega) = L(x)$ und $ f_r (x, \omega, \omega') = f(x)$ konstant  für alle  Richtungen $\omega$ und $\omega'$ und  mit der daraus resultierenden Beziehung  
+\begin{align}
+B(x) & = \int_{H^2} L(x) \cos{\theta} d\omega \\
+\Leftrightarrow B(x) & =  L(x) \underbrace{\int_{H^2} \cos{\theta} d\omega}_{= \pi} \\
+\Leftrightarrow \frac{B(x)}{\pi} & = L(x) \;.
+\end{align}
+erhält man durch Einsetzen in die Rendergleichung die Radiosity Gleichung
+\begin{align}
+B_o(x)   -B_e(x) - f (x) \cdot  \displaystyle \int_{\Omega}   B_o(y) \cdot G(x,y) \cdot   dA_y    =  0\; . 
+\end{align}
+
+Eine Möglichkeit diese approximativ zu lösen ist die Galerkin-Methode, die eine Näherungsweise Lösung dieses Problem auf die Lösung eines linearen Gleichungssystem reduziert.
+Hierzu unterteilt (approximiert) man  alle  Oberflächen  in $\Omega$ mit endlich vielen planeren Flachenstücken $F_i$, welche auch  Patches genannt werden.
+Des weiteren definiert man die sogenannten Basisfunktionen 
+\begin{align}
+\phi_i(x) := \begin{cases}
+1 \text{ falls } x \in F_i \\
+0 \text{ sonst}
+\end{cases}
+\end{align}
+und Approximiert alle beteiligten Funktionen durch Linearkombinationen dieser Funktionen, was zu der Gleichung 
+\begin{align}
+\sum_i B_i \phi_i    =  \sum_i E_i  \phi_i +  ( \sum_i f_i \phi_i)  \cdot  \sum_i \displaystyle \int_{F_i}    B_i \phi_i   \cdot G(x,y) \cdot   dA_y   
+\end{align}
+führt. Multipliziert man beide Seiten mit $\phi_j$ und Integriert anschliessend beide Seiten über $F_j$  erhält man 
+\begin{align}
+B_j A_j    =  E_j A_j   +  \sum_i   \Biggl(  \displaystyle \int_{F_j}  f_j   \cdot \displaystyle \int_{F_i}   G(x,y) \cdot   dA_y \Biggr ) B_i  
+\end{align}
+
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/radiosity_process.jpg}
+    \caption{Patches und Übertragung der Lichtenergie zwischen einzelnen Patches}
+    \label{fig:diffus}
+\end{figure}
+
  \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{images/diffus.png}
-    \caption{Rein diffuses beleuchtungsmodell}
+    \caption{Rendering der Cornell Box mit rein diffusem Beleuchtungsmodell}
     \label{fig:diffus}
 \end{figure}
 
@@ -194,21 +240,21 @@ beziehungsweise für eine Funktion $f: \Omega \to \mathbb{R}$
 \end{Definition}
 
 
-\begin{Satz}[Gesetzt der großen Zahlen]
+\begin{Satz}[(Schwaches) Gesetzt der großen Zahlen]
 Ist $X$ eine kontinuierliche Zufallsvariable mit Wahrscheinlichkeitsdichte $\rho: \Omega \to [0,1]$ und $f: \Omega \to \mathbb{R}$, so gilt:
 \begin{align}
 \frac{1}{N} \sum_{i= 0}^{N} f(\omega_i) \xrightarrow{ N \to \infty } \mathbb{E}[f(X)] \text{ (in Wahrscheinlichkeit)}
 \end{align}
 \end{Satz}
 \begin{figure}[H]\centering
-    \subfloat[Pathtracing mit wenig Samples]{
+    \subfloat[Rendering der Cornell Box mit Pathtracing und wenig Samples]{
         \hspace*{0.05\textwidth}
     \includegraphics[width=0.5\textwidth]{images/Path_Tracing_Low.png}
         \hspace*{0.05\textwidth}
         \label{fig:closed-mesh-gender0}
     }
     \hspace*{0.1\textwidth}
-    \subfloat[Pathtracing mit vielen Samples]{
+    \subfloat[Rendering der Cornell Box mit  Pathtracing und vielen Samples]{
     \includegraphics[width=0.5\textwidth]{images/Path_Tracing_High.png}
         \label{fig:closed-mesh-gender1}
     }
