@@ -201,10 +201,24 @@ und Approximiert alle beteiligten Funktionen durch Linearkombinationen dieser Fu
 \begin{align}
 \sum_i B_i \phi_i    =  \sum_i E_i  \phi_i +  ( \sum_i f_i \phi_i)  \cdot  \sum_i \displaystyle \int_{F_i}    B_i \phi_i   \cdot G(x,y) \cdot   dA_y   
 \end{align}
-führt. Multipliziert man beide Seiten mit $\phi_j$ und Integriert anschliessend beide Seiten über $F_j$  erhält man 
+führt. Multipliziert man beide Seiten mit $\phi_j$ und Integriert anschliessend beide Seiten über $F_j$  erhält man die diskrete Radiosity Gleichung
 \begin{align}
-B_j A_j    =  E_j A_j   +  \sum_i   \Biggl(  \displaystyle \int_{F_j}  f_j   \cdot \displaystyle \int_{F_i}   G(x,y) \cdot   dA_y \Biggr ) B_i  
+B_j     =  E_j    +  f_j \sum_i    F_{ji} \cdot B_i \;  ,
 \end{align}
+wobei $A_j$ der Flächeninhalt des Patches $F_j$ und 
+\begin{align}
+F_{ji} := \frac{1}{A_j}\displaystyle \int_{F_j}  \displaystyle \int_{F_i}   G(x,y) \cdot   dA_y 
+\end{align}
+ ist.  Dies führt auf das lineare Gleichungssystem $M \cdot B = E$ mit 
+\begin{align}
+M &:= (m_{ij}) \text{ mit } m_{ij} = \begin{cases} 1- f_i \cdot F_{ij}  \text{ für } i = j \\  - f_i \cdot F_{ij} \text{ sonst} \end{cases} \\
+B &:= \begin{pmatrix} B_1 \\ \vdots \\ B_n
+\end{pmatrix} \\
+E &:= \begin{pmatrix} E_1 \\ \vdots \\ E_n
+\end{pmatrix}
+\end{align}
+
+
 
  \begin{figure}[H]
     \centering
@@ -246,6 +260,17 @@ Ist $X$ eine kontinuierliche Zufallsvariable mit Wahrscheinlichkeitsdichte $\rho
 \frac{1}{N} \sum_{i= 0}^{N} f(\omega_i) \xrightarrow{ N \to \infty } \mathbb{E}[f(X)] \text{ (in Wahrscheinlichkeit)}
 \end{align}
 \end{Satz}
+
+
+\begin{Satz}
+Ist $f: S \subset \Omega \to \mathbb{R}$ eine Funktion, so gilt für eine beliebige Wahrscheinlichkeitsdichte  $\rho: \Omega \to [0,1]$ und eine Beobachtung 
+$x_0, \cdots ,x_N \in S$
+\begin{align}
+\frac{1}{N} \sum_{i= 0}^{N}  \frac{f(x_i)}{\rho(x_i)} \xrightarrow{ N \to \infty } \int_{S} f(x) dx \text{ (in Wahrscheinlichkeit)} \; .
+\end{align}
+\end{Satz}
+
+
 \begin{figure}[H]\centering
     \subfloat[Rendering der Cornell Box mit Pathtracing und wenig Samples]{
         \hspace*{0.05\textwidth}
@@ -259,6 +284,7 @@ Ist $X$ eine kontinuierliche Zufallsvariable mit Wahrscheinlichkeitsdichte $\rho
         \label{fig:closed-mesh-gender1}
     }
 \end{figure}
+
 
 \subsubsection{Raymarching}
 \subsection{Klassifikation der Verfahren}

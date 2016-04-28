@@ -416,11 +416,15 @@ Ist
 s: U \subset \mathbb{R}^2 \to \mathbb{R}^3 \\
 s(u,v) := \begin{pmatrix} x(u,v) \\ y(u,v) \\ z(u,v) \end{pmatrix} 
 \end{align*} 
-eine Fläche und $S$ die von Ihr erzeugte Oberfläche, so definiert man das OberflächenIntegral
+eine Fläche und $S$ die von Ihr erzeugte Oberfläche, so definiert man  das OberflächenIntegral
 \begin{align*}
 \int_S d \omega:= \int_U ||n(u,v)|| \cdot dU \;.
 \end{align*} 
 Man nennt $d \omega$ beziehungsweise $ ||n(u,v)||$ das infinitesimale Flächenelement.
+Ist $F: S \to \mathbb{R}$ eine Funktion, so definiert man analog
+\begin{align*}
+\int_S f d \omega:= \int_U f(s(u,v)) \cdot ||n(u,v)|| \cdot dU \;.
+\end{align*} 
 \end{Definition}
 
 \begin{Satz}
