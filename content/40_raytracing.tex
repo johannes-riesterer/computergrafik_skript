@@ -68,7 +68,7 @@ Diese  beschreibt den Energiefluss, beziehungsweise den Energie-Eintritt und Ene
 
 \begin{Satz}
 
-Das sogenannte photometrische Grundgesetzt beschreibt die Strahlung, die von einem  Flächenelement auf ein anderes  Flächenelement 
+Das  photometrische Grundgesetzt beschreibt die Strahlung, die von einem  Flächenelement auf ein anderes  Flächenelement 
 übertragen wird.  
  \begin{figure}[H]
     \centering
@@ -79,9 +79,9 @@ Das sogenannte photometrische Grundgesetzt beschreibt die Strahlung, die von ein
 
 \begin{align}
 \phi &= \int_{A_1} \int_{\pi_s(A_2)} L(x, \omega)\cdot \cos(\beta_1) d\omega  dA_1  \\
-&= \int_{A_1} \int_{A_2} \frac{1}{r_{12}^2}  \cdot L(x, \omega) \cdot \cos(\beta_1) \cdot \cos(\beta_2)  d A_2 dA_1 \; .
+&= \int_{A_1} \int_{A_2} \frac{1}{r_{12}^2}  \cdot L(x, \overline{xy}) \cdot \cos(\beta_1) \cdot \cos(\beta_2)  d A_2 dA_1 \; .
 \end{align}
-Hierbei ist $L(x, \omega)$   die Radiance oder auch Stahldichte  der von $A_2$ abgestrahlte Strahlung  und ist (formal) durch  
+Hierbei ist $L(x, \omega)$   die Radiance oder auch Stahldichte die in $x$   $A_2$ in Richtung $\omega_x$ abgestrahlt wird und ist (formal) durch  
 \begin{align}
 L(x, \omega) := \frac{d^2 \phi}{\cos(\theta) \cdot dA \cdot d\omega} \; ,
 \end{align}
@@ -92,7 +92,7 @@ Mit $L_i, L_o,Lr,L_e$ bezeichnet man entsprechend den eintreffende, ausgehende, 
 \end{Satz}
 
 \begin{Definition}
-Eine Objekt, dessen Stahldichte für alle Punkte und Richtungen konstant ist, also
+Eine Oberfläche, dessen Strahldichte für alle Punkte und Richtungen konstant ist, also
 $L(x, \omega) = c$  für alle $x \in O$ und $\omega \in S^2$, bezeichnet man auch als Lambertschen Strahler. 
 \end{Definition}
 
@@ -163,7 +163,7 @@ G(x,y) := V(x,y)  \frac{ \cos(\theta_x) \cdot  \cos(\theta_y)}{||x -y||^2}
 \end{align}
 erhält man die Rendergleichung in zweiter Form 
 \begin{align}
-L_o(x, \omega_o) = L_e(x, \omega_o)  + \displaystyle \int_{\Omega} f_r (x, \omega_y, \omega_o) \cdot   L_o(y, \omega_x)  \cdot  G(x,y) \cdot   dA_y \; .
+L_o(x, \omega_o) = L_e(x, \omega_o)  + \displaystyle \int_{\Omega} f_r (x, \overline{xy}, \omega_o) \cdot   L_o(y, \overline{xy})  \cdot  G(x,y) \cdot   dA_y \; .
 \end{align} 
 
 
