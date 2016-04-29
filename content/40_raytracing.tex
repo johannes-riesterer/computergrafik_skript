@@ -78,15 +78,15 @@ Das sogenannte photometrische Grundgesetzt beschreibt die Strahlung, die von ein
 \end{figure}
 
 \begin{align}
-\phi &= \int_{A_1} \int_{\pi_s(A_2)} L(x, \omega)\cdot \cos(\beta_1) \cdot dA_1 \cdot d \omega \\
-&= \int_{A_1} \int_{A_2} \frac{1}{r_{12}^2}  \cdot L(x, \omega) \cdot \cos(\beta_1) \cdot \cos(\beta_2) \cdot dA_1 \cdot d A_2 \; .
+\phi &= \int_{A_1} \int_{\pi_s(A_2)} L(x, \omega)\cdot \cos(\beta_1) d\omega  dA_1  \\
+&= \int_{A_1} \int_{A_2} \frac{1}{r_{12}^2}  \cdot L(x, \omega) \cdot \cos(\beta_1) \cdot \cos(\beta_2)  d A_2 dA_1 \; .
 \end{align}
 Hierbei ist $L(x, \omega)$   die Radiance oder auch Stahldichte  der von $A_2$ abgestrahlte Strahlung  und ist (formal) durch  
 \begin{align}
-L(x, \omega) := \frac{d^2 \phi}{\cos(\omega) \cdot dA \cdot d\omega} \; ,
+L(x, \omega) := \frac{d^2 \phi}{\cos(\theta) \cdot dA \cdot d\omega} \; ,
 \end{align}
 wobei $\theta$ der Winkel zwischen der Flächennormale am Punkt $x$ und der Richtung $\omega$ ist.
-Die Radiance ist also der Radiant Flux pro infinitesimale Flächeneinheit $dA$ und pro  Raumwinkel $d \omega$ unabhängig vom Strahlwinkel $\cos(\theta)$.
+Die Radiance ist also der Radiant Flux pro infinitessimale Flächeneinheit $dA$ und pro  Raumwinkel $d \omega$ unabhängig vom Strahlwinkel $\cos(\theta)$.
 Die Einheit ist $\frac{W}{m^2\cdot sr}$ (Watt ($W$) pro Quadratmeter ($m^2$) und pro Steradiant ($sr$)). 
 Mit $L_i, L_o,Lr,L_e$ bezeichnet man entsprechend den eintreffende, ausgehende, reflektierte beziehungsweise emittierte Radiance.
 \end{Satz}
@@ -243,14 +243,11 @@ Ein Wahrscheinlichkeitsraum ist ein Tripel $(\Omega, \Sigma, \mathbb{P})$ besteh
 
 
 \begin{Definition}
-Ist $X$ eine kontinuierliche Zufallsvariable mit Wahrscheinlichkeitsdichte $\rho: \Omega \to [0,1]$, dann heißt
+Ist $X$ eine kontinuierliche Zufallsvariable mit Wahrscheinlichkeitsdichte $\rho: \Omega \to [0,1]$ und $f: \Omega \to \mathbb{R}$ eine Funktion, dann heißt
 \begin{align}
-\mathbb{E}[X] := \int_{\Omega} \omega \cdot \rho(\omega) d\omega \; ,
+\mathbb{E}[f(X)] := \int_{\Omega} f(\omega) \cdot \rho(\omega) d\omega 
 \end{align}
-beziehungsweise für eine Funktion $f: \Omega \to \mathbb{R}$
-\begin{align}
-\mathbb{E}[f(X)] := \int_{\Omega} f(\omega) \cdot \rho(\omega) d\omega \; .
-\end{align}
+Erwartungswert.
 \end{Definition}
 
 
