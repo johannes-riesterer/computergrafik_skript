@@ -166,8 +166,21 @@ erhält man die Rendergleichung in zweiter Form
 L_o(x, \omega_o) = L_e(x, \omega_o)  + \displaystyle \int_{\Omega} f_r (x, \overline{xy}, \omega_o) \cdot   L_o(y, \overline{xy})  \cdot  G(x,y) \cdot   dA_y \; .
 \end{align} 
 
+\subsubsection{Pfadformulierung der Rendergleichung}
+Definiert man den sogenannten Transport  Operator
+\begin{align}
+(T \circ  L)(x, \omega) :=  \displaystyle \int_{H^2}f_r (x, \omega, \omega_0) \cdot L_i(x, \omega)  \cdot  \cos(\theta) d\omega \; ,
+\end{align}
+so lässt sich die Rendergleichung schreiben als
+\begin{align}
+L = L_e + T \circ L \; .
+\end{align}
+Durch rekursive substitution von $L$ erhält man die  Pfadformulierung der Rendergleichung
+\begin{align}
+L = \sum_{i= 0}^{\infty} T^i \circ L_e \; .
+\end{align}
 
-
+ 
 \subsection{Raycasting}
 \subsection{"Klassisches" Raytracing}
 Das klassische Raytracing nach Whitted ist durch folgenden rekursiven Algorithmus gegeben:
