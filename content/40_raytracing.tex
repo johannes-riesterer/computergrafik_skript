@@ -83,9 +83,9 @@ Das  photometrische Grundgesetzt beschreibt die Strahlung, die von einem  Fläch
 \end{align}
 Hierbei ist $L(x, \omega)$   die Radiance oder auch Stahldichte die in $x$   $A_2$ in Richtung $\omega_x$ abgestrahlt wird und ist (formal) durch  
 \begin{align}
-L(x, \omega) := \frac{d^2 \phi}{\cos(\theta) \cdot dA \cdot d\omega} \; ,
+L(x, \omega) := \frac{d^2 \phi}{\cos(\theta) \cdot dA \cdot d\omega} 
 \end{align}
-wobei $\theta$ der Winkel zwischen der Flächennormale am Punkt $x$ und der Richtung $\omega$ ist.
+definiert, wobei $\theta$ der Winkel zwischen der Flächennormale am Punkt $x$ und der Richtung $\omega$ ist.
 Die Radiance ist also der Radiant Flux pro infinitessimale Flächeneinheit $dA$ und pro  Raumwinkel $d \omega$ unabhängig vom Strahlwinkel $\cos(\theta)$.
 Die Einheit ist $\frac{W}{m^2\cdot sr}$ (Watt ($W$) pro Quadratmeter ($m^2$) und pro Steradiant ($sr$)). 
 Mit $L_i, L_o,Lr,L_e$ bezeichnet man entsprechend den eintreffende, ausgehende, reflektierte beziehungsweise emittierte Radiance.
@@ -185,7 +185,7 @@ L = \sum_{i= 0}^{\infty} T^i \circ L_e \; .
 \subsection{"Klassisches" Raytracing}
 Das klassische Raytracing nach Whitted ist durch folgenden rekursiven Algorithmus gegeben:
 \begin{itemize}
-\item d
+\item 
 \end{itemize}
 
 
@@ -301,6 +301,9 @@ $x_0, \cdots ,x_N \in S$
     }
 \end{figure}
 
+
+\subsubsection{Montecarlo Methode}
+Die Montecarlo Methode bezeichnet die Anwendung des  Gesetztes der großen Zahlen auf die Rendergleichung.
 
 \subsubsection{Raymarching}
 \subsection{Klassifikation der Verfahren}

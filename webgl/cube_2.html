@@ -28,7 +28,7 @@ void main() {
     m[1] = vec3(0.0, cos(t), -sin(t));
     m[2] = vec3(0.0, sin(t), cos(t));
     vec3 position = m*a_position;
-   position += vec3(-4.0,-3.0, -10.0);
+   position += vec3(0.0,0.0, -10.0);
    gl_Position = projectionMatrix*vec4(position, 1.0);
    vec3 lightDir = lightSource - position;
   
