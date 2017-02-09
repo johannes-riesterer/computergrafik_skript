@@ -43,6 +43,7 @@ Man erreicht damit, dass der Kegelstumpf zwischen der vorderen
 (\textit{nearplane}) und der hinteren (\textit{farplane}) Projektionsebene in 
 den $[-1,1] \times [-1,1] \times [-1,1] $ Würfel abgebildet wird, welcher auch 
 Sichtvolumen genannt wird. 
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{images/gl_projectionmatrix01.png}
@@ -50,7 +51,13 @@ Sichtvolumen genannt wird.
     \label{fig:projection-sight-vol}
 \end{figure}
 
-Die Multiplikation all diese Matrizen wird auch die MODEL-VIEW-PROJECTION-MATRIX genannt. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/gl_projectionmatrix03.png}
+    \caption{Zentralprojektion}
+    \label{fig:projection-sight-vol}
+\end{figure}
+Die Multiplikation all dieser Matrizen wird auch die MODEL-VIEW-PROJECTION-MATRIX genannt. 
 
 In obigen Fall ist die Projektionsmatrix gegeben  geben durch 
 \begin{align*}
@@ -72,9 +79,19 @@ P := \begin{pmatrix}
 \end{pmatrix}  \; .
 \end{align*} 
 
+
+
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/gl_projectionmatrix03.png}
+    \includegraphics[width=0.8\textwidth]{images/nondeforme.png}
+    \caption{Zentralprojektion}
+    \label{fig:projection-sight-vol}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/deform.png}
     \caption{Zentralprojektion}
     \label{fig:projection-sight-vol}
 \end{figure}

@@ -270,7 +270,7 @@ void main() {
             
 
             var pLocation = gl.getUniformLocation(program, "projectionMatrix");
-            gl.uniformMatrix4fv(pLocation, false, makePerspective(1, 4/3, 0.1, 100 ));
+            gl.uniformMatrix4fv(pLocation, false, makePerspective(1, 4/3, 2.0, 100 ));
 
             var tLocation = gl.getUniformLocation(program, "t");
             gl.uniform1f(tLocation, someProgress);
