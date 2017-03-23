@@ -27,7 +27,13 @@ void main() {
     m[0] = vec3(1.0, 0.0, 0.0);
     m[1] = vec3(0.0, cos(t), -sin(t));
     m[2] = vec3(0.0, sin(t), cos(t));
-    vec3 position = m*a_position;
+    
+        vec3 normal_am = normalize(a_position);
+        // vec3 d_position = a_position + normal * cos(t)/2.0;
+        //vec3 normal_am = normal;
+    vec3 d_position = a_position + normal_am * cos(t)/2.0;
+    
+    vec3 position = m*d_position;
    
    position += vec3(1.0,1.0, -8.0);
    

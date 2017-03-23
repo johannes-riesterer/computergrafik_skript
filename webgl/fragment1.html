@@ -20,7 +20,7 @@ varying float T;
 void main() {
         //  gl_Position = vec4(a_position, 0.0, t);
         T = t;
-   gl_Position = vec4(a_position, 0.0, 1.0);
+        gl_Position = vec4(a_position, 1.0, 1.0);
 }
 </script>
 
@@ -30,7 +30,7 @@ void main() {
 precision mediump float;
 varying float T;
 void main() {
-    gl_FragColor = vec4(gl_FragCoord.y/600.0, 0.0,0.0, 1.0 );
+    gl_FragColor = vec4(abs(cos(T))*gl_FragCoord.x/800.0,abs(sin(T))*gl_FragCoord.y/600.0,0.0, 1.0 );
  
 }
 
@@ -69,6 +69,7 @@ void main() {
 
             shaderScript = document.getElementById("2d-fragment-shader");
             shaderSource = shaderScript.text;
+            
             fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
             gl.shaderSource(fragmentShader, shaderSource);
             gl.compileShader(fragmentShader);
@@ -77,6 +78,7 @@ void main() {
             gl.attachShader(program, vertexShader);
             gl.attachShader(program, fragmentShader);
             gl.linkProgram(program);
+            
             gl.useProgram(program);
 
 
@@ -91,6 +93,7 @@ void main() {
 
         function render() {
 
+            //Gameloop
             window.requestAnimationFrame(render, canvas);
 
             gl.clearColor(1.0, 0.0, 0.0, 1.0);
