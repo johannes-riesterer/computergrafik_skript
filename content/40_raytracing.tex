@@ -262,18 +262,18 @@ Ein Wahrscheinlichkeitsraum ist ein Tripel $(\Omega, \Sigma, \mathbb{P})$ besteh
 
 
 \begin{Definition}
-Ist $X$ eine kontinuierliche Zufallsvariable mit Wahrscheinlichkeitsdichte $\rho: \Omega \to [0,1]$ und $f: \Omega \to \mathbb{R}$ eine Funktion, dann heißt
+Ist $X: \Omega \to \mathbb{R}$ eine  Zufallsvariable mit Wahrscheinlichkeitsdichte $\rho: \Omega \to [0,1]$, dann heißt
 \begin{align}
-\mathbb{E}[f(X)] := \int_{\Omega} f(\omega) \cdot \rho(\omega) d\omega 
+\mathbb{E}[X] := \int_{\Omega} X(\omega) \cdot \rho(\omega) d\omega 
 \end{align}
 Erwartungswert.
 \end{Definition}
 
 
 \begin{Satz}[(Schwaches) Gesetzt der großen Zahlen]
-Ist $X$ eine kontinuierliche Zufallsvariable mit Wahrscheinlichkeitsdichte $\rho: \Omega \to [0,1]$ und $f: \Omega \to \mathbb{R}$, so gilt:
+Ist $X: \Omega \to \mathbb{R}$ eine  Zufallsvariable mit Wahrscheinlichkeitsdichte $\rho: \Omega \to [0,1]$, so gilt:
 \begin{align}
-\frac{1}{N} \sum_{i= 0}^{N} f(\omega_i) \xrightarrow{ N \to \infty } \mathbb{E}[f(X)] \text{ (in Wahrscheinlichkeit)}
+\frac{1}{N} \sum_{i= 0}^{N} X(\omega_i) \xrightarrow{ N \to \infty } \mathbb{E}[X] \text{ (in Wahrscheinlichkeit)}
 \end{align}
 \end{Satz}
 
@@ -302,9 +302,16 @@ $x_0, \cdots ,x_N \in S$
 \end{figure}
 
 
-\subsubsection{Montecarlo Methode}
-Die Montecarlo Methode bezeichnet die Anwendung des  Gesetztes der großen Zahlen auf die Rendergleichung.
+\subsection{Monte Carlo Methode}
+Die Monte Carlo Methode bezeichnet die Anwendung des  Gesetztes der großen Zahlen auf die Rendergleichung.
 
+\subsection{Sampling}
+\subsubsection{Markov Chain Monte Carlo}
+
+\begin{Definition}{Markov Kette}
+\end{Definition}
+
+\subsubsection{Metropolis Hastings Algorithmus}
 \subsubsection{Raymarching}
 \subsection{Klassifikation der Verfahren}
 
