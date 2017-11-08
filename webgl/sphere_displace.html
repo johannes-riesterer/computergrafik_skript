@@ -48,7 +48,7 @@ varying float intensity;
 varying float T;
 void main() {
     
-                  gl_FragColor = vec4(intensity*vec3(T,0.0,0.0),1.0);
+                  gl_FragColor = vec4(intensity*vec3(2.0*(T-0.5),0.0,0.0),1.0);
 
 }
 </script>
