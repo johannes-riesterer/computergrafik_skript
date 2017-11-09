@@ -232,7 +232,7 @@ varying float intensity;
 varying float T;
 void main() {
     
-                  gl_FragColor = vec4(intensity*vec3( clamp( 0.8 - 1. * T , 0.0,1.0),0.0,0.0),1.0);
+                  gl_FragColor = vec4(vec3( clamp( 0.8 - 1. * T , 0.0,1.0),0.0,0.0),1.0);
 
 }
 </script>
@@ -530,7 +530,7 @@ buffer = gl.createBuffer();
 
              gl.uniform3f(gl.getUniformLocation(program, "lightSource"), 0, 10, 10);
 
-           someProgress += 0.003;
+           someProgress += 0.001;
         
 
 
