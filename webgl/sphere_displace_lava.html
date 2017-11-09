@@ -209,7 +209,7 @@ and open the template in the editor.
 
 
             float _noise =     -1.3*turbulence( .5 * m*normal + t);
-            float b = 0.2 * pnoise( 0.05 * a_position + vec3( 2.0 * t ), vec3( 100.0 ) );
+            float b = 0.1 * pnoise( 0.05 * a_position + vec3( 2.0 * t ), vec3( 100.0 ) );
             // compose both noises
             float displacement =  _noise + b;
             // get a 3d noise using the position, low frequency
@@ -232,7 +232,7 @@ and open the template in the editor.
             varying float T;
             void main() {
 
-            gl_FragColor = vec4(vec3( clamp( 0.7 - 1.2 * T , 0.0,1.0),0.0,0.0),1.0);
+            gl_FragColor = vec4(clamp( 1.0 - 1.8 * T , 0.0,1.0)*vec3( 1.0,0.2,0.2),1.0);
 
             }
         </script>
