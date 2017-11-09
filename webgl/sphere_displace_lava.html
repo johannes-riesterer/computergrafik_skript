@@ -253,8 +253,8 @@ void main() {
         var mesh;
         var someProgress;
        
-        var gX = 70;
-        var gY = 70;
+        var gX = 50;
+        var gY = 50;
         function makePerspective(fieldOfViewInRadians, aspect, near, far) {
             var f = Math.tan(Math.PI * 0.5 - 0.5 * fieldOfViewInRadians);
             var rangeInv = 1.0 / (near - far);
@@ -530,7 +530,7 @@ buffer = gl.createBuffer();
 
              gl.uniform3f(gl.getUniformLocation(program, "lightSource"), 0, 10, 10);
 
-           someProgress += 0.001;
+           someProgress += 0.003;
         
 
 
