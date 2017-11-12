@@ -118,10 +118,12 @@ Diese Transformation wird auch Windows-Viewport-Transformation genannt.
     \label{fig:screening-bresenham-line}
 \end{figure}
 Als Rasterung bezeichnet man das Transformieren kontinuierlicher, 
-zweidimensionaler Daten auf diskrete Pixel. 
+zweidimensionaler Daten auf diskrete Pixel.  
 Anhand der gegebenen Daten muss also entschieden werden, welche Farbe ein Pixel des Ausgabegerätes erhält.
 Wir haben also eine Funktion 
 $Frame-Buffer: \mathbb{N} \times \mathbb{N} \to Farbe$. 
+Die Pixel, die einem Dreieck zugeordnet werden, bezeichnet man auch als Fragment.
+
 Im Bereich Echtzeitvisualisierung sind alle gängigen Rasterverfahren für 
 Dreiecke und andere primitiven im wesentlichen Abwandlungen und 
 Weiterentwicklungen von Algorithmen, die von Bresenham eingeführt wurden. 
@@ -302,13 +304,22 @@ bresenham(x0, y0, x1, y1){
     \end{lstlisting}
 \end{Algorithmus}
 
-Das Rastern erzeugt oft harte, kantige und ausgefranste Übergange. Diese Effekte bezeichnet man auch als Aliasing. Algorithmen, die diesen Aliasing-Effekten entgegenwirken nennt man auch 
-Antialiasing. 
+Das Rastern erzeugt oft harte, kantige und ausgefranste Übergange. Diese Effekte bezeichnet man auch als Aliasing. Algorithmen, die diesen Aliasing-Effekten entgegenwirken nennt man auch Antialiasing. 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{images/Antialiasing.png}
     \caption{Eine Schrift mit und ohne Antialiasing}
     \label{fig:screening-antialiasing-font}
+\end{figure}
+
+\subsection*{Interpolation}
+GLSL interpoliert Werte innerhalb eines Fragmentes linear zwischen den im Vertex-Shader gesetzten Werten.
+Dies kann  zum Beispiel mit Hilfe eines Sweepline-Algorithmus realisiert werden.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/gouraud_scanline.png}
+    \caption{Scanline-Verfahren beim Gouraud-Shading}
+    \label{fig:gouraud-shading-scanline}
 \end{figure}
 
 
@@ -434,17 +445,9 @@ Es gibt komplexere lokale Beleuchtungsmodelle, wie zum Beispiel das Cook-Torrent
 
 
 \subsection{Shader und standard Algorithmen}
-
-\subsubsection{Flat-Shading}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1.0\textwidth]{images/flat_gouraud_phong.jpg}
-    \caption{Flat, Gouraud und Phong-Shading}
-    \label{fig:shading-flat-phong-models}
-\end{figure}
-
-
-\subsubsection{Gouraud und Phong Shading}
+\subsubsection{Mittelung der Normalen}
+Stoßen mehrere Flächen mit Normalen $\{ N_1, N_2, \cdots, N_k \}$ an einem Vertex $V$ zusammen, so  bezeichnen wir  mit
+$\bar{N}_V:= \frac{1}{k}\sum N_i$ die gemittelte Normale.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{images/gouraud_normals.png}
@@ -452,14 +455,18 @@ Es gibt komplexere lokale Beleuchtungsmodelle, wie zum Beispiel das Cook-Torrent
     \label{fig:gouraud-shading-scanline}
 \end{figure}
 
+\subsubsection{Flat-Shading, Gouraud und Phong Shading}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/gouraud_scanline.png}
-    \caption{Scanline-Verfahren beim Gouraud-Shading}
-    \label{fig:gouraud-shading-scanline}
+    \includegraphics[width=1.0\textwidth]{images/flat_gouraud_phong.jpg}
+    \caption{Flat, Gouraud und Phong-Shading}
+    \label{fig:shading-flat-phong-models}
 \end{figure}
+  \begin{lstlisting}
+  \end{lstlisting}
 
-
+Man spricht vom Flat-Shading, wenn keine Interpolation der Helligkeitswerte innerhalb eines Dreiecks durchgeführt wird, sondern der gleiche Wert für das gesamte Dreieck verwendet wird.
+Es gibt zwei prominente Möglichkeiten, die Helligkeitswerte zu interpolieren, das  Gouraud und das Phong Shading. 
 
 \subsubsection{Texturen und UV-Mapping}
 \begin{figure}[H]
@@ -588,10 +595,170 @@ Das Verfahren ist nur dann sinnvoll, wenn man es mit einer sehr komplexen Geomet
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{images/deferred_shading_on.jpg}
-    \caption{Szene gerendert mit  diferred shading. Der verbesserte  Eindruck des Tageslichtes wird durch eine sehr hohe Anzahl von Lichtquellen erzeugt.} %TODO: fix caption&label
+    \caption{Szene gerendert mit  deferred shading. Der verbesserte  Eindruck des Tageslichtes wird durch eine sehr hohe Anzahl von Lichtquellen erzeugt.} %TODO: fix caption&label
     \label{fig:defferedshading}
 \end{figure}
 
 
 
 \subsection{GLSL via WebGL}
+\subsubsection{Minimaler Shader}
+Minimaler Shader auf bildschirmfüllender Minimal-Geometrie
+   \begin{lstlisting}
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <canvas id="glcanvas"></canvas>
+
+        <script id="2d-vertex-shader" type="x-shader/x-vertex">
+            attribute vec2 a_position;
+            uniform float t;
+            varying float T;
+            void main() {
+            //  gl_Position = vec4(a_position, 0.0, t);
+            T = t;
+            gl_Position = vec4(a_position[0], a_position[1], 0.0, 1.0);
+            }
+        </script>
+
+        <script id="2d-fragment-shader" type="x-shader/x-fragment">
+            precision mediump float;
+            varying float T;
+            void main() {
+            gl_FragColor = vec4(0.0 ,1.0,0.0,1.0);
+
+            }
+        </script>
+
+
+        <script type="text/javascript">
+
+
+            var shaderScript;
+            var shaderSource;
+            var vertexShader;
+            var fragmentShader;
+            var program;
+            var canvas;
+            var gl;
+            var buffer;
+            window.onload = init;
+
+
+            var someProgress;
+
+            function init() {
+            // Get A WebGL context
+            canvas = document.getElementById("glcanvas");
+            canvas.width = 400;
+            canvas.height = 300;
+
+
+
+            gl = canvas.getContext("webgl");
+
+
+            gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
+
+
+            //compile and link shaders
+            shaderScript = document.getElementById("2d-vertex-shader");
+            shaderSource = shaderScript.text;
+
+
+            vertexShader = gl.createShader(gl.VERTEX_SHADER);
+            gl.shaderSource(vertexShader, shaderSource);
+            gl.compileShader(vertexShader);
+
+            shaderScript = document.getElementById("2d-fragment-shader");
+            shaderSource = shaderScript.text;
+            fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
+            gl.shaderSource(fragmentShader, shaderSource);
+            gl.compileShader(fragmentShader);
+
+            program = gl.createProgram();
+            gl.attachShader(program, vertexShader);
+            gl.attachShader(program, fragmentShader);
+            gl.linkProgram(program);
+
+
+
+
+
+
+            // Create an empty buffer
+            buffer = gl.createBuffer();
+
+            someProgress = 1.0;
+
+            //start gameloop
+            render();
+            }
+
+            function render() {
+
+            //recusrive gameloop/animation frame offered by browser
+            window.requestAnimationFrame(render);
+
+
+            //clear background and paint it red
+            gl.clearColor(1.0, 0.0, 0.0, 1.0);
+
+            gl.clear(gl.COLOR_BUFFER_BIT);
+
+
+
+            //use shader program
+            gl.useProgram(program);
+
+
+
+            //bind geometry to sahder program
+            gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+
+            gl.bufferData(
+            gl.ARRAY_BUFFER,
+
+            //data array values
+            new Float32Array([
+            -1.0, -1.0,
+            1.0, -1.0,
+            -1.0, 1.0,
+            -1.0, 1.0,
+            1.0, -1.0,
+            1.0, 1.0]),
+
+            gl.STATIC_DRAW);
+
+            positionLocation = gl.getAttribLocation(program, "a_position");
+            gl.enableVertexAttribArray(positionLocation);
+
+            gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
+
+
+
+            var tLocation = gl.getUniformLocation(program, "t");
+            gl.uniform1f(tLocation, someProgress);
+
+            someProgress += 0.01;
+
+            gl.drawArrays(gl.TRIANGLES, 0, 6);
+            }
+        </script>
+
+
+
+
+    </body>
+</html>
+    \end{lstlisting}
