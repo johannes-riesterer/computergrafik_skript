@@ -456,6 +456,22 @@ $\bar{N}_V:= \frac{1}{k}\sum N_i$ die gemittelte Normale.
 \end{figure}
 
 \subsubsection{Flat-Shading, Gouraud und Phong Shading}
+Bezeichnen wir mit  $\bar{N}_{V_1} \bar{N}_{V_2} \bar{N}_{V_3}$ die gemittelte Normalen der Vertices $V_1, V_2$ und $V_3$ eines Dreiecks  und mit
+$L(N)$ die mit Hilfe eines Lichtmodels berechnete Lichtintensität in Abhängigkeit eines Normalenvektors $N$. Des weiteren bezeichnen wir mit 
+$Int(V, w_1, w_2, w_2)$ die lineare Interpolation zwischen den Werten bzw. Vektoren $w_1, w_2, w_3$ an einem  Punkt $V$ innerhalb  des Dreiecks    $V_1, V_2, V_3$.
+
+Man spricht vom Flat-Shading, wenn die gleiche  Lichtintensität für das gesamte Dreieck (Fragment) verwendet wird.
+Es gibt zwei prominente Möglichkeiten, die Helligkeitswerte zu interpolieren, das  Gouraud und das Phong Shading. 
+Sei dazu $V$ ein Punkt im Inneren des Dreiecks    $V_1, V_2, V_3$. Die Lichtintensität an diesem Punkt berechnet sich dann beim Gouraud Shading durch
+\begin{align}
+I_{Gouraud}(V) := Int(V,  L (\bar{N}_{V_1}), L( \bar{N}_{V_2}), L( \bar{N}_{V_3} ))
+\end{align} 
+ und beim Phong Shading durch 
+\begin{align}
+I_{Phong}(V) := L (Int(V,\bar{N}_{V_1},  \bar{N}_{V_2}, \bar{N}_{V_3} ))
+\end{align}
+
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{images/flat_gouraud_phong.jpg}
@@ -464,9 +480,6 @@ $\bar{N}_V:= \frac{1}{k}\sum N_i$ die gemittelte Normale.
 \end{figure}
   \begin{lstlisting}
   \end{lstlisting}
-
-Man spricht vom Flat-Shading, wenn keine Interpolation der Helligkeitswerte innerhalb eines Dreiecks durchgeführt wird, sondern der gleiche Wert für das gesamte Dreieck verwendet wird.
-Es gibt zwei prominente Möglichkeiten, die Helligkeitswerte zu interpolieren, das  Gouraud und das Phong Shading. 
 
 \subsubsection{Texturen und UV-Mapping}
 \begin{figure}[H]
