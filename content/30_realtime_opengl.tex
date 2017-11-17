@@ -527,7 +527,12 @@ Im Gegensatz dazu werden die Punkte des Gitternetzes (Vertices)  entsprechend di
     \label{fig:displacement-mapping}
 \end{figure}
 
-
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/lava.png}
+    \caption{Lavaball}
+    \label{fig:reflection-phong-specular-model}
+\end{figure}
 
 \subsubsection{Shadowmap}
 Das Rendern einer Szene mit Schatten unter Zuhilfenahme von einer Shadow Map geschieht im Wesentlichen in zwei Schritten. Als erstes wird die Szene aus der Sicht des Lichts gerendert und die Tiefeninformation (z-Buffer) in eine Textur gerendert. Anschließend wird die Szene normal gerendert, wobei für jedes Pixel  der Abstand des zugehörigen Vertex zur Lichtquelle (in Clipping Coordinaten) mit dem Wert der Shadow Map verglichen wird. Ist der Wert in der Shadow Map kleiner, wird  das Pixel schattiert gerendert.
