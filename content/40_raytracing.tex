@@ -96,24 +96,6 @@ Die Strahlungsleistung $\phi:= \frac{ \partial Q}{\partial t}$, die von einer ab
 wobei $\theta$ der Winkel zwischen der Flächennormale am Punkt $x$ und der Richtung $\omega$ ist.
 \end{Satz}
 
-\begin{Definition}
-Die  bidirektionale Reflektanzverteilungsfunktion (engl. Bidirectional Reflectance Distribution Function, BRDF)
-ist eine Funktion $f_r (x, \omega_i, \omega_r)$, die das Reflexionsverhalten der Oberfläche eines Materials beschreibt. 
-Sie hat als Eingabe die ausgehende Richtung $\omega_r$ und die eingehende Richtung  $\omega_i$ am Punkt $x$. 
-Sie  liefert den Quotienten aus Strahlungsdichte und Bestrahlungsstärke für die ausgehende Richtung $\omega_r$ und die eingehende Richtung  $\omega_i$ am Punkt $x$.
-Sie gibt somit die Abhängigkeit des reflektierten Lichts von der einfallenden Lichtstärke an: 
-\begin{align}
-\underbrace{L_r(x, \omega_r)}_{\text{Ausgehende Strahlung}} =\underbrace{\int_{H^2} \underbrace{f_r (x, \omega, \omega_r)}_{\substack{\text{Reflektionseigenschaft} \\ \text{des Materials}}} \cdot  \underbrace{L_i(x, \omega) \cdot  \cos(\theta) }_{\substack{\text{Reflektierte Strahlung} \\ \text{aus Richtung $\omega$}}} d\omega}_{\substack{\text{Summation über alle } \\ \text{Richtungen $\omega$}}} 
-\end{align}
-Letztere Gleichung wird  Reflectance-Gleichung genannt.
-\end{Definition}
- \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{images/brdf2.png}
-    \caption{BRDF Funktion}
-    \label{fig:raytracin_brdf}
-\end{figure}
-
 
 \begin{Definition}
 Eine Oberfläche, dessen Strahldichte für alle Punkte und Richtungen konstant ist, also
@@ -135,6 +117,27 @@ B(x) := \int_{H^2} L_o(x, \omega) \cos{\theta} d\omega \; ,
 \end{align}
 also die ausgehende Strahlungsleistung pro Flächeneinheit. 
 \end{Definition}
+
+
+
+
+\begin{Definition}
+Die  bidirektionale Reflektanzverteilungsfunktion (engl. Bidirectional Reflectance Distribution Function, BRDF)
+ist eine Funktion $f_r (x, \omega_i, \omega_r)$, die das Reflexionsverhalten der Oberfläche eines Materials beschreibt. 
+Sie hat als Eingabe die ausgehende Richtung $\omega_r$ und die eingehende Richtung  $\omega_i$ am Punkt $x$. 
+Sie  liefert den Quotienten aus Strahlungsdichte und Bestrahlungsstärke für die ausgehende Richtung $\omega_r$ und die eingehende Richtung  $\omega_i$ am Punkt $x$.
+Sie gibt somit die Abhängigkeit des reflektierten Lichts von der einfallenden Lichtstärke an: 
+\begin{align}
+\underbrace{L_r(x, \omega_r)}_{\text{Ausgehende Strahlung}} =\underbrace{\int_{H^2} \underbrace{f_r (x, \omega, \omega_r)}_{\substack{\text{Reflektionseigenschaft} \\ \text{des Materials}}} \cdot  \underbrace{L_i(x, \omega) \cdot  \cos(\theta) }_{\substack{\text{Reflektierte Strahlung} \\ \text{aus Richtung $\omega$}}} d\omega}_{\substack{\text{Summation über alle } \\ \text{Richtungen $\omega$}}} 
+\end{align}
+Letztere Gleichung wird  Reflectance-Gleichung genannt.
+\end{Definition}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/brdf2.png}
+    \caption{BRDF Funktion}
+    \label{fig:raytracin_brdf}
+\end{figure}
 
 
 
