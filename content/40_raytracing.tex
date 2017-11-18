@@ -31,29 +31,8 @@
     \label{fig:cray}
 \end{figure}
 
-\subsection{Prinzipielle Funktionsweise}
- \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.75\textwidth]{images/rayTracing.png}
-    \caption{Strahlenverfolgung}
-    \label{fig:diffus}
-\end{figure}
 
-
-\subsection{Farbwahrnehmung und Farbmodelle}
-
-\subsection{Globale Beleuchtungsmodelle und Rendergleichung}
-
-\subsubsection{Sphären, Raumwinkel und infinitessimale Flächenstücke}
-
- \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{images/solidangle.png}
-    \caption{Raumwinkel}
-    \label{fig:cray}
-\end{figure}
-
-\subsubsection{Photometrie}
+\subsection{Photometrie}
 
 Die Radiantenergie $Q$ ist die Lichtenergie. Sie wird durch einen Strom von Photonen erzeugt. Die Energie eines Photons ist 
 durch $E=h \cdot f$ geben, wobei $h$ das konstante Planksche Wirkungsquantum und $f$ die Frequenz der Welle ist (Welle-Teilchen Dualismus).  
@@ -65,46 +44,56 @@ durch $E=h \cdot f$ geben, wobei $h$ das konstante Planksche Wirkungsquantum und
     \label{fig:cray}
 \end{figure}
 
-\begin{Definition}
-Die Ableitung nach der Zeit
-\begin{align}
-\phi := \frac{\partial Q}{\partial t}
-\end{align}
-wird als Radiant Flux oder Strahlungsleistung bezeichnet. Die Einheit ist Watt (W).
-Diese  beschreibt den Energiefluss, beziehungsweise den Energie-Eintritt und Energie-Austritt.
-\end{Definition}
 
  \begin{figure}[H]
     \centering
-    \includegraphics[height=0.5\textwidth]{images/infrared_dog.jpg}
-    \caption{Strahlungsleistung an verschiedenen Punkten der Oberfläche}
+    \includegraphics[width=0.75\textwidth]{images/Partikelstrom.png}
+    \caption{Partikelstrom in einem Kanal}
     \label{fig:cray}
 \end{figure}
+Durch einen Kanal $K$ bewegen  sich Teilchen mit gleichförmiger Geschwindigkeit $L$ (Lichtgeschwindigkeit)  und  Dichte $\eta$.
+Die Anzahl der Teilchen, die die Fläche $A$ bezüglich eines Zeitintervalles $[0,t]$ passieren, ist gegeben durch
+\begin{align}
+& D_A([0,t]) :=L(A) *  \text{Flächeninhalt}(A) *   t \\
+& L(A):= \eta * ||L||  
+\end{align}
+
+ Betrachtet man die allgemeinere Situation eines Flächenstückes $B$  in einem Teilchenstorm $L$, so ist die Anzahl gegeben durch 
+\begin{align}
+D_B([0,t]) :=L(B) * \cos(\alpha) *  \text{Flächeninhalt} (B) *   E * t
+ \end{align}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{images/Strahldichte.png}
+    \caption{Partikelstrom}
+    \label{fig:cray}
+\end{figure}
+
+Lässt man $B \to x$ gegen einen Punkt konvergieren, so erhalten wir die Strahldichte  am Punkt $x$ in Richting $n$ als Grenzprozess  $L(B) \to L(x, n)$.
+
+
+Angewendet  auf Flächen erhalten wir das  photometrische Grundgesetzt. Es beschreibt die Strahlungleistung, die von einem  Flächenelement auf ein anderes  Flächenelement übertragen wird.
+\begin{figure}[H]\centering
+    \subfloat[Raumwinkel]{
+        \hspace*{0.05\textwidth}
+         \includegraphics[width=0.5\textwidth]{images/solidangle.png}
+    \label{fig:shadowmap3}
+    }
+    \hspace*{0.1\textwidth}
+    \subfloat[Photometrisches Grundgesetz]{
+    \includegraphics[width=0.5\textwidth]{images/Fotometrisches_Grundgesetz_Schema.png}
+    \label{fig:shadowmap1}
+    }
+   \end{figure}
 
 
 \begin{Satz}
-
-Das  photometrische Grundgesetzt beschreibt die Strahlung, die von einem  Flächenelement auf ein anderes  Flächenelement 
-übertragen wird.  
- \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{images/Fotometrisches_Grundgesetz_Schema.png}
-    \caption{Fotometrisches Grundgesetz}
-    \label{fig:cray}
-\end{figure}
-
+Die Strahlungsleistung $\phi:= \frac{ \partial Q}{\partial t}$, die von einer abstrahlenden Fläche $A_2$  auf eine Fläche $A_1$ übertragen wird, berechnet sich rdurch
 \begin{align}
 \phi &= \int_{A_1} \int_{\pi_s(A_2)} L(x, \omega)\cdot \cos(\beta_1) d\omega  dA_1  \\
-&= \int_{A_1} \int_{A_2} \frac{1}{r_{12}^2}  \cdot L(x, \overline{xy}) \cdot \cos(\beta_1) \cdot \cos(\beta_2)  d A_2 dA_1 \; .
+&= \int_{A_1} \int_{A_2} \frac{1}{r_{12}^2}  \cdot L(x, \overline{xy}) \cdot \cos(\beta_1) \cdot \cos(\beta_2)  d A_2 dA_1 \; ,
 \end{align}
-Hierbei ist $L(x, \omega)$   die Radiance oder auch Strahldichte die in $x \in A_2$ in Richtung $\omega_x$ abgestrahlt wird und ist (formal) durch  
-\begin{align}
-L(x, \omega) := \frac{d^2 \phi}{\cos(\theta) \cdot dA \cdot d\omega} 
-\end{align}
-definiert, wobei $\theta$ der Winkel zwischen der Flächennormale am Punkt $x$ und der Richtung $\omega$ ist.
-Die Radiance ist also der Radiant Flux pro infinitessimale Flächeneinheit $dA$ und pro  Raumwinkel $d \omega$ unabhängig vom Strahlwinkel $\cos(\theta)$.
-Die Einheit ist $\frac{W}{m^2\cdot sr}$ (Watt ($W$) pro Quadratmeter ($m^2$) und pro Steradiant ($sr$)). 
-Mit $L_i, L_o,Lr,L_e$ bezeichnet man entsprechend den eintreffende, ausgehende, reflektierte beziehungsweise emittierte Radiance.
+wobei $\theta$ der Winkel zwischen der Flächennormale am Punkt $x$ und der Richtung $\omega$ ist.
 \end{Satz}
 
 \begin{Definition}
@@ -114,7 +103,7 @@ Sie hat als Eingabe die ausgehende Richtung $\omega_r$ und die eingehende Richtu
 Sie  liefert den Quotienten aus Strahlungsdichte und Bestrahlungsstärke für die ausgehende Richtung $\omega_r$ und die eingehende Richtung  $\omega_i$ am Punkt $x$.
 Sie gibt somit die Abhängigkeit des reflektierten Lichts von der einfallenden Lichtstärke an: 
 \begin{align}
-\underbrace{L_r(x, \omega_r)}_{\text{Ausgehende Strahlung}} = \underbrace{\int_{H^2} \underbrace{f_r (x, \omega, \omega_r)}_{\substack{Reflektionseigenschaft \\ des Materials}} \cdot L_i(x, \omega) \cdot  \cos(\theta) d\omega}_{\text{mal eingehende Strahlung nach Grundgesetz}}
+\underbrace{L_r(x, \omega_r)}_{\text{Ausgehende Strahlung}} =\underbrace{\int_{H^2} \underbrace{f_r (x, \omega, \omega_r)}_{\substack{\text{Reflektionseigenschaft} \\ \text{des Materials}}} \cdot  \underbrace{L_i(x, \omega) \cdot  \cos(\theta) }_{\substack{\text{Reflektierte Strahlung} \\ \text{aus Richtung $\omega$}}} d\omega}_{\substack{\text{Summation über alle } \\ \text{Richtungen $\omega$}}} 
 \end{align}
 Letztere Gleichung wird  Reflectance-Gleichung genannt.
 \end{Definition}
@@ -150,6 +139,14 @@ also die ausgehende Strahlungsleistung pro Flächeneinheit.
 
 
 
+\subsection{Farbwahrnehmung und Farbmodelle}
+\subsection{Raytracing Algorithmen}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{images/rayTracing.png}
+    \caption{Strahlenverfolgung}
+    \label{fig:diffus}
+\end{figure}
 
  
 \subsubsection{Die Rendergleichung (Erste und zweite Form)}
