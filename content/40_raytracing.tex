@@ -190,11 +190,19 @@ so lässt sich die Rendergleichung schreiben als
 \begin{align}
 L = L_e + T \circ L \; .
 \end{align}
-Durch rekursive substitution von $L$ erhält man die  Pfadformulierung der Rendergleichung
+oder mit der Identitätsabbildung $id$ als
 \begin{align}
-L = \sum_{i= 0}^{\infty} T^i \circ L_e \; .
+L_e = (id - T) \circ L \; .
 \end{align}
-
+Wir erhalten damit 
+\begin{align}
+L = (id - T)^{-1} \circ L_e \; .
+\end{align}
+wobei 
+\begin{align}
+ (id - T)^{-1}= \sum_{i= 0}^{\infty} T^i \circ L_e \; .
+\end{align}
+eine konvergente Reihe ist, falls $f_r (x, \omega, \omega_0) < 1$ gilt. Letztere Bedingung bedeutet anschaulich,  dass kein Material perfekt reflektierend ist.
  
 \subsection{Raycasting}
 \subsection{"Klassisches" Raytracing}
