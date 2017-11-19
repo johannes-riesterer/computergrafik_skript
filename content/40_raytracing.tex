@@ -1,35 +1,33 @@
 \section{Raytracing}
  
-\begin{figure}[H]
-    \centering
-    \includegraphics[height=0.7\textwidth]{images/mouille.jpg}
-    \caption{Ein mit Povray gerendertes Bild aus dem Jahre 2000.}
-    \label{fig:povray}
-\end{figure}
+\begin{figure}[H]\centering
+    \subfloat[]{
+        \hspace*{0.05\textwidth}
+         \includegraphics[width=0.3\textwidth]{images/mouille.jpg}
+    \label{fig:shadowmap3}
+    }
+    \hspace*{0.1\textwidth}
+    \subfloat[ ]{
+    \includegraphics[width=0.5\textwidth]{images/vray.png}
+    \label{fig:shadowmap1}
+    }
+   \end{figure}
 
 
- \begin{figure}[H]
-    \centering
-    \includegraphics[height=0.5\textwidth]{images/vray.png}
-    \caption{Ein mit VRay gerendertes Bild aus dem Jahre 2015.}
-    \label{fig:cray}
-\end{figure}
+\begin{figure}[H]\centering
+    \subfloat[]{
+        \hspace*{0.05\textwidth}
+         \includegraphics[width=0.4\textwidth]{images/freestyle.jpg}
+    \label{fig:shadowmap3}
+    }
+    \hspace*{0.1\textwidth}
+    \subfloat[]{
+    \includegraphics[width=0.4\textwidth]{images/pixar.jpg}
+    \label{fig:shadowmap1}
+    }
+   \end{figure}
 
 
- \begin{figure}[H]
-    \centering
-    \includegraphics[height=0.5\textwidth]{images/freestyle.jpg}
-    \caption{Ein nicht photorealistisches Rendering in Blender aus dem Jahre 2015.}
-    \label{fig:cray}
-\end{figure}
-
-
- \begin{figure}[H]
-    \centering
-    \includegraphics[height=0.5\textwidth]{images/pixar.jpg}
-    \caption{Ein nicht photorealistisches Rendering mit Pixar's renderman aus dem Jahre 2001.}
-    \label{fig:cray}
-\end{figure}
 
 
 \subsection{Photometrie}
@@ -329,13 +327,13 @@ $x_0, \cdots ,x_N \in S$
 \begin{figure}[H]\centering
     \subfloat[Rendering der Cornell Box mit Pathtracing und wenig Samples]{
         \hspace*{0.05\textwidth}
-    \includegraphics[width=0.5\textwidth]{images/Path_Tracing_Low.png}
+    \includegraphics[width=0.4\textwidth]{images/Path_Tracing_Low.png}
         \hspace*{0.05\textwidth}
         \label{fig:closed-mesh-gender0}
     }
     \hspace*{0.1\textwidth}
     \subfloat[Rendering der Cornell Box mit  Pathtracing und vielen Samples]{
-    \includegraphics[width=0.5\textwidth]{images/Path_Tracing_High.png}
+    \includegraphics[width=0.4\textwidth]{images/Path_Tracing_High.png}
         \label{fig:closed-mesh-gender1}
     }
 \end{figure}
