@@ -876,3 +876,48 @@ zu
 \end{align*} 
 \end{Beispiel}
 
+
+\subsection{Wahrscheinlichkeitstheorie und Monte Carlo Integration}  
+\begin{Definition}
+Ein reller Wahrscheinlichkeitsraum ist ein Tupel $(\Omega, \rho)$ bestehend aus
+\begin{itemize}
+\item Einer Menge $\Omega \subset \mathbb{R}^n$ deren Elemente Ereignisse genannt werden.
+\item Eine Funktion $\mathbb{P} : \Omega \to \mathbb{R}$ mit $\int_{\omega} \rho(\omega) d\omega = 1$ welche auch Wahrscheinlichkeitsdichte genannt wird.
+\end{itemize}
+Eine Abbildung $X: \Omega \to \mathbb{R}$ wird Zufallsvariable genannt.
+\end{Definition}
+
+
+\begin{Definition}
+Ist $X: \Omega \to \mathbb{R}$ eine  Zufallsvariable, dann heißt
+\begin{align}
+\mathbb{E}[X] := \int_{\Omega} X(\omega) \cdot \rho(\omega) d\omega 
+\end{align}
+Erwartungswert.
+\end{Definition}
+
+
+\begin{Satz}[(Schwaches) Gesetzt der großen Zahlen]
+Ist $X: \Omega \to \mathbb{R}$ eine  Zufallsvariable mit Wahrscheinlichkeitsdichte $\rho: \Omega \to [0,1]$ und $\{ \omega_1, \cdots, \omega_N \}$ eine Stichprobe für $\rho$, so gilt:
+\begin{align}
+\frac{1}{N} \sum_{i= 0}^{N} X(\omega_i) \xrightarrow{ N \to \infty } \mathbb{E}[X] \text{ (in Wahrscheinlichkeit)}
+\end{align}
+\end{Satz}
+
+
+\begin{Satz}
+Ist $f: S \subset \Omega \to \mathbb{R}$ eine Funktion, so gilt für eine beliebige Wahrscheinlichkeitsdichte  $\rho: \Omega \to [0,1]$ und eine Stichprobe 
+ $\{ \omega_1, \cdots, \omega_N \}$
+\begin{align}
+\frac{1}{N} \sum_{i= 0}^{N}  \frac{f(\omega_i)}{\rho(\omega_i)} \xrightarrow{ N \to \infty } \int_{\Omega} f(\omega) d\omega \text{ (in Wahrscheinlichkeit)} \; .
+\end{align}
+\end{Satz}
+
+\subsubsection{Markov Chain Monte Carlo}
+
+\begin{Definition}{Markov Kette}
+\end{Definition}
+
+\subsubsection{Metropolis Hastings Algorithmus}
+
+

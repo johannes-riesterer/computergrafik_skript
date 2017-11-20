@@ -291,37 +291,6 @@ E &:= \begin{pmatrix} E_1 \\ \vdots \\ E_n
     \label{fig:diffus}
 \end{figure}
 \subsection{Monte-Carlo Raytracing und Pathtracing}
-\subsubsection{Wahrscheinlichkeitstheorie und Monte Carlo Integration}  
-Ein Wahrscheinlichkeitsraum ist ein Tripel $(\Omega, \Sigma, \mathbb{P})$ bestehend aus
-\begin{itemize}
-\item Einer Menge $\Omega$
-\end{itemize}
-
-
-\begin{Definition}
-Ist $X: \Omega \to \mathbb{R}$ eine  Zufallsvariable mit Wahrscheinlichkeitsdichte $\rho: \Omega \to [0,1]$, dann heißt
-\begin{align}
-\mathbb{E}[X] := \int_{\Omega} X(\omega) \cdot \rho(\omega) d\omega 
-\end{align}
-Erwartungswert.
-\end{Definition}
-
-
-\begin{Satz}[(Schwaches) Gesetzt der großen Zahlen]
-Ist $X: \Omega \to \mathbb{R}$ eine  Zufallsvariable mit Wahrscheinlichkeitsdichte $\rho: \Omega \to [0,1]$, so gilt:
-\begin{align}
-\frac{1}{N} \sum_{i= 0}^{N} X(\omega_i) \xrightarrow{ N \to \infty } \mathbb{E}[X] \text{ (in Wahrscheinlichkeit)}
-\end{align}
-\end{Satz}
-
-
-\begin{Satz}
-Ist $f: S \subset \Omega \to \mathbb{R}$ eine Funktion, so gilt für eine beliebige Wahrscheinlichkeitsdichte  $\rho: \Omega \to [0,1]$ und eine Beobachtung 
-$x_0, \cdots ,x_N \in S$
-\begin{align}
-\frac{1}{N} \sum_{i= 0}^{N}  \frac{f(x_i)}{\rho(x_i)} \xrightarrow{ N \to \infty } \int_{S} f(x) dx \text{ (in Wahrscheinlichkeit)} \; .
-\end{align}
-\end{Satz}
 
 
 \begin{figure}[H]\centering
@@ -342,13 +311,7 @@ $x_0, \cdots ,x_N \in S$
 \subsection{Monte Carlo Methode}
 Die Monte Carlo Methode bezeichnet die Anwendung des  Gesetztes der großen Zahlen auf die Rendergleichung.
 
-\subsection{Sampling}
-\subsubsection{Markov Chain Monte Carlo}
 
-\begin{Definition}{Markov Kette}
-\end{Definition}
-
-\subsubsection{Metropolis Hastings Algorithmus}
 \subsubsection{Raymarching}
 \subsection{Klassifikation der Verfahren}
 
