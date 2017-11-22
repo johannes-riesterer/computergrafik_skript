@@ -84,18 +84,23 @@ Angewendet  auf Flächen erhalten wir das  photometrische Grundgesetzt. Es besch
 \begin{Satz}
 Die Strahlungsleistung $\phi:= \frac{ \partial Q}{\partial t}$, die von einer abstrahlenden Fläche $A_2$  auf eine Fläche $A_1$ übertragen wird, berechnet sich durch
 \begin{align}
-\phi &= \int_{A_1} \int_{\pi_s(A_2)} L(x, \omega)\cdot \cos(\beta_1) d\omega  dA_1  \\
-&= \int_{A_1} \int_{A_2} \frac{1}{r_{12}^2}  \cdot L(x, \overline{xy}) \cdot \cos(\beta_1) \cdot \cos(\beta_2)  d A_2 dA_1 \; ,
+\phi = \int_{A_1} \int_{\pi_s(A_2)} L(x, \omega)\cdot \cos(\beta_1) d\omega  dA_1   \; ,
 \end{align}
-wobei $\theta$ der Winkel zwischen der Flächennormale am Punkt $x$ und der Richtung $\omega$ ist.
+wobei $\theta$ der Winkel zwischen der Flächennormale am Punkt $x$ und der Richtung $\omega$ ist und $\pi_s(A_2)$ das sphärische Bild von $A_2$ ist.
 \end{Satz}
 
 \begin{figure}[H]
         \centering
          \includegraphics[width=0.75\textwidth]{images/solidangle.png}
     \label{fig:shadowmap3}
-     \end{figure}
-     
+\end{figure}
+Mit der Beziehung \begin{align}
+d\omega =  \frac{1}{r^2} \cdot  \cos(\theta) dA
+\end{align}     
+erhalten wir die Darstellung
+\begin{align}
+\phi = \int_{A_1} \int_{A_2} \frac{1}{r_{12}^2}  \cdot L(x, \overline{xy}) \cdot \cos(\beta_1) \cdot \cos(\beta_2)  d A_2 dA_1 \; ,
+\end{align}
 
 \begin{Definition}
 Eine Oberfläche, dessen Strahldichte für alle Punkte und Richtungen konstant ist, also
