@@ -30,7 +30,8 @@ void main() {
 precision mediump float;
 varying float T;
 void main() {
-    gl_FragColor = vec4(abs(cos(T))*gl_FragCoord.x/800.0,abs(sin(T))*gl_FragCoord.y/600.0,0.0, 1.0 );
+//    gl_FragColor = vec4(abs(cos(T))*gl_FragCoord.x/800.0,abs(sin(T))*gl_FragCoord.y/600.0,0.0, 1.0 );
+    gl_FragColor = vec4(abs(cos(T)), 1.0,1.0, 1.0 );
  
 }
 
