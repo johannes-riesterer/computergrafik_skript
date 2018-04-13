@@ -407,7 +407,7 @@ Das Phong-Modell erweitert das  Lambert-Modell um den Effekt von spiegelnden Ref
 
 Ist $v$ der normierte Vektor in Richtung Kamera und $l$ der normierte Vektor in Richtung Lichtquelle, dann definiert man die  reflektierende Lichtintensität durch
 \begin{align}
-I_s := I_l \cdot I_m \cdot s \cdot \max\biggl ( 0, <r,v>^h \biggr)\;.
+I_s := I_l \cdot I_m \cdot s \cdot \max\biggl ( 0, <r,v>\biggr)^h \;.
 \end{align}
 $I_l$ ist hierbei wieder die Intensität der Lichtquelle und $I_m$ eine Materialkonstante. Beide liegen in einen Wertebereich von $[0,1]$ 
 $h$ ist eine ganze Zahl im Wertebereich $[0, \infty)$ und bestimmt die "härte" der Reflexion. $s$ ist eine Fließkommazahl im Wertebereich $(0,1]$ und beeinflusst den Glanz der Oberfläche.
