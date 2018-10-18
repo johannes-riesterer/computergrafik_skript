@@ -511,7 +511,6 @@ $MVP := Model View Projection Matrix$
 \framesubtitle{}
 \begin{block}{Bresenham}
 
-
   Die Strecke $S = \overline{PQ} \in \mathbb{R}^n$ soll auf ein 
     ($n$-dimensionales Pixel-) Raster abgebildet werden
 
@@ -615,6 +614,113 @@ Dies kann  zum Beispiel mit Hilfe eines Sweepline-Algorithmus realisiert werden.
 
 \end{block}
 \end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Photometrie}
+\framesubtitle{}
+\begin{block}{Fläche}
+
+Ein Fläche ist   eine injektive Abbildung
+\begin{align*}
+s: U \subset \mathbb{R}^2 \to \mathbb{R}^3 \\
+s(u,v) := \begin{pmatrix} x(u,v) \\ y(u,v) \\ z(u,v) \end{pmatrix} 
+\end{align*} 
+bei der die Abbildungen $x, y, z : U \subset \mathbb{R}^2 \to \mathbb{R}$ stetig sind. Sie heißt differenzierbar, falls die partiellen Ableitungen
+\begin{align*}
+\frac{\partial}{\partial u} s(u,v) = \begin{pmatrix}  \frac{\partial}{\partial u} x(u,v) \\  \frac{\partial}{\partial u} y(u,v) \\  \frac{\partial}{\partial u} z(u,v) \end{pmatrix}, \;
+\frac{\partial}{\partial v} s(u,v) =  \begin{pmatrix} \frac{\partial}{\partial v} x(u,v) \\ \frac{\partial}{\partial v} y(u,v) \\ \frac{\partial}{\partial v} z(u,v) \end{pmatrix}
+\end{align*}
+existieren. 
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Photometrie}
+\framesubtitle{}
+\begin{block}{Tangentialraum}
+
+Die Ebene 
+\begin{align*}
+T_s(u,v) :=  \{ s(u,v) + \lambda \cdot \frac{\partial}{\partial u} s(u,v) + \mu \cdot \frac{\partial}{\partial v} \; | \; \lambda, \mu \in \mathbb{R} \}
+\end{align*}
+heißt Tangentialebene am Punkt $(u,v)$ und  der Vektor 
+\begin{align*}
+n (u,v):= \frac{\partial}{\partial u} s(u,v) \times \frac{\partial}{\partial v} s(u,v) \; ,
+\end{align*}
+welcher Senkrecht auf dieser Ebene steht,  die Normale.
+\end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Photometrie}
+\framesubtitle{}
+\begin{block}{Oberflächenintegral}
+
+Das OberflächenIntegral ist definiert durch
+\begin{align*}
+\int_S d \omega:= \int_U ||n(u,v)|| \; dU \;.
+\end{align*} 
+und  analog
+\begin{align*}
+\int_S f \;  d \omega:= \int_U f(s(u,v)) \cdot ||n(u,v)|| \; dU \;.
+\end{align*} 
+für eine Funktion $f: S \to \mathbb{R}$.
+Man nennt $d \omega$ beziehungsweise $ ||n(u,v)||$ das infinitessimale Flächenelement.
+\end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Photometrie}
+\framesubtitle{}
+\begin{block}{Fubini}
+Ist $U = U_1 \times U_2 \in \mathbb{R}^2$ und $f: U \to \mathbb{R}$ eine integrierbare Funktion, so gilt
+\begin{align*}
+\int_U f \; d(U_1 \times U_2) = \int_{U_1} \int_{U_2} f  \;  dU_2 dU_1   = \int_{U_1} \int_{U_2} f  \;  dU_1 dU_2 \;.
+\end{align*} 
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Photometrie}
+\framesubtitle{}
+\begin{block}{Die  Sphäre $S^2$}
+\begin{align*}
+& s:  [0, \pi) \times  [0, 2 \pi)  \to \mathbb{R}^3 , \;
+  s(u,v) :=  
+ \begin{pmatrix}  \sin(u) \cos(v) \\   \sin(u) \sin(v) \\   \cos(u)  \end{pmatrix} \\
+& \frac{\partial}{\partial u} s(u,v) =  \begin{pmatrix}  \cos(u) \cos(v) \\   \cos(u) \sin(v) \\   -\sin(u)  \end{pmatrix} , 
+\frac{\partial}{\partial v} s(u,v) =  \begin{pmatrix}  -\sin(u) \sin(v) \\   \sin(u) \cos(v) \\   0  \end{pmatrix} \\
+& ||\frac{\partial}{\partial u} s(u,v) \times \frac{\partial}{\partial v} s(u,v) || = sin(u)
+\end{align*} 
+\begin{align*}
+& \int_{S^2} d\omega  = \int_{[0, \pi) \times  [0, 2 \pi) } sin(u) d(u \times v) =   \int_{[0, 2 \pi) }   \int_{[0, \pi) } sin(u) du dv \\ 
+& = 4 \pi
+\end{align*} 
+
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Photometrie}
+\framesubtitle{}
+\begin{block}{Transformationsformel}
+
+\begin{center}
+\includegraphics[scale=0.40]{images/solidangle}
+\end{center}
+
+\begin{align}
+d\omega =  \frac{1}{r^2} \cdot  \cos(\theta) dA
+\end{align}     
+
+\end{block}
+\end{frame}
+
 
 
 \end{document}
