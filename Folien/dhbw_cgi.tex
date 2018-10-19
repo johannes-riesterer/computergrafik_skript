@@ -530,6 +530,25 @@ $MVP := Model View Projection Matrix$
 \framesubtitle{}
 \begin{block}{Bresenham}
 
+\begin{itemize}
+\item{Der Algorithmus wurde 1962 von Jack Bresenham, damals Programmierer bei IBM, entwickelt. }
+
+\item{Rundungsfehler, die durch die Diskretisierung von kontinuierlichen Koordinaten entstehen, werden minimiert. }
+\item{Einfach implementierbar.}
+
+\item{Kommt mit der Addition von ganzen Zahlen als komplexeste Operation, und somit ohne Multiplikation, Division und Gleitkommazahlen. }
+
+\item{Durch eine geringfügige Erweiterung lässt sich der ursprüngliche Algorithmus, der für Geraden entworfen wurde, auch für die Rasterung von Kreisen verwenden. Sogar die Quadratterme, die beim Kreis vorkommen, lassen sich rekursiv ohne jede Multiplikation aus dem jeweils vorhergehenden Term ableiten nach.}
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Rasterung}
+\framesubtitle{}
+\begin{block}{Bresenham}
+
   Die Strecke $S = \overline{PQ} \in \mathbb{R}^n$ soll auf ein 
     ($n$-dimensionales Pixel-) Raster abgebildet werden
 
