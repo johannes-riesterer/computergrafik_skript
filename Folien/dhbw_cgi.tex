@@ -395,16 +395,31 @@ Auf der Menge der homogenen Koordinaten haben wir die Umkehrabbildung
 \begin{frame}
     \frametitle{Homogene Koordinaten}
 \framesubtitle{}
-\begin{block}{Homogene Koordinaten}
-Die Punkte $ \Biggl \{ \begin{pmatrix} p_1 \\ p_2 \\ p_3  \\ 0 \end{pmatrix} \Biggr \} $ heissen unendlich ferne Punkte.
+\begin{block}{Ferne Punkte}
+Die Menge der Punkte $F_3 :=  \Biggl \{ \begin{pmatrix} p_1 \\ p_2 \\ p_3  \\ 0 \end{pmatrix} \Biggr \} $ heissen unendlich ferne Punkte.
 
 \begin{align*}
  \begin{pmatrix} p_1 \\ p_2 \\ p_3  \\ 0 \end{pmatrix}  =\lim_{n \to \infty} \begin{pmatrix} p_1 \\ p_2 \\ p_3  \\ \frac{1}{n} \end{pmatrix}  \cong  \lim_{n \to \infty} n \cdot  \begin{pmatrix} p_1 \\ p_2 \\ p_3 \end{pmatrix} 
 \end{align*}
 \end{block}
 
+\begin{block}{Identifikation der fernen Punkte}
+Es ist $F_3 \cong \mathbb{P}^2$
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Homogene Koordinaten}
+\framesubtitle{}
 \begin{block}{Zerlegung des projektiven Raum}
 Der projektive Raum ist damit die Vereinigung des Affinen Raumes und den unendlich fernen Punkten. "Parallelen schneiden sich in den unendlich fernen Punkten".
+Es gilt also 
+\begin{align*}
+& \mathbb{P}^3 = \mathbb{A}^3 \cup F_3 = \mathbb{A}^3  \cup \mathbb{P}^2 =  \mathbb{A}^3  \cup \mathbb{A}^2 \cup F_2  \\  
+& =\mathbb{A}^3  \cup \mathbb{A}^2 \cup  \mathbb{P}^1 =   \mathbb{A}^3  \cup \mathbb{A}^2 \cup  \mathbb{S}^1/ \{ \pm  1\} \\
+& =  \mathbb{A}^3  \cup \mathbb{A}^2 \cup  \mathbb{S}^1
+\end{align*}
 \end{block}
 \end{frame}
 
@@ -474,10 +489,10 @@ realisieren die Zentralprojektion auf die Ebene parallel zur $X-Y$-Ebene und Aug
 \begin{block}{Zentralprojektion}
 Die Zentralprojektion auf die Ebene parallel zur $X-Y$-Ebene und Augenpunkt im Ursprung mit Augendistanz $d$ durch die Hintereinanderausführung folgender Abbildungen darstellen:
 \begin{align*}
-& persp_{xy} :\mathbb{R}^3   \to \mathbb{A}^3    \to  \mathbb{A}^3    \to \mathbb{A}^2    \to \mathbb{R}^2  \\
-&\begin{pmatrix} x \\ y \\ z \end{pmatrix} \mapsto \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix}   \mapsto K_{persp_{xy}} \cdot  \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix} =   \begin{pmatrix} x \\ y \\ z \\ \frac{z}{d} + 1 \end{pmatrix} \\
- & \mapsto K_{orth_{xy}} \cdot   \begin{pmatrix} x \\ y \\ z \\ \frac{z}{d} + 1 \end{pmatrix}=   \begin{pmatrix} x \\ y \\ \frac{z}{d} + 1 \end{pmatrix}   \mapsto 
- \begin{pmatrix}  \frac{x}{\frac{z}{d} +1 } \\   \frac{y}{\frac{z}{d} +1 } \end{pmatrix}
+& persp_{xy} :\mathbb{R}^3   \to \mathbb{P}^3    \to  \mathbb{P}^3    \to \mathbb{P}^2    \to \mathbb{R}^2  \\
+&\begin{pmatrix} x \\ y \\ z \end{pmatrix} \mapsto \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix}   \mapsto K_{persp_{xy}} \cdot  \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix} =   \begin{pmatrix} x \\ y \\ z \\ \frac{z}{d}  \end{pmatrix} \\
+ & \mapsto K_{orth_{xy}} \cdot   \begin{pmatrix} x \\ y \\ z \\ \frac{z}{d}  \end{pmatrix}=   \begin{pmatrix} x \\ y \\ \frac{z}{d} \end{pmatrix}   \mapsto 
+ \begin{pmatrix}  \frac{x}{\frac{z}{d} } \\   \frac{y}{\frac{z}{d} } \end{pmatrix}
  \end{align*}
 
 \end{block}
@@ -626,7 +641,7 @@ Dies kann  zum Beispiel mit Hilfe eines Sweepline-Algorithmus realisiert werden.
 \framesubtitle{}
 \begin{block}{Fläche}
 
-Ein Fläche ist   eine injektive Abbildung
+Ein Fläche (Parametrisierung) ist  eine  Abbildung
 \begin{align*}
 s: U \subset \mathbb{R}^2 \to \mathbb{R}^3 \\
 s(u,v) := \begin{pmatrix} x(u,v) \\ y(u,v) \\ z(u,v) \end{pmatrix} 
