@@ -31,28 +31,23 @@
 \begin{frame}
     \frametitle{Kameraprojektion}
 \framesubtitle{}
-    \begin{block}{}
+
 \includegraphics[scale=0.16]{images/nondeforme}
  \includegraphics[scale=0.16]{images/deform}
-\end{block}
+
 \end{frame}
 
 
 \begin{frame}
     \frametitle{ Shaderprogramm}
 \framesubtitle{}
-    \begin{block}{}
 \begin{center}
 \includegraphics[scale=0.26]{images/cgpipeline_grob}
-\end{center}
-\end{block}
-    \begin{block}{}
-\begin{center}
+\\
 \includegraphics[scale=0.20]{images/Zeichnung_Shaderpipeline}
-\end{center}
-\end{block}
-\end{frame}
 
+\end{center}
+\end{frame}
 
 \begin{frame}
     \frametitle{OpenGL Pipeline}
@@ -233,17 +228,17 @@ Die Winkel $\phi, \psi, \xi$ heißen  Eulerwinkel.
 \begin{frame}
     \frametitle{Orthonormalbasis}
 \framesubtitle{}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/gimbalLock.jpg}
+
+\end{figure}
 \begin{block}{Eulerwinkel}
 Die  Zerlegung  $O \in SO(3)$  einer Drehung in obiges Produkt ist  nicht eindeutig.
 Ein anschauliches Beispiel dafür liefert der sogenannte "Gimbal lock". $SO(3)$ ist also nicht das Produkt von drei Intervallen sondern
 es ist $SO(3) = S^{3}/ \{ \pm 1 \}$.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\textwidth]{images/gimbalLock.jpg}
-    \caption{Kardansche Aufhängung und Gimbal lock}
-    \label{fig:gimbal+lock}
-\end{figure}
+
 
 \end{block}
 
@@ -460,6 +455,9 @@ in homogenen Koordinate ausdrücken durch eine Matrizenmultiplikation
 \begin{frame}
     \frametitle{Homogene Koordinaten}
 \framesubtitle{}
+\begin{center}
+    \includegraphics[width=0.35\textwidth]{images/strahlensatz}
+\end{center}
 \begin{block}{Zentralprojektion}
 Die Matrizen
 \begin{align*}
@@ -477,9 +475,7 @@ K_{orth_{xy}} := \begin{pmatrix}
 \end{align*}
 realisieren die Zentralprojektion auf die Ebene parallel zur $X-Y$-Ebene und Augenpunkt im Ursprung mit Augendistanz $d$ in homogenen Koordinaten.
 
-\begin{center}
-    \includegraphics[width=0.4\textwidth]{images/strahlensatz}
-\end{center}
+
 \end{block}
 \end{frame}
 
@@ -489,7 +485,7 @@ realisieren die Zentralprojektion auf die Ebene parallel zur $X-Y$-Ebene und Aug
 \begin{block}{Zentralprojektion}
 Die Zentralprojektion auf die Ebene parallel zur $X-Y$-Ebene und Augenpunkt im Ursprung mit Augendistanz $d$ durch die Hintereinanderausführung folgender Abbildungen darstellen:
 \begin{align*}
-& persp_{xy} :\mathbb{R}^3   \to \mathbb{P}^3    \to  \mathbb{P}^3    \to \mathbb{P}^2    \to \mathbb{R}^2  \\
+& persp_{xy} :\mathbb{A}^3   \to \mathbb{P}^3    \to  \mathbb{P}^3    \to \mathbb{P}^2    \to \mathbb{A}^2  \\
 &\begin{pmatrix} x \\ y \\ z \end{pmatrix} \mapsto \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix}   \mapsto K_{persp_{xy}} \cdot  \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix} =   \begin{pmatrix} x \\ y \\ z \\ \frac{z}{d}  \end{pmatrix} \\
  & \mapsto K_{orth_{xy}} \cdot   \begin{pmatrix} x \\ y \\ z \\ \frac{z}{d}  \end{pmatrix}=   \begin{pmatrix} x \\ y \\ \frac{z}{d} \end{pmatrix}   \mapsto 
  \begin{pmatrix}  \frac{x}{\frac{z}{d} } \\   \frac{y}{\frac{z}{d} } \end{pmatrix}
@@ -513,12 +509,13 @@ P := \begin{pmatrix}
 \end{pmatrix}  \; .
 \end{align*} 
 
-\begin{center}
-\includegraphics[scale=0.40]{images/projection}
-\end{center}
+
 $MVP := Model View Projection Matrix$
 
 \end{block}
+\begin{center}
+\includegraphics[scale=0.40]{images/projection}
+\end{center}
 \end{frame}
 
 
@@ -560,17 +557,19 @@ $MVP := Model View Projection Matrix$
     \begin{equation*}
         M_p = \left( x_p + 1,~ y_p + \frac{1}{2} \right)
     \end{equation*}
+
+
+\end{block}
 \begin{center}
     \includegraphics[width=0.8\textwidth]{images/bresenham}
 \end{center}
-
-\end{block}
 \end{frame}
 
 
 \begin{frame}
     \frametitle{Rasterung}
 \framesubtitle{}
+
 \begin{block}{Bresenham}
 
     \begin{equation*}
@@ -629,11 +628,10 @@ $MVP := Model View Projection Matrix$
 \begin{frame}
     \frametitle{Rasterung}
 \framesubtitle{}
-\begin{block}{Anti Aliasing}
-
 \begin{center}
     \includegraphics[width=0.5\textwidth]{images/Antialiasing}
 \end{center}
+\begin{block}{Anti Aliasing}
 Kantenglättung z.B. mit Gaußfilter.
 \end{block}
 \end{frame}
@@ -643,12 +641,13 @@ Kantenglättung z.B. mit Gaußfilter.
 \begin{frame}
     \frametitle{Rasterung}
 \framesubtitle{}
-\begin{block}{Interpolation}
-GLSL interpoliert Werte innerhalb eines Fragmentes linear zwischen den im Vertex-Shader gesetzten Werten.
-Dies kann  zum Beispiel mit Hilfe eines Sweepline-Algorithmus realisiert werden.
 \begin{center}
     \includegraphics[width=0.4\textwidth]{images/gouraud_scanline.png}
 \end{center}
+\begin{block}{Interpolation}
+GLSL interpoliert Werte innerhalb eines Fragmentes linear zwischen den im Vertex-Shader gesetzten Werten.
+Dies kann  zum Beispiel mit Hilfe eines Sweepline-Algorithmus realisiert werden.
+
 
 \end{block}
 \end{frame}
@@ -746,11 +745,12 @@ Ist $U = U_1 \times U_2 \in \mathbb{R}^2$ und $f: U \to \mathbb{R}$ eine integri
 \begin{frame}
     \frametitle{Photometrie}
 \framesubtitle{}
-\begin{block}{Transformationsformel}
-
 \begin{center}
 \includegraphics[scale=0.30]{images/solidangle}
 \end{center}
+
+\begin{block}{Transformationsformel}
+
 
 \begin{align}
 & d\omega =  \frac{1}{r^2} \cdot  \cos(\theta) dA, \;  \pi(x):=  \frac{x}{||x||}  \\
@@ -765,6 +765,238 @@ Ist $U = U_1 \times U_2 \in \mathbb{R}^2$ und $f: U \to \mathbb{R}$ eine integri
 \end{block}
 \end{frame}
 
+
+\begin{frame}
+    \frametitle{Photometrie}
+\framesubtitle{}
+\begin{center}
+
+    \includegraphics[width=1.0\textwidth]{images/Electromagnetic_spectrum_c.png}
+\end{center}
+\begin{block}{Lichtenergie}
+
+Die Lichtenergie wird durch einen Strom von Photonen erzeugt. Die Energie eines Photons ist 
+durch $E=h \cdot f$, mit  $h$ das konstante Planksche Wirkungsquantum und $f$ die Frequenz der Welle (Welle-Teilchen Dualismus).  
+
+
+
+\end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Photometrie}
+\framesubtitle{}
+\begin{center}
+    \includegraphics[width=0.4\textwidth]{images/Partikelstrom.png}
+\end{center}
+\begin{block}{Spezifische Lichtenergie}
+
+Durch einen Kanal $K$ bewegen  sich Teilchen mit gleichförmiger Geschwindigkeit $L$ (Lichtgeschwindigkeit)  und  Dichte $\eta$.
+Die Anzahl der Teilchen, die die Fläche $A$ bezüglich eines Zeitintervalles $[0,t]$ passieren, ist gegeben durch
+\begin{align}
+& D_A([0,t]) :=L(A) *  \text{Flächeninhalt}(A) *   t \\
+& L(A):= \eta * ||L||  
+\end{align}
+\end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Photometrie}
+\framesubtitle{}
+
+\begin{center}
+
+    \includegraphics[width=0.5\textwidth]{images/Strahldichte.png}
+\end{center}
+
+
+\begin{block}{Spezifische Lichtenergie}
+ Betrachtet man die allgemeinere Situation eines Flächenstückes $B$  in einem Teilchenstorm $L$, so ist die Anzahl gegeben durch 
+\begin{align}
+D_B([0,t]) :=L(B) * \cos(\alpha) *  \text{Flächeninhalt} (B) * t
+ \end{align}
+
+
+Lässt man $B \to x$ gegen einen Punkt konvergieren, so erhalten wir die Strahldichte  am Punkt $x$ in Richtung $n$ als Grenzprozess  $L(B) \to L(x, n)$.
+\end{block}
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Photometrie}
+\framesubtitle{}
+  \begin{center}
+
+    \includegraphics[width=0.45\textwidth]{images/Fotometrisches_Grundgesetz_Schema.png}
+\end{center}
+
+
+\begin{block}{Spezifische Lichtenergie}
+
+
+Die Strahlungsleistung $\phi:= \frac{ \partial Q}{\partial t}$, die von einer abstrahlenden Fläche $A_2$  auf eine Fläche $A_1$ übertragen wird, berechnet sich durch
+\begin{align}
+\phi = \int_{A_1} \int_{\pi_s(A_2)} L(x, \omega)\cdot \cos(\beta_1) d\omega  dA_1   \; ,
+\end{align}
+wobei $\theta$ der Winkel zwischen der Flächennormale am Punkt $x$ und der Richtung $\omega$ ist und $\pi_s(A_2)$ das sphärische Bild von $A_2$ ist.
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Photometrie}
+\framesubtitle{}
+\begin{block}{Reflektionsgesetz}
+
+\begin{align*}
+\underbrace{L_r(x, \omega_r)}_{\substack{\text{Reflektierte Strahlung} \\ \text{in Richtungen $\omega_r$}}} =\underbrace{\int_{H^2} \underbrace{f_r (x, \omega, \omega_r)}_{\substack{\text{Reflektionseigenschaft} \\ \text{des Materials}}} \cdot  \underbrace{L_i(x, \omega) \cdot  \cos(\theta) }_{\substack{\text{Eingehende Strahlung} \\ \text{aus Richtung $\omega$}}} d\omega}_{\substack{\text{Summation über  alle } \\ \text{eingehenden Richtungen $\omega$}}} 
+\end{align*}
+  \begin{center}
+    \includegraphics[width=0.3\textwidth]{images/brdf.png}
+\end{center}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Raytracing}
+\framesubtitle{}
+\begin{block}{Rendergleichung}
+
+\begin{align}
+L_o(x, \omega_o) = L_e(x, \omega_o)  + \displaystyle \int_{H^2}f_r (x, \omega, \omega_0) \cdot L_i(x, \omega)  \cdot  \cos(\theta) d\omega \; ,
+\end{align}
+Ausgehend (\textbf{o}ut) = Emission (\textbf{e}mission) + Reflektion
+\end{block}
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Raytracing}
+\framesubtitle{}
+
+  \begin{center}
+    \includegraphics[width=0.7\textwidth]{images/rayTracing}
+\end{center}
+
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Raytracing}
+\framesubtitle{}
+\begin{block}{Rendergleichung 2-te Form}
+ $\Omega$  Menge aller Flächen  in der Szene.
+\begin{align*}
+& V(x,y) := \begin{cases}
+ 1 \text{ falls } \overline{xy} \cap (\Omega -\{x,y\}) = \emptyset \\
+0 \text{ sonst }
+\end{cases} \\
+& L_i(x, \omega_y) = V(x,y) \cdot L_o(y, \omega_x) \text{ (Energieerhaltung)} \\
+& d\omega =  \frac{1}{||x -y||^2} \cdot  \cos(\theta_y) dA_y \\
+& G(x,y) := V(x,y)  \frac{ \cos(\theta_x) \cdot  \cos(\theta_y)}{||x -y||^2} \\
+& L_o(x, \omega_o) = L_e(x, \omega_o)  + \displaystyle \int_{\Omega} f_r (x, \overline{xy}, \omega_o) \cdot   L_o(y, \overline{xy})  \cdot  G(x,y) \cdot   dA_y \; .
+\end{align*} 
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Raytracing}
+\framesubtitle{}
+\begin{block}{Pfadformulierung}
+\begin{align*}
+&(T \circ  L)(x, \omega) :=  \displaystyle \int_{H^2}f_r (x, \omega, \omega_0) \cdot L(x, \omega)  \cdot  \cos(\theta) d\omega \; , \\
+&L_e = (id - T) \circ L \; . \\
+&L = (id - T)^{-1} \circ L_e  \\
+&(id - T)^{-1}= \sum_{i= 0}^{\infty} T^i  \; .
+\end{align*}
+
+\end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Monte Carlo Integration}
+\framesubtitle{}
+\begin{block}{Wahrscheinlichkeitsraum}
+\begin{itemize}
+\item  Menge $\Omega \subset \mathbb{R}^n$ deren Teilmengen Ereignisse genannt werden.
+\item Funktion $\rho : \Omega \to \mathbb{R}$ mit $\int_{\Omega} \rho(\omega) d\omega = 1$ welche auch Wahrscheinlichkeitsdichte genannt wird.
+\item Eine Abbildung $X: \Omega \to \mathbb{R}$ wird Zufallsvariable genannt.
+\end{itemize}
+
+Ist $X: \Omega \to \mathbb{R}$ eine  Zufallsvariable, dann heißt
+\begin{align}
+\mathbb{E}[X] := \int_{\Omega} X(\omega) \cdot \rho(\omega) d\omega 
+\end{align}
+Erwartungswert.
+\end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Monte Carlo Integration}
+\framesubtitle{}
+\begin{block}{Gesetz der großen Zahlen}
+Ist $X: \Omega \to \mathbb{R}$ eine  Zufallsvariable mit Wahrscheinlichkeitsdichte $\rho: \Omega \to [0,1]$ und $\{ \omega_1, \cdots, \omega_N \}$ eine Stichprobe für $\rho$, so gilt:
+\begin{align}
+\frac{1}{N} \sum_{i= 0}^{N} X(\omega_i) \xrightarrow{ N \to \infty } \mathbb{E}[X] \text{ (in Wahrscheinlichkeit)}
+\end{align}
+\end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Monte Carlo Integration}
+\framesubtitle{}
+\begin{block}{Stochastische Integration}
+
+Ist $f: S \subset \Omega \to \mathbb{R}$ eine Funktion, so gilt für eine beliebige Wahrscheinlichkeitsdichte  $\rho: \Omega \to [0,1]$ und eine Stichprobe 
+ $\{ \omega_1, \cdots, \omega_N \}$
+\begin{align}
+\frac{1}{N} \sum_{i= 0}^{N}  \frac{f(\omega_i)}{\rho(\omega_i)} \xrightarrow{ N \to \infty } \int_{\Omega} f(\omega) d\omega \text{ (in Wahrscheinlichkeit)} \; .
+\end{align}
+\end{block}
+
+\begin{block}{Stochastische Integration}
+Das Problem der Integration reduziert sich im Wesentlichen darauf viele Stichproben $\omega$ aus einer komplizierten  Verteilung  $\rho$ zu ziehen.
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Rejectionsampling}
+\framesubtitle{}
+
+  \begin{center}
+    \includegraphics[width=0.9\textwidth]{images/rjsampling2}
+\end{center}
+
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Raytracing}
+\framesubtitle{}
+\begin{block}{Pathtracing}
+Die Anwendung der Monte Carlo Integration auf die Pfadformulierung der Rendergleichung wird Pathtracing genannt.
+\end{block}
+\end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{Raytracing}
+\framesubtitle{}
+Wenige und viele samples im Vergleich
+
+    \includegraphics[width=0.45\textwidth]{images/Path_Tracing_Low}
+    \includegraphics[width=0.45\textwidth]{images/Path_Tracing_High}
+
+\end{frame}
 
 
 \end{document}

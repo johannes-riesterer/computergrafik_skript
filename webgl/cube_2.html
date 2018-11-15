@@ -34,7 +34,7 @@ and open the template in the editor.
 
             lightDir = normalize(lightDir);
             vec3 rNormal = m*normal;
-            intensity = max(0.0, dot(rNormal, lightDir));
+            intensity = 0.9*max(0.0, dot(rNormal, lightDir)) +  0.4;
             }
         </script>
 
@@ -277,7 +277,7 @@ and open the template in the editor.
             var tLocation = gl.getUniformLocation(program, "t");
             gl.uniform1f(tLocation, someProgress);
 
-            gl.uniform3f(gl.getUniformLocation(program, "lightSource"), 0, 10, 10);
+            gl.uniform3f(gl.getUniformLocation(program, "lightSource"), 0, 4, 10);
 
             someProgress += 0.01;
 
