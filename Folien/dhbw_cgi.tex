@@ -63,7 +63,7 @@
     \frametitle{Basis}
 \framesubtitle{}
     \begin{block}{Basis}
-Sind $b_1, b_2, b_3$ einer unabhängig, dann heisst die geordnete Menge
+Sind $b_1, b_2, b_3$ linear unabhängig, dann heisst die geordnete Menge
 $ B = \{ b_1 , b_2, b_3\}$ Basis des $\mathbb{R}^3$.
 \end{block}
  \begin{block}{Basisdarstellung}
@@ -407,7 +407,7 @@ Es ist $F_3 \cong \mathbb{P}^2$
 \begin{frame}
     \frametitle{Homogene Koordinaten}
 \framesubtitle{}
-\begin{block}{Zerlegung des projektiven Raum}
+\begin{block}{Zerlegung des projektiven Raumes}
 Der projektive Raum ist damit die Vereinigung des Affinen Raumes und den unendlich fernen Punkten. "Parallelen schneiden sich in den unendlich fernen Punkten".
 Es gilt also 
 \begin{align*}
@@ -421,19 +421,26 @@ Es gilt also
 \begin{frame}
     \frametitle{Homogene Koordinaten}
 \framesubtitle{}
-\begin{block}{Projektive Abbildungen}
-Die Matrizenmultiplikation
+\begin{block}{Zerlegung des projektiven Raumes}
+Der projektive Raum ist damit die Vereinigung des Affinen Raumes und den unendlich fernen Punkten. "Parallelen schneiden sich in den unendlich fernen Punkten".
+Es gilt also 
 \begin{align*}
-\mathbb{R}^{4} \to \mathbb{R}^{4} \\
-v \mapsto A \cdot v
+& \mathbb{P}^3 = \mathbb{A}^3 \cup F_3 = \mathbb{A}^3  \cup \mathbb{P}^2 =  \mathbb{A}^3  \cup \mathbb{A}^2 \cup F_2  \\  
+& =\mathbb{A}^3  \cup \mathbb{A}^2 \cup  \mathbb{P}^1 =   \mathbb{A}^3  \cup \mathbb{A}^2 \cup  \mathbb{S}^1/ \{ \pm  1\} \\
+& =  \mathbb{A}^3  \cup \mathbb{A}^2 \cup  \mathbb{S}^1
 \end{align*}
-setzt sich wegen der Eigenschaft $A \cdot (\lambda v) = \lambda A \cdot v$ zu einer Abbildung
-\begin{align*}
-\mathbb{P}^{3} \to \mathbb{P}^{3} \\
-p \mapsto A \cdot p
-\end{align*}
-fort. 
 \end{block}
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Homogene Koordinaten}
+\framesubtitle{}
+
+\begin{center}
+\includegraphics[scale=0.40]{images/proj2.png}
+\end{center}
 \end{frame}
 
 \begin{frame}
@@ -535,7 +542,7 @@ $MVP := Model View Projection Matrix$
 
 \item{Kommt mit der Addition von ganzen Zahlen als komplexeste Operation, und somit ohne Multiplikation, Division und Gleitkommazahlen. }
 
-\item{Durch eine geringfügige Erweiterung lässt sich der ursprüngliche Algorithmus, der für Geraden entworfen wurde, auch für die Rasterung von Kreisen verwenden. Sogar die Quadratterme, die beim Kreis vorkommen, lassen sich rekursiv ohne jede Multiplikation aus dem jeweils vorhergehenden Term ableiten nach.}
+\item{Durch eine geringfügige Erweiterung lässt sich der ursprüngliche Algorithmus, der für Geraden entworfen wurde, auch für die Rasterung von Kreisen verwenden. Sogar die Quadratterme, die beim Kreis vorkommen, lassen sich rekursiv ohne jede Multiplikation aus dem jeweils vorhergehenden Term ableiten.}
 \end{itemize}
 \end{block}
 \end{frame}
