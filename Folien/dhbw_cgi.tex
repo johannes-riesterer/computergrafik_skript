@@ -773,9 +773,23 @@ Die Lichtenergie wird durch einen Strom von Photonen erzeugt. Die Energie eines 
 durch $E=h \cdot f$, mit  $h$ das konstante Planksche Wirkungsquantum und $f$ die Frequenz der Welle (Welle-Teilchen Dualismus).  
 
 
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Photometrie}
+\framesubtitle{}
+\begin{block}{Lichtenergie}
+
+Die Strahlungsleistung $\phi = \frac{d Q}{dt}$ ist die von einem Photonenstrom übertragenen Energie $Q$ pro Zeit. 
+Für monochromes Licht mit der Frequenz $f$ und Teilchenstrom $ \frac{d N}{dt} $ ergibt sich $\phi = h \cdot  \frac{d N}{dt}  \cdot f$.
+
+
 
 \end{block}
 \end{frame}
+
 
 \begin{frame}
     \frametitle{Photometrie}
@@ -783,13 +797,12 @@ durch $E=h \cdot f$, mit  $h$ das konstante Planksche Wirkungsquantum und $f$ di
 \begin{center}
     \includegraphics[width=0.4\textwidth]{images/Partikelstrom.png}
 \end{center}
-\begin{block}{Spezifische Lichtenergie}
+\begin{block}{ Strahldichte}
 
 Durch einen Kanal $K$ bewegen  sich Teilchen mit gleichförmiger Geschwindigkeit $L$ (Lichtgeschwindigkeit)  und  Dichte $\eta$.
 Die Anzahl der Teilchen, die die Fläche $A$ bezüglich eines Zeitintervalles $[0,t]$ passieren, ist gegeben durch
 \begin{align}
-& D_A([0,t]) :=L(A) *  \text{Flächeninhalt}(A) *   t \\
-& L(A):= \eta * ||L||  
+& D_A([0,t]) := \eta * ||L||  *   \text{Flächeninhalt}(A) *   t 
 \end{align}
 \end{block}
 \end{frame}
@@ -804,14 +817,19 @@ Die Anzahl der Teilchen, die die Fläche $A$ bezüglich eines Zeitintervalles $[
 \end{center}
 
 
-\begin{block}{Spezifische Lichtenergie}
+\begin{block}{Strahldichte}
  Betrachtet man die allgemeinere Situation eines Flächenstückes $B$  in einem Teilchenstorm $L$, so ist die Anzahl gegeben durch 
 \begin{align}
-D_B([0,t]) :=L(B) * \cos(\theta) *  \text{Flächeninhalt} (B) * t
+D_B([0,t]) := \eta * ||L||  * \cos(\alpha) *  \text{Flächeninhalt} (B) * t
  \end{align}
 
 
-Lässt man $B \to x$ gegen einen Punkt konvergieren, so erhalten wir die Strahldichte  am Punkt $x$ in Richtung $n$ als Grenzprozess  $L(B) \to L(x, n)$.
+
+Bezeichnen wir mit $L(B) = \frac{d}{dt \cdot \cos(\theta)}D_B([0,t]) = \eta * ||L||  *  \text{Flächeninhalt} (B)$, so erhalten wir die   Strahldichte als Grenzwert
+\begin{align*}
+L(x, n):= \lim_{B -> x} L(B)
+ \end{align*}
+bei dem die Fläche $B$  zu einem Punkt $x$ zusammengezogen wird.  Die Strahlungsleistung aus einer Richtung $\theta$  am Punkt $x$ berechnet sich demnach durch $I(x, \theta) = L(x, \theta) \cdot \cos(\theta)$, was auch als Lambertsches Cosinusgesetz bezeichnet wird.
 \end{block}
 \end{frame}
 
@@ -826,7 +844,7 @@ Lässt man $B \to x$ gegen einen Punkt konvergieren, so erhalten wir die Strahld
 \end{center}
 
 
-\begin{block}{Spezifische Lichtenergie}
+\begin{block}{Photometrisches Grundgesetz}
 
 
 Die Strahlungsleistung $\phi:= \frac{ \partial Q}{\partial t}$, die von einer abstrahlenden Fläche $A_2$  auf eine Fläche $A_1$ übertragen wird, berechnet sich durch

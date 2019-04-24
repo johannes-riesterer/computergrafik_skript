@@ -24,13 +24,12 @@ durch $E=h \cdot f$ geben, wobei $h$ das konstante Planksche Wirkungsquantum und
 Durch einen Kanal $K$ bewegen  sich Teilchen mit gleichförmiger Geschwindigkeit $L$ (Lichtgeschwindigkeit)  und  Dichte $\eta$.
 Die Anzahl der Teilchen, die die Fläche $A$ bezüglich eines Zeitintervalles $[0,t]$ passieren, ist gegeben durch
 \begin{align}
-& D_A([0,t]) :=L(A) *  \text{Flächeninhalt}(A) *   t \\
-& L(A):= \eta * ||L||  
+& D_A([0,t]) := \eta * ||L||  *   \text{Flächeninhalt}(A) *   t 
 \end{align}
 
  Betrachtet man die allgemeinere Situation eines Flächenstückes $B$  in einem Teilchenstorm $L$, so ist die Anzahl gegeben durch 
 \begin{align}
-D_B([0,t]) :=L(B) * \cos(\alpha) *  \text{Flächeninhalt} (B) * t
+D_B([0,t]) := \eta * ||L||  * \cos(\alpha) *  \text{Flächeninhalt} (B) * t
  \end{align}
 \begin{figure}[H]
     \centering
@@ -38,9 +37,11 @@ D_B([0,t]) :=L(B) * \cos(\alpha) *  \text{Flächeninhalt} (B) * t
     \caption{Partikelstrom}
     \label{fig:cray}
 \end{figure}
-
-Lässt man $B \to x$ gegen einen Punkt konvergieren, so erhalten wir die Strahldichte  am Punkt $x$ in Richtung $n$ als Grenzprozess  $L(B) \to L(x, n)$.
-
+Bezeichnen wir mit $L(B) = \frac{d}{dt \cdot \cos(\theta)}D_B([0,t]) = \eta * ||L||  *  \text{Flächeninhalt} (B)$, so erhalten wir die   Strahldichte als Grenzwert
+\begin{align*}
+L(x, n):= \lim_{B -> x} L(B)
+ \end{align*}
+bei dem die Fläche $B$  zu einem Punkt $x$ zusammengezogen wird.  Die Strahlungsleistung aus einer Richtung $\theta$  am Punkt $x$ berechnet sich demnach durch $I(x, \theta) = L(x, \theta) \cdot \cos(\theta)$, was auch als Lambertsches Cosinusgesetz bezeichnet wird.
 
 Angewendet  auf Flächen erhalten wir das  photometrische Grundgesetzt. Es beschreibt die Strahlungleistung, die von einem  Flächenelement auf ein anderes  Flächenelement übertragen wird.
 
