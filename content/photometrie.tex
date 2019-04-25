@@ -24,12 +24,12 @@ durch $E=h \cdot f$ geben, wobei $h$ das konstante Planksche Wirkungsquantum und
 Durch einen Kanal $K$ bewegen  sich Teilchen mit gleichförmiger Geschwindigkeit $L$ (Lichtgeschwindigkeit)  und  Dichte $\eta$.
 Die Anzahl der Teilchen, die die Fläche $A$ bezüglich eines Zeitintervalles $[0,t]$ passieren, ist gegeben durch
 \begin{align}
-& D_A([0,t]) := \eta * ||L||  *   \text{Flächeninhalt}(A) *   t 
+& N_A([0,t]) := \eta * ||L||  *   \text{Flächeninhalt}(A) *   t 
 \end{align}
 
- Betrachtet man die allgemeinere Situation eines Flächenstückes $B$  in einem Teilchenstorm $L$, so ist die Anzahl gegeben durch 
+ Betrachtet man die allgemeinere Situation eines Flächenstückes $B$, so ist die Anzahl gegeben durch 
 \begin{align}
-D_B([0,t]) := \eta * ||L||  * \cos(\alpha) *  \text{Flächeninhalt} (B) * t
+N_B([0,t]) := \eta * ||L||  * \cos(\alpha) *  \text{Flächeninhalt} (B) * t
  \end{align}
 \begin{figure}[H]
     \centering
@@ -37,7 +37,7 @@ D_B([0,t]) := \eta * ||L||  * \cos(\alpha) *  \text{Flächeninhalt} (B) * t
     \caption{Partikelstrom}
     \label{fig:cray}
 \end{figure}
-Bezeichnen wir mit $L(B) = \frac{d}{dt \cdot \cos(\theta)}D_B([0,t]) = \eta * ||L||  *  \text{Flächeninhalt} (B)$, so erhalten wir die   Strahldichte als Grenzwert
+Bezeichnen wir mit $L(B) = \frac{d}{dt \cdot \cos(\theta)}N_B([0,t]) = \eta * ||L||  *  \text{Flächeninhalt} (B)$, so erhalten wir die   Strahldichte als Grenzwert
 \begin{align*}
 L(x, n):= \lim_{B -> x} L(B)
  \end{align*}
