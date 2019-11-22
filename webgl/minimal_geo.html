@@ -20,9 +20,9 @@ and open the template in the editor.
             varying float T;
             void main() {
             //  gl_Position = vec4(a_position, 0.0, t);
-            T = a_position.x;
+            T = t;
     //        gl_Position = vec4(a_position[0], a_position[1], 0.0, 5.0);
-            gl_Position = vec4(a_position.x, a_position.y, 1.0, 1.0);
+            gl_Position = vec4(a_position.x, a_position.y, 0.0, 1.0);
 
             }
         </script>
@@ -31,7 +31,7 @@ and open the template in the editor.
             precision mediump float;
             varying float T;
             void main() {
-            gl_FragColor = vec4(T*T ,1.0,0.0,1.0);
+            gl_FragColor = vec4(1.0 ,abs(cos(1.0*T)),0.0,1.0);
             }
         </script>
 
@@ -47,6 +47,8 @@ and open the template in the editor.
             var canvas;
             var gl;
             var buffer;
+
+            //warten bis Dokument erstellt wurde
             window.onload = init;
 
 
@@ -55,15 +57,15 @@ and open the template in the editor.
             function init() {
             // Get A WebGL context
             canvas = document.getElementById("glcanvas");
-            canvas.width = 400;
-            canvas.height = 300;
+            canvas.width = 800;
+            canvas.height = 400;
 
 
 
             gl = canvas.getContext("webgl");
 
 
-            gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
+            gl.viewport(0, 0, gl.drawingBufferWidth, 400);
             
 
 
@@ -108,7 +110,7 @@ and open the template in the editor.
 
 
             //clear background and paint it red
-            gl.clearColor(0.0, 0.0, 1.0, 1.0);
+            gl.clearColor(1.0, 0.0, 0.0, 1.0);
 
             gl.clear(gl.COLOR_BUFFER_BIT);
 
