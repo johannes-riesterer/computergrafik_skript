@@ -1,5 +1,3 @@
-# NEWS
-**Übungsblatt für ita15 im SS2018 befindet sich in Uebungen/ita15_ss2018**
 
 # Lecture notes on computer graphics
 
