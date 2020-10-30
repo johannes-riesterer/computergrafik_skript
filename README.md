@@ -25,3 +25,6 @@ author.
 
 # Shader Programmierung
 [shadertoy](https://www.shadertoy.com/)
+
+# Photoeffekt
+https://www.youtube.com/watch?v=7fLFOgSVFJM
