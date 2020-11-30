@@ -27,22 +27,13 @@ void main() {
 
 
 <script id="2d-fragment-shader" type="x-shader/x-fragment">
-precision mediump float;
-varying float T;
-void main() {
-    if( mod(gl_FragCoord.x, 80.0)  < 40.0) {
-        gl_FragColor = vec4(0.0,1.0,0.0,1.0 );
-         if( mod(gl_FragCoord.y, 60.0)  < 30.0) {
-             gl_FragColor = vec4(1.0,1.0,0.0,1.0 );
-         }
+    precision mediump float;
+    varying float T;
+    void main() {
+
+    gl_FragColor = vec4(0.0,1.0,1.0,0.0 );
+   
     }
-    else {
-        gl_FragColor = vec4(0.0,0.0,1.0,1.0 );
-        if( mod(gl_FragCoord.y, 60.0)  < 30.0) {
-            gl_FragColor = vec4(0.0,0.0,0.0,1.0 );
-        }
-    }
-}
 
 </script>
 
